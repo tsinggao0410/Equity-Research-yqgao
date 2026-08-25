@@ -1,0 +1,6 @@
+# 一页纸是生成产物，不参与语言统计，也不做逐行 diff
+onepagers/** linguist-generated=true
+methodology/*.html linguist-generated=true
+*.html -diff
+*.pdf -diff
+*.xlsx -diff
