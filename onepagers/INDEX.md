@@ -6,7 +6,7 @@
 组内保留 **01–40 的时间编号**（2026-08-08 → 08-24）：编号就是方法论的版本演进序，v1 雏形 → v3 → v3.5 → v4.x → v5.0，同一标的的多次覆盖可以直接前后对读。
 Within each group the **chronological numbers 01–40 are preserved**: the sequence is the version history of the method itself, so repeat coverage of one name reads as a diff.
 
-> **怎么打开 / How to open** — 单文件自包含 HTML，**下载后双击即可离线打开**。GitHub 网页上点开只显示源码；仓库公开并启用 Pages 后可直接访问 `https://tsinggao0410.github.io/Claude-1-Equity-Research/onepagers/<行业目录>/<文件名>`。
+> **怎么打开 / How to open** — 单文件自包含 HTML，**下载后双击即可离线打开**。GitHub 网页上点开只显示源码；仓库公开并启用 Pages 后可直接访问 `https://tsinggao0410.github.io/Equity-Research-yqgao/onepagers/<行业目录>/<文件名>`。
 
 ## 分组总览 · Groups
 

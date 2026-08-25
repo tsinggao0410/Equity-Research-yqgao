@@ -77,9 +77,9 @@ Core tenet: **charts beat prose** — every section leads with a chart or table;
 Clicking an HTML file on github.com shows source, not the page. Three ways:
 
 1. **整包下载** —— 仓库页右上角绿色 **Code → Download ZIP**，解压后进 `onepagers/<行业目录>/`，双击任意一份。最可靠，完全离线。
-2. **克隆** `git clone https://github.com/tsinggao0410/Claude-1-Equity-Research.git`
+2. **克隆** `git clone https://github.com/tsinggao0410/Equity-Research-yqgao.git`
 3. **GitHub Pages**（需仓库公开 + Settings → Pages 选好分支）：
-   `https://tsinggao0410.github.io/Claude-1-Equity-Research/onepagers/<行业目录>/<文件名>`
+   `https://tsinggao0410.github.io/Equity-Research-yqgao/onepagers/<行业目录>/<文件名>`
 
 ---
 
