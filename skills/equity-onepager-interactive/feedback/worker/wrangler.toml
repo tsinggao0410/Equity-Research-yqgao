@@ -1,0 +1,23 @@
+# 一页纸反馈平台（Cloudflare Worker + 静态资源 + KV）
+# 一次性部署（约 3 分钟，只做一次；之后每次更新报告只跑 deploy_page.py）：
+#   1) wrangler login
+#   2) wrangler kv namespace create ANNOT      → 把返回的 id 填到下面 [[kv_namespaces]].id
+#   3) wrangler secret put FB_ADMIN_TOKEN      → 随手编一串长口令(我拉标注用；读者提交不需要)
+#   4) cd <这个目录> && wrangler deploy
+# 得到 https://onepager-feedback.<你的子域>.workers.dev
+# 之后：python scripts/deploy_page.py --ticker 688629 --endpoint https://onepager-feedback.xxx.workers.dev
+name = "onepager-feedback"
+main = "src/index.js"
+compatibility_date = "2026-05-18"
+
+# 报告静态页目录（deploy_page.py 会把 <ticker>/index.html 放进来，并生成索引页）
+[assets]
+directory = "./site"
+binding = "ASSETS"
+
+# 标注存储（KV）——把 create 命令返回的 id 粘进来
+[[kv_namespaces]]
+binding = "ANNOT"
+id = "PASTE_KV_ID_AFTER_CREATE"
+
+# FB_ADMIN_TOKEN 用 `wrangler secret put FB_ADMIN_TOKEN` 设置，不要写进本文件
