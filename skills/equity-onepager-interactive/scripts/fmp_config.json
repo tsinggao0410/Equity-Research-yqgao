@@ -1,8 +1,0 @@
-{
-  "api_key": "<REDACTED — 公开发布时移除；请用环境变量 FMP_API_KEY，或在本地填回>",
-  "base_url": "https://financialmodelingprep.com/stable",
-  "_note": "环境变量 FMP_API_KEY 优先于本文件。FMP 2025-08-31 起 /api/v3/ 全线停用，只能走 /stable/。",
-  "_inline_band_pct": 2.0,
-  "_thin_coverage_n": 3,
-  "_match_tol_days": 45
-}

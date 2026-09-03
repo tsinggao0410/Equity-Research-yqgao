@@ -4,8 +4,8 @@
 > 每节先中文，后英文；纪律与术语用双栏表并置。
 > Each section gives the Chinese first, then the English. Disciplines and glossary are laid out in parallel columns.
 
-**来源 · Source**　整理自《AI 投研的方法论与深度进展》（高有青，2026-08-19，v5 · 17 页）与 `skills/equity-onepager-interactive/SKILL.md` 中已固化的执行纪律。本文是方法论的**文字版**；`methodology/` 下的 HTML / PDF 是同一份内容的现场版。
-Compiled from *Methodology and Progress in AI-Assisted Equity Research* (2026-08-19, v5, 17 slides) and the operating disciplines hard-coded in `skills/equity-onepager-interactive/SKILL.md`. This is the prose edition; the HTML / PDF in `methodology/` are the presentation edition of the same material.
+**来源 · Source**　整理自《AI 投研的方法论与深度进展》（高有青，2026-08-19，v5 · 17 页），以及生成一页纸的那套 skill 里已固化的执行纪律（skill 本身未在本仓库公开，只保留它的成果与这份方法论）。本文是方法论的**文字版**；`methodology/` 下的 HTML / PDF 是同一份内容的现场版。
+Compiled from *Methodology and Progress in AI-Assisted Equity Research* (2026-08-19, v5, 17 slides) and the operating disciplines hard-coded in the skill that generates the one-pagers (the skill itself is not published in this repository — only its output and this methodology are). This is the prose edition; the HTML / PDF in `methodology/` are the presentation edition of the same material.
 
 ---
 

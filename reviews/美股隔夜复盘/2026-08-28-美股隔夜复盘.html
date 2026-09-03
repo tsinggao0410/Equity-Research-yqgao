@@ -1,0 +1,183 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>08-28 隔夜复盘</title>
+<style>
+:root{--ink:#1a1a1a;--mute:#6b6b6b;--rule:#d9d9d9;--up:#0a7a3b;--dn:#b42318;--soft:#f5f4f0;--acc:#1f3a5f}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--ink);font-family:"Times New Roman","Songti SC","SimSun",Georgia,serif;font-size:14px;line-height:1.5}
+.page{max-width:1120px;margin:0 auto;padding:36px 44px 60px}
+h1{font-size:24px;margin:0 0 4px;font-weight:600;letter-spacing:.2px}
+.sub{color:var(--mute);font-size:12.5px;margin-bottom:18px}
+h2{font-size:15.5px;margin:30px 0 8px;padding-bottom:4px;border-bottom:1.5px solid var(--ink);font-weight:700}
+h3{font-size:13.5px;margin:16px 0 6px;font-weight:700;color:var(--acc)}
+.ex{font-size:12px;color:var(--mute);margin:10px 0 4px;text-transform:none}
+.ex b{color:var(--ink)}
+table{border-collapse:collapse;width:100%;font-size:12.8px}
+th{text-align:left;font-weight:600;border-top:1px solid var(--ink);border-bottom:1px solid var(--rule);padding:5px 6px;background:var(--soft);white-space:nowrap}
+td{border-bottom:1px solid #ececec;padding:5px 6px;vertical-align:top}
+tr:last-child td{border-bottom:1px solid var(--ink)}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+td.nw{white-space:nowrap} td.cl{min-width:96px;font-weight:700}
+table.mat td,table.mat th{padding:4px 5px;font-size:12px}
+.up{color:var(--up)} .dn{color:var(--dn)}
+.tk{font-weight:700;letter-spacing:.3px;white-space:nowrap}
+.mute{color:var(--mute)}
+.code{display:inline-block;min-width:18px;text-align:center;border:1px solid var(--ink);padding:0 4px;font-size:11px;font-weight:700;line-height:16px}
+.code.none{border-color:var(--rule);color:var(--mute);font-weight:400}
+.bar{display:inline-block;width:64px;height:8px;background:#eee;vertical-align:middle;position:relative;margin-right:6px}
+.bar i{position:absolute;top:0;height:100%;display:block}
+.bar.neg i{right:50%;background:var(--dn)} .bar.pos i{left:50%;background:var(--up)}
+.bar:after{content:"";position:absolute;left:50%;top:-2px;height:12px;border-left:1px solid #999}
+.summary{border:1px solid var(--ink);padding:10px 14px;margin:10px 0 4px;background:#fbfaf7}
+.summary p{margin:3px 0}
+.summary b{display:inline-block;min-width:42px}
+ol.foot{font-size:11.5px;color:var(--mute);padding-left:18px;margin:6px 0}
+.snap{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:4px 10px;margin:8px 0 2px}
+.snap div{border-top:1px solid var(--rule);padding:3px 0;font-size:12px}
+.snap span{display:block;color:var(--mute);font-size:11px}
+.path{font-family:Menlo,Consolas,monospace;font-size:11.5px;white-space:nowrap}
+.pill{font-size:11px;color:var(--mute)}
+.alpha{font-weight:700} .beta{color:var(--mute)}
+p.read{margin:6px 0 0}
+@media print{.page{padding:0} body{font-size:12px}}
+</style></head><body><div class="page">
+<h1>08-28 隔夜复盘 <span class='mute' style='font-size:14px;font-weight:400'>｜美股会话 2026-08-28</span></h1>
+<div class='sub'>universe 559（市值≥$25B）· 异动 21（涨1 / 跌20，|Δ|≥5%）· 数据：Nasdaq / Yahoo / Polymarket · 生成 2026-08-29 12:54</div>
+<div class='snap'>
+<div><span>标普500</span><b class='dn'>-0.25%</b> <span class='mute' style='display:inline'>7,711.76</span></div>
+<div><span>纳指100</span><b class='dn'>-0.70%</b> <span class='mute' style='display:inline'>29,433.43</span></div>
+<div><span>罗素2000</span><b class='dn'>-1.39%</b> <span class='mute' style='display:inline'>2,972.37</span></div>
+<div><span>费城半导体</span><b class='dn'>-3.47%</b> <span class='mute' style='display:inline'>11,469.66</span></div>
+<div><span>生物科技ETF</span><b class='dn'>-3.48%</b> <span class='mute' style='display:inline'>162.38</span></div>
+<div><span>公用事业ETF</span><b class='dn'>-1.04%</b> <span class='mute' style='display:inline'>42.73</span></div>
+<div><span>铀矿ETF</span><b class='dn'>-5.79%</b> <span class='mute' style='display:inline'>45.57</span></div>
+<div><span>VIX</span><b class='dn'>-0.55%</b> <span class='mute' style='display:inline'>14.43</span></div>
+<div><span>美债3M</span><b class='up'>+5.2bp</b> <span class='mute' style='display:inline'>3.73%</span></div>
+<div><span>美债5Y</span><b class='up'>+8.5bp</b> <span class='mute' style='display:inline'>4.48%</span></div>
+<div><span>美债10Y</span><b class='up'>+4.8bp</b> <span class='mute' style='display:inline'>4.72%</span></div>
+<div><span>美元指数</span><b class='up'>+0.52%</b> <span class='mute' style='display:inline'>99.68</span></div>
+<div><span>黄金</span><b class='dn'>-1.73%</b> <span class='mute' style='display:inline'>4,529.90</span></div>
+<div><span>铜</span><b class='up'>+1.09%</b> <span class='mute' style='display:inline'>6.66</span></div>
+<div><span>WTI原油</span><b class='dn'>-0.16%</b> <span class='mute' style='display:inline'>83.40</span></div>
+<div><span>比特币</span><b class='dn'>-3.38%</b> <span class='mute' style='display:inline'>77,399.99</span></div>
+</div>
+<h2>1. 三行结论</h2><div class='summary'>
+<p><b>宏观</b>Warsh杰克逊霍尔鹰派：5Y +8.5bp、DXY +0.5%、黄金-1.7%；Polymarket 9月加息25bp 29.5%→43.5%，9月决议成掷硬币</p>
+<p><b>板块</b>AI硬件随SOX -3.5%、生科随XBI -3.5%、加密随BTC -3.4%、铀随URA -5.8%，全是锚驱动的beta；簇内alpha仅MRVL、BNTX</p>
+<p><b>个股</b>PYPL -12.7%（$50B收购告吹）、PCG -7.5%（加州保险追偿立法受阻）、WDAY +5.8%（EPS超预期5%+$4B回购）</p>
+</div>
+<h2 class='nobreak'>2. 隔夜宏观与跨资产</h2>
+<div class='ex'><b>Exhibit 1</b>　白名单宏观发布（美东 2026-08-28）</div>
+<table><thead><tr><th>时间(ET)</th><th>国家</th><th>事件</th><th class='num'>实际</th><th class='num'>预期</th><th class='num'>前值</th><th>vs预期</th></tr></thead><tbody>
+<tr><td>10:00</td><td>United States</td><td>Michigan 1-Year Inflation Expectations</td><td class='num'>4.0%</td><td class='num'>4.3%</td><td class='num'>4.2%</td><td>低于</td></tr>
+<tr><td>10:00</td><td>United States</td><td>Michigan 5-Year Inflation Expectations</td><td class='num'>3.3%</td><td class='num'>3.3%</td><td class='num'>3.3%</td><td>持平</td></tr>
+<tr><td>10:00</td><td>United States</td><td>Michigan Consumer Sentiment</td><td class='num'>51.7</td><td class='num'>51.0</td><td class='num'>55.2</td><td>高于</td></tr>
+<tr><td>08:00</td><td>United States</td><td>Jackson Hole Symposium</td><td class='num mute' colspan='4'>讲话/会议（无数值）</td></tr>
+<tr><td>10:00</td><td>United States</td><td>Fed Governor Warsh Speaks</td><td class='num mute' colspan='4'>讲话/会议（无数值）</td></tr>
+<tr><td>11:55</td><td>Euro Zone</td><td>ECB&#x27;s Schnabel Speaks</td><td class='num mute' colspan='4'>讲话/会议（无数值）</td></tr>
+</tbody></table>
+<h3>Warsh 杰克逊霍尔讲话（10:00 ET）</h3><p class='read'>通胀高于2%目标（PCE 3.7%、核心PCE 3.3%）；&quot;夏季通胀数据改善但不足以令人信服&quot;；若不确信回落，联储&quot;将有工作要做&quot;<br><span class='mute'>反应：</span>UST5Y +8.5bp、UST10Y +4.8bp（熊平）、DXY +0.5%、黄金 -1.7%、SOX -3.5%<br><span class='mute'>改变了什么：</span>9月加息概率 CME FedWatch 35%→46%、Polymarket 29.5%→43.5%：9月从大概率不动变成掷硬币；长久期成长与流动性资产同步回撤</p>
+<h3>密歇根8月终值（10:00 ET，与讲话同时段）</h3><p class='read'>1年通胀预期 4.0%（初值4.3%、前值4.2%，下修）；5年 3.3% 持平；信心 51.7（初值51.0、前值55.2）<br><span class='mute'>反应：</span>同时段 UST5Y 仍 +8.5bp、UST3M +5.2bp<br><span class='mute'>改变了什么：</span>通胀预期终值下修没有压住短端定价——讲话权重压倒数据；5年预期3.3%连续三个月未松动</p>
+<p class='read'><span class='mute'>跨资产一句话：</span>熊平（5Y +8.5bp &gt; 10Y +4.8bp）+ 美元、铜涨，黄金、BTC、SOX、XBI跌，VIX -0.6%：是鹰派冲击而非衰退交易，受伤的是久期最长的资产</p>
+<h2>3. 预测市场（Polymarket）</h2>
+<div class='ex'><b>Exhibit 2</b>　核心合约面板 · YES 概率与 1D/1W 变动 · 24h成交≥$100K 记为信号，否则仅供参考 · 取数 2026-08-29 12:17 UTC</div>
+<table><thead><tr><th>组</th><th>合约</th><th>问题</th><th class='num'>概率</th><th class='num'>1D</th><th class='num'>1W</th><th class='num'>24h成交</th><th class='num'>流动性</th><th>到期</th><th>级别</th></tr></thead><tbody>
+<tr><td>美联储</td><td>下次FOMC：加息25bp</td><td class='mute'>Will the Fed increase interest rates by 25 bps after the September 2026 meeting?</td><td class='num'><b>43.5%</b></td><td class='num up'>+15.0pt</td><td class='num up'>+13.0pt</td><td class='num'>$2.3M</td><td class='num'>$387K</td><td class='nw'>2026-09-16</td><td class='alpha'>信号</td></tr>
+<tr><td>美联储</td><td>下次FOMC：按兵不动</td><td class='mute'>Will there be no change in Fed interest rates after the September 2026 meeting?</td><td class='num'><b>54.5%</b></td><td class='num dn'>-14.0pt</td><td class='num dn'>-14.0pt</td><td class='num'>$2.7M</td><td class='num'>$361K</td><td class='nw'>2026-09-16</td><td class='alpha'>信号</td></tr>
+<tr><td>美联储</td><td>下次FOMC：降息25bp</td><td class='mute'>Will the Fed decrease interest rates by 25 bps after the September 2026 meeting?</td><td class='num'><b>0.9%</b></td><td class='num dn'>-0.4pt</td><td class='num dn'>-0.3pt</td><td class='num'>$1.7M</td><td class='num'>$592K</td><td class='nw'>2026-09-16</td><td class='alpha'>信号</td></tr>
+<tr><td>美联储</td><td>年内加息（2026）</td><td class='mute'>Fed rate hike in 2026?</td><td class='num'><b>66.5%</b></td><td class='num up'>+10.0pt</td><td class='num up'>+11.0pt</td><td class='num'>$88K</td><td class='num'>$106K</td><td class='nw'>2026-12-09</td><td class='mute'>参考</td></tr>
+<tr><td>美联储</td><td>年内零降息（2026）</td><td class='mute'>Will no Fed rate cuts happen in 2026?</td><td class='num'><b>87.9%</b></td><td class='num dn'>-0.8pt</td><td class='num up'>+1.9pt</td><td class='num'>$36K</td><td class='num'>$423K</td><td class='nw'>2026-12-31</td><td class='mute'>参考</td></tr>
+<tr><td>美联储</td><td>12月FOMC：加息25bp</td><td class='mute'>Will the Fed increase interest rates by 25 bps after the December 2026 meeting?</td><td class='num'><b>47.0%</b></td><td class='num up'>+11.5pt</td><td class='num up'>+19.0pt</td><td class='num'>$19K</td><td class='num'>$81K</td><td class='nw'>2026-12-09</td><td class='mute'>参考</td></tr>
+<tr><td>通胀</td><td>当月CPI同比≥3.4%（分桶合计）</td><td class='mute'>7个分桶合计</td><td class='num'><b>61.8%</b></td><td class='num dn'>-4.5pt</td><td class='num '>—</td><td class='num'>$7K</td><td class='num'>$34K</td><td class='nw'>2026-09-11</td><td class='mute'>参考</td></tr>
+<tr><td>地缘/能源</td><td>美伊停火延续（最近档）</td><td class='mute'>US ceasefire against Iran continues through September 15?</td><td class='num'><b>87.5%</b></td><td class='num dn'>-1.0pt</td><td class='num up'>+14.0pt</td><td class='num'>$153K</td><td class='num'>$147K</td><td class='nw'>2026-09-15</td><td class='alpha'>信号</td></tr>
+<tr><td>地缘/能源</td><td>霍尔木兹通航恢复正常（12月前）</td><td class='mute'>Strait of Hormuz traffic returns to normal by December 31?</td><td class='num'><b>30.5%</b></td><td class='num dn'>-2.0pt</td><td class='num up'>+1.0pt</td><td class='num'>$98K</td><td class='num'>$452K</td><td class='nw'>2026-12-31</td><td class='mute'>参考</td></tr>
+<tr><td>地缘/能源</td><td>曼德海峡实质关闭（最近档）</td><td class='mute'>Bab el-Mandeb Strait effectively closed by September 15?</td><td class='num'><b>2.1%</b></td><td class='num dn'>-0.8pt</td><td class='num dn'>-2.5pt</td><td class='num'>$81K</td><td class='num'>$130K</td><td class='nw'>2026-09-16</td><td class='mute'>参考</td></tr>
+<tr><td>地缘/能源</td><td>北约×俄罗斯军事冲突（最近档）</td><td class='mute'>NATO x Russia military clash by August 31, 2026?</td><td class='num'><b>1.4%</b></td><td class='num up'>+0.1pt</td><td class='num dn'>-2.5pt</td><td class='num'>$38K</td><td class='num'>$72K</td><td class='nw'>2026-09-01</td><td class='mute'>参考</td></tr>
+<tr><td>中国</td><td>中国武力攻台（2026内）</td><td class='mute'>Will China invade Taiwan by end of 2026?</td><td class='num'><b>3.8%</b></td><td class='num dn'>-0.1pt</td><td class='num dn'>-0.1pt</td><td class='num'>$20K</td><td class='num'>$434K</td><td class='nw'>2026-12-31</td><td class='mute'>参考</td></tr>
+<tr><td>中国</td><td>中国封锁台湾（2026内）</td><td class='mute'>Will China blockade Taiwan in 2026?</td><td class='num'><b>7.2%</b></td><td class='num dn'>-0.7pt</td><td class='num up'>+0.7pt</td><td class='num'>$4K</td><td class='num'>$73K</td><td class='nw'>2027-01-01</td><td class='mute'>参考</td></tr>
+<tr><td>中国</td><td>习近平访美（最近档）</td><td class='mute'>Will Xi Jinping visit US by September 30?</td><td class='num'><b>88.5%</b></td><td class='num dn'>-5.0pt</td><td class='num dn'>-3.5pt</td><td class='num'>$11K</td><td class='num'>$24K</td><td class='nw'>2026-10-01</td><td class='mute'>参考</td></tr>
+<tr><td>贸易</td><td>美中关税协议（最近档）</td><td class='mute'>US x China tariff agreement by August 31?</td><td class='num'><b>1.1%</b></td><td class='num dn'>-0.4pt</td><td class='num dn'>-0.8pt</td><td class='num'>$43</td><td class='num'>$10K</td><td class='nw'>2026-09-01</td><td class='mute'>参考</td></tr>
+<tr><td>贸易</td><td>美加降关税协议（12月前）</td><td class='mute'>US-Canada diplomatic agreement to lower tariffs by December 31?</td><td class='num'><b>62.5%</b></td><td class='num dn'>-15.0pt</td><td class='num '>—</td><td class='num'>$2K</td><td class='num'>$39K</td><td class='nw'>2027-01-01</td><td class='mute'>参考</td></tr>
+<tr><td>科技/AI</td><td>月末全球市值第一：NVIDIA</td><td class='mute'>Will NVIDIA be the largest company in the world by market cap on September 30?</td><td class='num'><b>90.0%</b></td><td class='num dn'>-2.5pt</td><td class='num dn'>-1.5pt</td><td class='num'>$7K</td><td class='num'>$96K</td><td class='nw'>2026-09-30</td><td class='mute'>参考</td></tr>
+<tr><td>科技/AI</td><td>月末全球市值第一：Apple</td><td class='mute'>Will Apple be the largest company in the world by market cap on September 30?</td><td class='num'><b>7.5%</b></td><td class='num up'>+1.0pt</td><td class='num up'>+1.0pt</td><td class='num'>$8K</td><td class='num'>$112K</td><td class='nw'>2026-09-30</td><td class='mute'>参考</td></tr>
+<tr><td>加密</td><td>BTC年内跌至$60K</td><td class='mute'>Will Bitcoin dip to $60,000 by December 31, 2026?</td><td class='num'><b>30.5%</b></td><td class='num up'>+3.0pt</td><td class='num dn'>-4.0pt</td><td class='num'>$41K</td><td class='num'>$122K</td><td class='nw'>2027-01-01</td><td class='mute'>参考</td></tr>
+<tr><td>加密</td><td>BTC年内涨至$100K</td><td class='mute'>Will Bitcoin reach $100,000 by December 31, 2026?</td><td class='num'><b>26.0%</b></td><td class='num dn'>-3.5pt</td><td class='num dn'>-0.5pt</td><td class='num'>$17K</td><td class='num'>$103K</td><td class='nw'>2027-01-01</td><td class='mute'>参考</td></tr>
+</tbody></table>
+<div class='ex'><b>Exhibit 3</b>　预测市场隔夜异动（核心面板已列合约不重复）·|1D|≥5pt 且 24h成交≥$20K、流动性≥$50K · 剔除日内涨跌/价格阶梯/体育合约</div>
+<table><thead><tr><th>标签</th><th>事件 / 问题</th><th class='num'>概率</th><th class='num'>1D</th><th class='num'>24h成交</th><th>到期</th></tr></thead><tbody>
+<tr><td class='mute'>fed</td><td>Fed rate hike by...? <span class='mute'>｜ Fed Rate Hike by October 2026 Meeting?</span></td><td class='num'>59.5%</td><td class='num up'><b>+15.0pt</b></td><td class='num'>$31K</td><td class='nw'>2026-12-09</td></tr>
+<tr><td class='mute'>fed</td><td>Fed rate hike by...? <span class='mute'>｜ Fed Rate Hike by September 2026 Meeting?</span></td><td class='num'>44.5%</td><td class='num up'><b>+14.0pt</b></td><td class='num'>$75K</td><td class='nw'>2026-12-09</td></tr>
+<tr><td class='mute'>geopolitics</td><td>Prime Minister of Israel after the next election? <span class='mute'>｜ Will Benjamin Netanyahu be the next Prime Minister of Israel?</span></td><td class='num'>33.5%</td><td class='num up'><b>+5.0pt</b></td><td class='num'>$23K</td><td class='nw'>2026-12-31</td></tr>
+</tbody></table>
+<div class='ex'><b>Exhibit 4</b>　核心利率合约 48h 路径（YES 概率 %，6h 采样，UTC）· 事件时点：Warsh 讲话 08-28 14:00 UTC（10:00 ET）；美股收盘 20:00 UTC</div>
+<table class='mat'><thead><tr><th>合约</th><th class='num'>08-27 13:00</th><th class='num'>08-27 19:00</th><th class='num'>08-28 01:00</th><th class='num'>08-28 07:00</th><th class='num'>08-28 13:00</th><th class='num'>08-28 19:00</th><th class='num'>08-29 01:00</th><th class='num'>08-29 07:00</th><th class='num'>08-29 12:17</th><th class='num'>48h区间</th></tr></thead><tbody>
+<tr><td class='nw'>下次FOMC：加息25bp</td><td class='num'>30.5</td><td class='num'>30.5</td><td class='num'>30.5</td><td class='num'>30.5</td><td class='num'>29.5</td><td class='num'>49.5</td><td class='num'>48.5</td><td class='num'>43.5</td><td class='num mute'>·</td><td class='num'>28.5–52.5</td></tr>
+<tr><td class='nw'>下次FOMC：按兵不动</td><td class='num'>67.5</td><td class='num'>67.5</td><td class='num'>68.5</td><td class='num'>68.5</td><td class='num'>69.5</td><td class='num'>49.5</td><td class='num'>49.5</td><td class='num'>55.5</td><td class='num'>54.5</td><td class='num'>47.5–69.5</td></tr>
+<tr><td class='nw'>下次FOMC：降息25bp</td><td class='num'>1.1</td><td class='num'>1.1</td><td class='num'>1.4</td><td class='num'>1.4</td><td class='num'>1.5</td><td class='num'>0.7</td><td class='num'>0.7</td><td class='num'>0.7</td><td class='num'>0.9</td><td class='num'>0.7–1.7</td></tr>
+<tr><td class='nw'>年内加息（2026）</td><td class='num'>56.5</td><td class='num'>57.5</td><td class='num'>57.5</td><td class='num'>57.5</td><td class='num'>57.5</td><td class='num'>67.5</td><td class='num'>67.5</td><td class='num'>66.5</td><td class='num mute'>·</td><td class='num'>56.5–68.5</td></tr>
+<tr><td class='nw'>年内零降息（2026）</td><td class='num'>87.6</td><td class='num'>88.3</td><td class='num'>88.3</td><td class='num'>88.7</td><td class='num'>88.8</td><td class='num'>88.6</td><td class='num'>87.9</td><td class='num'>88.1</td><td class='num'>87.9</td><td class='num'>87.6–88.9</td></tr>
+<tr><td class='nw'>12月FOMC：加息25bp</td><td class='num'>35.5</td><td class='num'>35.5</td><td class='num'>35.5</td><td class='num'>35.5</td><td class='num'>36.0</td><td class='num'>48.5</td><td class='num'>48.0</td><td class='num'>47.0</td><td class='num mute'>·</td><td class='num'>35.5–48.5</td></tr>
+</tbody></table>
+<p class='read'><span class='mute'>解读：</span>9月FOMC合约24h成交$8.4M（信号级）：加息25bp 29.5%→43.5%、不动 69.5%→54.5%（1D分别+15/-14pt）、降息&lt;1%；年内加息 57.5%→66.5%、12月加息 35.5%→47%。与CME FedWatch 35%→46%同向，但预测市场讲话后峰值52.5%再回吐9pt——真钱先过度反应再修正。地缘、中国、贸易、AI合约隔夜无≥5pt变动，隔夜是单一利率事件日。</p>
+<p class='read'><b>下次FOMC（9/16）：加息25bp</b>　讲话前 29.5%（08-28 13:00 UTC）→ 讲话后峰值 52.5% → 最新 43.5%<br><span class='mute'>改变了什么：</span>9月从7:3不动变成掷硬币；峰值回吐9pt说明首反应过度，收盘定价与FedWatch 46%接近</p>
+<p class='read'><b>年内加息（2026）</b>　57.5% → 68.5% → 66.5%（+10pt；24h成交$88K，参考级）<br><span class='mute'>改变了什么：</span>年内至少一次加息成为多数派定价</p>
+<p class='read'><b>12月FOMC：加息25bp</b>　35.5% → 48.5% → 47.0%（+11.5pt；24h成交$19K，参考级）<br><span class='mute'>改变了什么：</span>加息预期从9月单点扩展到Q4——市场定价的是路径，不是一次性</p>
+<h2>4. 个股逐票归因（全覆盖）</h2>
+<div class='ex'><b>Exhibit 5</b>　全部异动个股，按|涨跌幅|排序 · 码：E业绩 G指引 M并购/资本 R评级 L监管/法务 S供应链/客户 C临床/产品 —无当日事件 · TP/修正取Yahoo，EPS取Nasdaq（口径不跨源）· 判定：alpha=个股事件主导，beta=簇/锚主导，mixed=两者皆有</div>
+<table><thead><tr><th>代码</th><th>公司</th><th>涨跌</th><th class='num'>市值</th><th>赛道</th><th>码</th><th>事件 / 事实行</th><th class='num'>TP·隐含</th><th class='num'>30D修正</th><th>背离</th><th>判定</th></tr></thead><tbody>
+<tr><td class='tk'>PYPL</td><td>PayPal</td><td class='num'><span class="bar neg"><i style="width:100%"></i></span><b class='dn'>-12.7%</b></td><td class='num'>$46B</td><td>支付/金融科技</td><td><span class='code'>M</span></td><td><b>Stripe与Advent放弃约$50B收购案</b><br><span class='mute'>成交3,590万股为3个月均量2.2倍；TP $60(33家)隐含+12%，30D修正净-3；Q2 EPS 1.38超预期8%（Nasdaq）</span></td><td class='num'>$60·+12%</td><td class='num dn'>-3</td><td>—</td><td class='alpha'>alpha</td></tr>
+<tr><td class='tk'>MRVL</td><td>Marvell Technology<br><span class='pill'>财报 2026-08-27</span></td><td class='num'><span class="bar neg"><i style="width:81%"></i></span><b class='dn'>-10.3%</b></td><td class='num'>$190B</td><td>AI硬件/定制芯片</td><td><span class='code'>G</span></td><td><b>Q3非GAAP毛利率指引中值58%，环比降90bp</b><br><span class='mute'>8/27盘后：收入$2.74B(+37%)、非GAAP EPS 0.94；FY28收入指引升至$18B仍被视为偏软；TP $269隐含+24%，30D净上调22次</span></td><td class='num'>$269·+24%</td><td class='num up'>+22</td><td>REV</td><td class='beta'>mixed</td></tr>
+<tr><td class='tk'>BNTX</td><td>BioNTech</td><td class='num'><span class="bar neg"><i style="width:66%"></i></span><b class='dn'>-8.4%</b></td><td class='num'>$26B</td><td>生物科技/mRNA</td><td><span class='code'>C</span></td><td><b>个体化癌症疫苗BNT122-01结直肠癌2期DSMB判无效终止</b><br><span class='mute'>同日XFG适配新冠疫苗获FDA批准（高危成人）未抵消；胰腺癌2期IMcode003继续；XBI -3.5%；TP $120(20家)隐含+18%</span></td><td class='num'>$120·+18%</td><td class='num up'>+3</td><td>—</td><td class='beta'>mixed</td></tr>
+<tr><td class='tk'>ROIV</td><td>Roivant Sciences</td><td class='num'><span class="bar neg"><i style="width:60%"></i></span><b class='dn'>-7.6%</b></td><td class='num'>$25B</td><td>生物科技</td><td><span class='code none'>—</span></td><td><span class='mute'>8/27 FDA批准LISRAYA（皮肌炎首个靶向疗法）当日+2.3%；8/28无新增个股标题；XBI -3.5%；TP $42(11家)隐含+21%，30D修正净-3</span></td><td class='num'>$42·+20%</td><td class='num dn'>-3</td><td>—</td><td class='beta'>beta</td></tr>
+<tr><td class='tk'>PCG</td><td>Pacific Gas &amp; Electric Co</td><td class='num'><span class="bar neg"><i style="width:59%"></i></span><b class='dn'>-7.5%</b></td><td class='num'>$44B</td><td>公用事业（加州）</td><td><span class='code'>L</span></td><td><b>加州议会阻止纽森限制保险追偿方案，8/31会期截止</b><br><span class='mute'>成交1.14亿股约为3个月均量5倍；同业EIX -4.8%、XLU -1.0%；TP $23(16家)隐含+37%，30D修正净-4</span></td><td class='num'>$23·+37%</td><td class='num dn'>-4</td><td>—</td><td class='alpha'>alpha</td></tr>
+<tr><td class='tk'>MSTR</td><td>Strategy</td><td class='num'><span class="bar neg"><i style="width:58%"></i></span><b class='dn'>-7.3%</b></td><td class='num'>$49B</td><td>加密相关（BTC财库）</td><td><span class='code none'>—</span></td><td><span class='mute'>8/27 +11.5%后回吐；BTC会话窗-3.4%（8.01万→7.74万）；无当日个股标题；TP $225(14家)隐含+77%为结构性高挂，不作信号</span></td><td class='num'>$225·+77%</td><td class='num up'>+3</td><td>—</td><td class='beta'>beta</td></tr>
+<tr><td class='tk'>LITE</td><td>Lumentum</td><td class='num'><span class="bar neg"><i style="width:50%"></i></span><b class='dn'>-6.4%</b></td><td class='num'>$80B</td><td>AI光通信</td><td><span class='code none'>—</span></td><td><span class='mute'>当日标题仅内部人减持约4万股（$33M，不计事件）；8/25–27累计+15%后回落；SOX -3.5%；TP $1,148(24家)隐含+28%</span></td><td class='num'>$1148·+28%</td><td class='num up'>+2</td><td>—</td><td class='beta'>beta</td></tr>
+<tr><td class='tk'>ARM</td><td>Arm</td><td class='num'><span class="bar neg"><i style="width:50%"></i></span><b class='dn'>-6.3%</b></td><td class='num'>$254B</td><td>AI硬件/半导体IP</td><td><span class='code none'>—</span></td><td><span class='mute'>无当日个股事件；SOX -3.5%；30D预期净上调22次、TP $286(39家)隐含+20%（REV背离：卖方上调、股价下跌）</span></td><td class='num'>$286·+20%</td><td class='num up'>+22</td><td>REV</td><td class='beta'>beta</td></tr>
+<tr><td class='tk'>COIN</td><td>Coinbase Global</td><td class='num'><span class="bar neg"><i style="width:50%"></i></span><b class='dn'>-6.3%</b></td><td class='num'>$47B</td><td>加密相关（交易所）</td><td><span class='code none'>—</span></td><td><span class='mute'>无当日个股事件；BTC -3.4%；30D修正净-17次与股价同向；TP $197(29家)隐含+10%</span></td><td class='num'>$197·+10%</td><td class='num dn'>-17</td><td>—</td><td class='beta'>beta</td></tr>
+<tr><td class='tk'>RVMD</td><td>Revolution Medicines</td><td class='num'><span class="bar neg"><i style="width:47%"></i></span><b class='dn'>-6.0%</b></td><td class='num'>$45B</td><td>生物科技/RAS抑制剂</td><td><span class='code none'>—</span></td><td><span class='mute'>8/26 Rasonque胰腺癌获FDA批准后两日累计+4.6%，8/28回吐；XBI -3.5%；TP $236(21家)隐含+13%，30D修正净-9</span></td><td class='num'>$236·+13%</td><td class='num dn'>-9</td><td>—</td><td class='beta'>beta</td></tr>
+<tr><td class='tk'>FIX</td><td>Comfort Systems USA</td><td class='num'><span class="bar neg"><i style="width:47%"></i></span><b class='dn'>-6.0%</b></td><td class='num'>$54B</td><td>AI基建承包商（机电/HVAC）</td><td><span class='code none'>—</span></td><td><span class='mute'>无当日个股事件（仅Zacks通稿）；RUT -1.4%、SOX -3.5%；TP $2,197(8家)隐含+45%，30D净上调7次</span></td><td class='num'>$2197·+45%</td><td class='num up'>+7</td><td>—</td><td class='beta'>beta</td></tr>
+<tr><td class='tk'>CCJ</td><td>Cameco</td><td class='num'><span class="bar neg"><i style="width:47%"></i></span><b class='dn'>-5.9%</b></td><td class='num'>$44B</td><td>铀/核燃料</td><td><span class='code none'>—</span></td><td><span class='mute'>无当日个股事件（1H26产量-5%为8/27旧闻）；铀矿ETF URA -5.8%；TP $130(11家)隐含+30%，30D修正净0；Nasdaq EPS标suspect</span></td><td class='num'>$130·+30%</td><td class='num '>+0</td><td>—</td><td class='beta'>beta</td></tr>
+<tr><td class='tk'>CLS</td><td>Celestica</td><td class='num'><span class="bar neg"><i style="width:46%"></i></span><b class='dn'>-5.9%</b></td><td class='num'>$34B</td><td>AI硬件/EMS服务器</td><td><span class='code none'>—</span></td><td><span class='mute'>无当日个股事件；SOX -3.5%；30D预期净上调15次（REV背离）、TP $477(16家)隐含+60%</span></td><td class='num'>$477·+60%</td><td class='num up'>+15</td><td>REV</td><td class='beta'>beta</td></tr>
+<tr><td class='tk'>P</td><td>Everpure . common stock</td><td class='num'><span class="bar neg"><i style="width:46%"></i></span><b class='dn'>-5.9%</b></td><td class='num'>$31B</td><td>Everpure（工业/电子元件）</td><td><span class='code none'>—</span></td><td><span class='mute'>8/26盘后Q2超预期（EPS 0.23 vs 0.19）；8/28仅ETF流入通稿，无个股事件；RUT -1.4%；TP $111(19家)隐含+19%</span></td><td class='num'>$111·+19%</td><td class='num up'>+1</td><td>—</td><td class='beta'>beta</td></tr>
+<tr><td class='tk'>WDAY</td><td>Workday<br><span class='pill'>财报 2026-08-27</span></td><td class='num'><span class="bar pos"><i style="width:45%"></i></span><b class='up'>+5.8%</b></td><td class='num'>$51B</td><td>企业软件</td><td><span class='code'>E</span></td><td><b>非GAAP EPS 2.75超预期5%，OPM升至31.1%</b><br><span class='mute'>8/27盘后：订阅收入$2.47B(+13.9%)，FY27非GAAP OPM指引升至31%，新授权$4B回购；TP $188已倒挂-8%；Nasdaq EPS口径错配</span></td><td class='num'>$188·-8%</td><td class='num up'>+1</td><td>TP</td><td class='alpha'>alpha</td></tr>
+<tr><td class='tk'>BSP</td><td>Bending Spoons S.p.A</td><td class='num'><span class="bar neg"><i style="width:44%"></i></span><b class='dn'>-5.5%</b></td><td class='num'>$30B</td><td>企业软件</td><td><span class='code none'>—</span></td><td><span class='mute'>Nasdaq新闻流无个股标题（最近为8/20财报电话会）；NDX -0.7%；TP $48(12家)隐含+10%，30D修正0</span></td><td class='num'>$48·+10%</td><td class='num '>+0</td><td>—</td><td class='beta'>beta</td></tr>
+<tr><td class='tk'>COHR</td><td>Coherent</td><td class='num'><span class="bar neg"><i style="width:43%"></i></span><b class='dn'>-5.5%</b></td><td class='num'>$55B</td><td>AI光通信</td><td><span class='code none'>—</span></td><td><span class='mute'>新闻流无个股标题；同业LITE -6.4%、CIEN -5.4%；SOX -3.5%；TP $416(21家)隐含+49%，30D净上调4次</span></td><td class='num'>$416·+49%</td><td class='num up'>+4</td><td>—</td><td class='beta'>beta</td></tr>
+<tr><td class='tk'>CIEN</td><td>Ciena</td><td class='num'><span class="bar neg"><i style="width:42%"></i></span><b class='dn'>-5.4%</b></td><td class='num'>$54B</td><td>AI光网络</td><td><span class='code none'>—</span></td><td><span class='mute'>Q3财报（9月初）前无当日事件；8/25–27累计+7.5%后回落；SOX -3.5%；30D预期净上调16次（REV背离）、TP $557(19家)隐含+47%</span></td><td class='num'>$557·+47%</td><td class='num up'>+16</td><td>REV</td><td class='beta'>beta</td></tr>
+<tr><td class='tk'>ILMN</td><td>Illumina</td><td class='num'><span class="bar neg"><i style="width:42%"></i></span><b class='dn'>-5.3%</b></td><td class='num'>$33B</td><td>生命科学工具</td><td><span class='code none'>—</span></td><td><span class='mute'>无当日个股事件；XBI -3.5%；TP $199(19家)已倒挂-8%（TP背离），30D修正净-5</span></td><td class='num'>$199·-8%</td><td class='num dn'>-5</td><td>TP</td><td class='beta'>beta</td></tr>
+<tr><td class='tk'>LRCX</td><td>Lam Research</td><td class='num'><span class="bar neg"><i style="width:41%"></i></span><b class='dn'>-5.2%</b></td><td class='num'>$378B</td><td>半导体设备</td><td><span class='code none'>—</span></td><td><span class='mute'>无当日个股事件（仅派息通稿）；SOX -3.5%；30D预期净上调22次（REV背离）、TP $371(31家)隐含+23%</span></td><td class='num'>$371·+23%</td><td class='num up'>+22</td><td>REV</td><td class='beta'>beta</td></tr>
+<tr><td class='tk'>HOOD</td><td>Robinhood Markets</td><td class='num'><span class="bar neg"><i style="width:39%"></i></span><b class='dn'>-5.0%</b></td><td class='num'>$94B</td><td>加密相关/零售券商</td><td><span class='code none'>—</span></td><td><span class='mute'>无当日个股事件；BTC -3.4%、COIN -6.3%同向；TP $120(26家)隐含+15%，30D净上调7次</span></td><td class='num'>$120·+15%</td><td class='num up'>+7</td><td>—</td><td class='beta'>beta</td></tr>
+</tbody></table>
+<h2>5. 板块 / 赛道聚类</h2>
+<div class='ex'><b>Exhibit 6</b>　先逐票、后聚类：每个簇写共同驱动（事件 + 宏观锚），再给板块效应判断</div>
+<table><thead><tr><th>赛道</th><th>成员（涨跌）</th><th class='num'>簇均值</th><th>锚</th><th>簇级驱动</th><th>卖方状态</th><th>判断</th></tr></thead><tbody>
+<tr><td class='cl'>AI硬件/半导体/光通信</td><td><span class='tk'>MRVL</span> <span class='dn'>-10.3%</span>, <span class='tk'>ARM</span> <span class='dn'>-6.3%</span>, <span class='tk'>LRCX</span> <span class='dn'>-5.2%</span>, <span class='tk'>CLS</span> <span class='dn'>-5.9%</span>, <span class='tk'>COHR</span> <span class='dn'>-5.5%</span>, <span class='tk'>LITE</span> <span class='dn'>-6.4%</span>, <span class='tk'>CIEN</span> <span class='dn'>-5.4%</span></td><td class='num dn'>-6.4%</td><td>SOX -3.5%</td><td>簇内唯一当日事件是MRVL毛利率指引（定制AI芯片放量压毛利），其余6只无个股标题；Warsh鹰派后长久期成长首当其冲；光通信三只（LITE/COHR/CIEN）8/25–27累计+7~15%后回落</td><td class='mute'>30D净上调：MRVL/ARM/LRCX各22次、CIEN 16、CLS 15——卖方全线上调而股价回落，簇级REV背离</td><td>板块beta为主；MRVL是簇内唯一alpha（mixed）</td></tr>
+<tr><td class='cl'>生物科技/医药</td><td><span class='tk'>BNTX</span> <span class='dn'>-8.4%</span>, <span class='tk'>ROIV</span> <span class='dn'>-7.6%</span>, <span class='tk'>RVMD</span> <span class='dn'>-6.0%</span>, <span class='tk'>ILMN</span> <span class='dn'>-5.3%</span></td><td class='num dn'>-6.8%</td><td>XBI -3.5%</td><td>BNTX BNT122-01 2期无效终止是簇内唯一当日事件；ROIV/RVMD为FDA获批后1–2日回吐；ILMN目标价倒挂；簇均值-6.8%与XBI -3.5%同向</td><td class='mute'>ILMN TP已倒挂-8%；RVMD 30D修正净-9；BNTX/ROIV修正中性</td><td>beta + 1个alpha（BNTX）；获批后回吐只作事实陈述</td></tr>
+<tr><td class='cl'>加密相关</td><td><span class='tk'>MSTR</span> <span class='dn'>-7.3%</span>, <span class='tk'>COIN</span> <span class='dn'>-6.3%</span>, <span class='tk'>HOOD</span> <span class='dn'>-5.0%</span></td><td class='num dn'>-6.2%</td><td>BTC -3.4%</td><td>三只均无个股事件；BTC会话窗-3.4%，与黄金-1.7%同为Warsh后流动性资产回撤；MSTR前日+11.5%的高beta回吐</td><td class='mute'>COIN 30D修正净-17与股价同向；HOOD净+7；MSTR TP隐含+77%为结构性高挂</td><td>纯beta</td></tr>
+<tr><td class='cl'>支付/金融科技</td><td><span class='tk'>PYPL</span> <span class='dn'>-12.7%</span></td><td class='num dn'>-12.7%</td><td>SPX -0.25%（无专属锚）</td><td>独立事件：Stripe与Advent放弃约$50B收购，交易溢价一次性出清，成交为均量2.2倍</td><td class='mute'>TP $60隐含+12%，30D修正净-3；收购传闻期形成的预期待下修</td><td>alpha</td></tr>
+<tr><td class='cl'>公用事业（加州）</td><td><span class='tk'>PCG</span> <span class='dn'>-7.5%</span></td><td class='num dn'>-7.5%</td><td>XLU -1.0%</td><td>独立事件：加州议会阻止纽森限制保险追偿方案，8/31会期截止前立法不确定；同业EIX -4.8%同跌、SO -0.9%</td><td class='mute'>TP $23隐含+37%，30D修正净-4</td><td>alpha（加州两家同跌，是立法事件不是利率）</td></tr>
+<tr><td class='cl'>企业软件</td><td><span class='tk'>WDAY</span> <span class='up'>+5.8%</span>, <span class='tk'>BSP</span> <span class='dn'>-5.5%</span></td><td class='num up'>+0.1%</td><td>NDX -0.7%</td><td>WDAY独立事件逆势+5.8%（Q2超预期+FY27 OPM指引上调+$4B回购）；BSP新闻流为空，随NDX</td><td class='mute'>WDAY TP $188倒挂-8%——卖方目标价未跟上；BSP 30D修正0</td><td>1 alpha（WDAY）+ 1 beta（BSP）</td></tr>
+<tr><td class='cl'>铀/核燃料</td><td><span class='tk'>CCJ</span> <span class='dn'>-5.9%</span></td><td class='num dn'>-5.9%</td><td>URA -5.8%</td><td>无个股事件；铀矿ETF URA -5.8%，单票与锚同幅，属铀板块整体回撤</td><td class='mute'>TP $130隐含+30%，30D修正净0</td><td>beta</td></tr>
+<tr><td class='cl'>工业/AI基建承包</td><td><span class='tk'>FIX</span> <span class='dn'>-6.0%</span>, <span class='tk'>P</span> <span class='dn'>-5.9%</span></td><td class='num dn'>-5.9%</td><td>RUT -1.4%</td><td>两只均无当日事件；FIX为AI数据中心机电承包商，随AI硬件与小盘同跌；P为8/26财报后第二日回落</td><td class='mute'>FIX 30D净上调7次；P净+1</td><td>beta</td></tr>
+</tbody></table>
+<p class='read'><span class='mute'>板块效应判断：</span>21只异动中18只下跌；AI硬件7只、生物科技4只、加密3只、铀1只共15只可由SOX/XBI/BTC/URA四个锚（-3.4%~-5.8%）解释；独立alpha仅PYPL、PCG、WDAY、MRVL、BNTX五只。Warsh讲话后长久期资产统一回撤，是宏观驱动的板块beta日，行业层面没有新信息。</p>
+<h2>6. 下一个催化</h2><table><thead><tr><th>时间</th><th>事件</th><th class='num'>预期</th><th class='num'>前值</th></tr></thead><tbody>
+<tr><td class='nw'>08-29 08:00 ET</td><td>United States · Jackson Hole Symposium</td><td class='num'>—</td><td class='num'>—</td></tr>
+<tr><td class='nw'>08-31 09:30 北京</td><td>China · Manufacturing PMI</td><td class='num'>49.7</td><td class='num'>49.2</td></tr>
+<tr><td class='nw'>08-31 09:30 北京</td><td>China · Non-Manufacturing PMI</td><td class='num'>—</td><td class='num'>49.0</td></tr>
+<tr><td class='nw'>09-01 09:45 北京</td><td>China · RatingDog Manufacturing PMI</td><td class='num'>50.8</td><td class='num'>50.9</td></tr>
+<tr><td class='nw'>09-01 05:00 ET</td><td>Euro Zone · Core CPI</td><td class='num'>—</td><td class='num'>2.5%</td></tr>
+<tr><td class='nw'>09-01 05:00 ET</td><td>Euro Zone · CPI</td><td class='num'>3.3%</td><td class='num'>2.9%</td></tr>
+<tr><td class='nw'>09-01 05:00 ET</td><td>Euro Zone · HICP ex Energy &amp; Food</td><td class='num'>—</td><td class='num'>2.2%</td></tr>
+<tr><td class='nw'>09-01 10:00 ET</td><td>United States · ISM Manufacturing PMI</td><td class='num'>55.3</td><td class='num'>55.6</td></tr>
+<tr><td class='nw'>09-01 10:00 ET</td><td>United States · JOLTS Job Openings</td><td class='num'>—</td><td class='num'>7.359M</td></tr>
+<tr><td class='nw'>09-01 11:30 ET</td><td>United States · Atlanta Fed GDPNow</td><td class='num'>—</td><td class='num'>—</td></tr>
+<tr><td class='nw'>09-02 08:15 ET</td><td>United States · ADP Nonfarm Employment Change</td><td class='num'>—</td><td class='num'>44K</td></tr>
+<tr><td class='nw'>09-03 09:45 北京</td><td>China · RatingDog Services PMI</td><td class='num'>—</td><td class='num'>50.4</td></tr>
+</tbody></table>
+<p class='read'>08-31（周一）中国8月官方制造业PMI（预期49.7，前值49.2）；非制造业前值49.0<br>09-01 美国8月ISM制造业PMI（预期55.3）、7月JOLTS；欧元区8月CPI初值（预期3.3%，前值2.9%）<br>09-04 美国8月非农；09-11 美国8月CPI（Polymarket分桶合计：同比≥3.4%为61.7%，参考级）<br>09-16 FOMC（Polymarket：加息25bp 43.5% / 不动 54.5%；CME FedWatch 加息46%）<br>9月初 CIEN Q3财报；10-06 MRVL投资者日</p>
+<h2 class='nobreak'>注</h2><ol class='foot'>
+<li>筛选：Nasdaq screener 市值≥$25B 且 |涨跌|≥5%；新闻取 Nasdaq 个股新闻流，事件必须能溯源到 days_old≤1 的标题，否则只写事实行、不写理由。</li>
+<li>口径：actual-vs-consensus 整组取 Nasdaq，TP 与 30 日修正整组取 Yahoo，字段不跨源；Nasdaq EPS 标 suspect 时以公告/新闻核实值为准。</li>
+<li>背离：REV = 30 日净修正≥8 次且与股价反向；TP = 目标价倒挂在现价之下。隐含空间恒为正，不作信号。</li>
+<li>反应资产为上一收盘→本收盘；BTC 按 16:00 ET 会话窗口；收益率报 bp。Polymarket 概率为 YES 侧价格，1D/1W 取 Gamma API 字段。</li>
+<li>评级动作日度不查（feed 滞后 4–143 天），周度补登。不做估值、不给目标价、不给仓位建议。</li>
+</ol></div></body></html>
