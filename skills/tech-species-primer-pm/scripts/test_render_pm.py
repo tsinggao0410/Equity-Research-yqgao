@@ -47,9 +47,18 @@ MD_OK = """# 测试公司(TEST.US)业务认知
 
 ![示意图:测试产品界面](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg== "来源:自测")
 
-### 客户案例
+### 典型案例
 
 > [!example] 某车企用它之前,查一台设备停机原因要两天;用了之后,十分钟就能在屏幕上找到是哪个零件出了问题,并直接派单给维修班组。
+
+表 0-2　其他典型客户
+
+| 客户 | 时间 | 用途 | 效果 |
+|---|---|---|---|
+| 甲厂 | 2025-08 | 排产 | 交期缩短 |
+| 乙厂 | 2024-06 扩大合作 | 维修 | 停机减少 |
+
+> 来源:自测
 
 ### 价值流向
 
@@ -119,7 +128,7 @@ def main():
     assert "plab" not in doc and ">白话<" not in doc and ">举个例子<" not in doc
     # 2 路线图计入示意图,now 徽标,分岔
     assert 'class="rstage now' in doc and "当前主流" in doc and 'class="rfork"' in doc
-    # 2b 零章速览版式:摘要面板 + 编号卡片;落单的半宽卡片自动整行
+    # 2b 零章速览版式:导语与关键数据 + 编号分节(单栏,以留白分隔)
     assert '<div class="brief-hero">' in doc and '<div class="brief">' in doc and '<span class="bno">1</span>' in doc
     assert '<div class="plain imp"><p><span class="nh">投资含义:</span>' in doc or '<div class="plain imp"><p><span class="nh">投资含义：</span>' in doc
     assert doc.count('<section class="bcard') == 5 and doc.count('<section class="bcard wide">') >= 2   # 差异表、产品图整行
@@ -134,6 +143,8 @@ def main():
     d0 = pm["ch0"]
     assert d0["first"] and d0["has_analogy"] and d0["has_example"] and d0["compare"] and d0["plain"] == 3, d0
     assert d0["kpis"] == 2 and d0["kpi_vague"] == [] and 0 < d0["lead"] <= G["ch0_lead_max"], d0
+    assert d0["cases"] == 3, d0["cases"]                      # 1 个详写案例 + 表里 2 个
+    assert '<td class="dt">2025-08</td>' in doc and '<td>2024-06 扩大合作</td>' in doc, "年月日期应按文本列(不右对齐、不折行)"
     assert all(n <= G["ch0_sec_max"] for _h, n in d0["secs"]), d0["secs"]
     assert d0["compare_first"] and d0["images"] == 1, d0
     assert pm["tech"]["compare"] and pm["tech"]["roadmaps"] == 1, pm["tech"]
@@ -148,6 +159,9 @@ def main():
     nokpi = MD_OK.split("```kpis")[0] + MD_OK.split("> 来源:自测\n", 1)[1]
     f = ";".join(pm_check(render(nokpi)[1], GS))
     assert "零章缺关键数据" in f, f
+    few = MD_OK.replace("| 乙厂 | 2024-06 扩大合作 | 维修 | 停机减少 |\n", "")
+    f = ";".join(pm_check(render(few)[1], GS))
+    assert "零章典型案例 2 个 < 3" in f, f
     long = MD_OK.replace("客户按年付费,先试一个车间", "客户按年付费。" + "这一段写得太长,细节应该留给正文。" * 12 + "先试一个车间")
     long = long.replace("客户是工厂。", "客户是工厂。" + "导语也写长了。" * 14)
     f = ";".join(pm_check(render(long)[1], GS))
@@ -163,7 +177,7 @@ def main():
     assert "写作标签 2 处" in f, f
     # 5e 先比后讲:差异节不在首位、零章没有产品图 → 报出
     moved = MD_OK.replace(IMG, "")
-    k1 = moved.index("### 与普通 SaaS 的差异"); k2 = moved.index("### 工作原理"); k3 = moved.index("### 客户案例")
+    k1 = moved.index("### 与普通 SaaS 的差异"); k2 = moved.index("### 工作原理"); k3 = moved.index("### 典型案例")
     moved = moved[:k1] + moved[k2:k3] + moved[k1:k2] + moved[k3:]
     f = ";".join(pm_check(render(moved)[1], GS))
     assert "第一个小节应是「与 XX" in f and "零章缺产品图" in f, f

@@ -62,8 +62,8 @@ card = {
     "gate": {"min_cjk": 10000},
     "ref_bg": [],
     "edition": "pm",
-    "plain": {"min_glossary": 15, "max_unexplained": 3, "ch0_min": 400, "ch0_max": 1200, "ch0_max_acr": 3,
-              "ch0_sec_max": 160, "ch0_lead_max": 90,
+    "plain": {"min_glossary": 15, "max_unexplained": 3, "ch0_min": 400, "ch0_max": 1400, "ch0_max_acr": 3,
+              "ch0_sec_max": 160, "ch0_lead_max": 90, "ch0_min_cases": 3,
               "tech": not a.no_tech, "allow": [x for x in [a.code.split(".")[0] if a.code and not a.code[0].isdigit() else ""] if x]},
     "_note": "nav 键是两位章号(该章前开始新的目录分组),按最终章节改;gate 可加 min_figs/min_charts/min_visuals/min_tables "
              "(默认 55/30/20/10,只在用户同意时下调);ref_bg 填年报、招股书按页文本(相对 R),照抄检查时当公共语料。"

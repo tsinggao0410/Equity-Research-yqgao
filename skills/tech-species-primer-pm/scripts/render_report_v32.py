@@ -104,7 +104,8 @@ MUST_HAVE = [  # 每个主要业务章必须有的图(设计规格 §3「必放�
     ("应用场景图", r"场景|应用|所处环节|在.{0,6}中的位置", False, ("diagrams", "images")),
 ]
 # ---- 基金经理版(PM)验收:DESIGN_pm.md §5
-PM_DEFAULT = dict(min_glossary=15, max_unexplained=3, ch0_min=400, ch0_max=1200, ch0_max_acr=3, ch0_sec_max=160, ch0_lead_max=90, tech=True)
+PM_DEFAULT = dict(min_glossary=15, max_unexplained=3, ch0_min=400, ch0_max=1400, ch0_max_acr=3, ch0_sec_max=160, ch0_lead_max=90,
+                  ch0_min_cases=3, tech=True)
 CH0_RE = re.compile(r"一分钟看懂|速览")
 # 零章关键数据:不写模糊量词;标签 / 数值 / 注释里要有期间(年份、季度、财年、年月)
 KPI_VAGUE = re.compile(r"约|大约|左右|上下|~|≈|接近|近\d|数十|几十|常年")
@@ -113,7 +114,7 @@ TECH_RE = re.compile(r"技术白话|是怎么回事|怎么回事|往哪走|技�
 CMP_RE = re.compile(r"区别|差在哪|差异|不同|对比|比较|替代方案|相比|比一比")      # 「与同类 / 替代方案的差异」节
 ANALOGY_H3 = re.compile(r"原理|本质|像什么|比方|类比|比喻")
 EXAMPLE_H3 = re.compile(r"例子|案例|实例")
-# 口语化 / 问句式表述(基金经理第三轮反馈):改成买方用语,如 价值流向、技术演变、跟踪指标、业务本质、客户案例、与 XX 的差异
+# 口语化 / 问句式表述(基金经理第三轮反馈):改成买方用语,如 价值流向、技术演变、跟踪指标、业务本质、典型案例、与 XX 的差异
 COLLOQ_RE = re.compile(r"钱怎么来|钱怎么流|钱会流向谁|钱往哪里?流|一步步变过来|最该盯的一件事|说白了|大白话|它像什么|一个真实的例子|有什么不同|到底差在哪|是怎么回事|往哪走")
 # 页面上不许出现的「写作标签」:段首「白话:」「打个比方:」这类前缀,章节标题里的「白话」
 LABEL_LEAK = re.compile(r"^\s*(?:\*\*)?(白话|大白话|打个比方|打个比喻|举个例子|一句话|钱怎么来|技术怎么变|要盯的一件事)\s*[:：]")
@@ -1240,9 +1241,20 @@ class Renderer:
             return None
         if re.fullmatch(r"(?:FY|CY)?(?:19|20)\d{2}(?:\s*年)?(?:[EAH][12]?|Q[1-4]|H[12])?", t):
             return None
+        if re.fullmatch(r"(?:19|20)\d{2}[-./](?:0?[1-9]|1[0-2])(?:[-./]\d{1,2})?", t):   # 年月日期按文本列处理,不右对齐
+            return None
         return bool(re.fullmatch(r"[−\-+±~≈约≥≤<>]?\s*[$¥€£]?\s*\d[\d,]*(?:\.\d+)?\s*(?:%|pct|pp|bp|x|倍|‰)?"
                                  r"(?:\s*[A-Za-z/]{0,6}|\s*(?:亿元|万元|元|亿|万|GW|GWh|MW|MWh|kW|kWh|天|人|家|个|台|次|套|年|月|元/W|元/Wh))?"
                                  r"(?:\s*[→~–-]\s*[−\-+]?\d[\d,]*(?:\.\d+)?\s*%?)?", t))
+
+    DATE_CELL = re.compile(r"^(?:19|20)\d{2}[-./](?:0?[1-9]|1[0-2])(?:[-./]\d{1,2})?$")
+
+    def _td_cls(self, c0: str, cell: str) -> str:
+        """单元格 class:数值列沿用 n / c;只写「年-月」的单元格加 dt,日期不折行。"""
+        cs = [c0] if c0 else []
+        if self.DATE_CELL.match(strip_tags(inline(cell)).strip()):
+            cs.append("dt")
+        return (' class="%s"' % " ".join(cs)) if cs else ""
 
     def render_table(self, b: dict, caption: str = None, src_line: str = None) -> str:
         hdr, rows, align = b["hdr"], b["rows"], b["align"]
@@ -1266,6 +1278,8 @@ class Renderer:
         self.tables += 1
         if self.cur is not None:
             self.cur["st"]["tables"] = self.cur["st"].get("tables", 0) + 1
+            sr = self.cur.setdefault("sec_rows", {})      # 第几个 ### 之后的表格行数(零章典型案例计数)
+            sr[len(self.cur["h3"])] = sr.get(len(self.cur["h3"]), 0) + len(rows)
         anchor = "tab-%d" % self.tables
         mt = re.match(r"^\s*表\s*(\d+)-(\d+)", caption or "")
         if mt and ("t%s-%s" % mt.groups()) not in self.anchors:
@@ -1280,7 +1294,7 @@ class Renderer:
         for r in rows:
             first = plain(r[0])
             tot = bool(re.match(r"^(合计|总计|全球合计|全部合计|总额)", first) or re.search(r"合计$", first))
-            body.append('<tr%s>%s</tr>' % (' class="tot"' if tot else "", "".join('<td%s>%s</td>' % ((' class="%s"' % cls[k]) if cls[k] else "", inline(c)) for k, c in enumerate(r))))
+            body.append('<tr%s>%s</tr>' % (' class="tot"' if tot else "", "".join('<td%s>%s</td>' % (self._td_cls(cls[k], c), inline(c)) for k, c in enumerate(r))))
         cap = "<caption>%s</caption>" % inline(caption, False) if caption else ""
         tb = '<div class="tbl-wrap"><table>%s<thead><tr>%s</tr></thead><tbody>%s</tbody></table></div>' % (cap, th, "".join(body))
         src = '<div class="srcline">%s</div>' % self._src_html(src_line) if src_line else ""
@@ -1492,6 +1506,8 @@ class Renderer:
                     self.cur["has_analogy"] = True
                 if qtype in ("example", "eg"):
                     self.cur["has_eg"] = True
+                    en = self.cur.setdefault("sec_eg", {})
+                    en[len(self.cur["h3"])] = en.get(len(self.cur["h3"]), 0) + 1
             if paras and re.match(r"^\s*(\*\*)?投资含义", paras[0]):
                 cls += " imp"
             ps = []
@@ -1683,6 +1699,7 @@ class Renderer:
             return any(CMP_RE.search(h) for h in c["h3"]) and c["st"].get("tables", 0) >= 1
         d0 = None
         if ch0 is not None:
+            ex_n = ch0.get("sec_eg", {})
             # 零章篇幅按读者要读的文字算:不含图片内部文字(SVG)、来源行与图注、表格视图副本
             h0 = re.sub(r'<details class="dv">[\s\S]*?</details>|<svg[\s\S]*?</svg>|<figcaption>[\s\S]*?</figcaption>', "", "".join(ch0["parts"]))
             h0 = re.sub(r'<div class="srcline">[\s\S]*?</div>', "", h0)
@@ -1696,6 +1713,8 @@ class Renderer:
                       lead=self.sec_prose.get((ch0["id"], 0), 0),
                       secs=[(h, self.sec_prose.get((ch0["id"], k), 0)) for k, h in enumerate(ch0["h3"], 1)],
                       kpis=len(ch0.get("kpis", [])),
+                      cases=max([ch0.get("sec_rows", {}).get(k, 0) + ex_n.get(k, 0)
+                                 for k, h in enumerate(ch0["h3"], 1) if EXAMPLE_H3.search(h)] or [0]),
                       kpi_vague=[plain(lab) for lab, val, unit, sub in ch0.get("kpis", [])
                                  if KPI_VAGUE.search(val) or not KPI_PERIOD.search(" ".join((lab, val, unit, sub)))])
         colloq = sorted({m.group(0) for _cid, t in self.pm_prose for m in COLLOQ_RE.finditer(plain(t))}
@@ -1713,7 +1732,7 @@ class Renderer:
             acronyms=len(first), unexplained=unexpl, gloss_marked=sum(len(c["gl_seen"]) for c in real))
 
     def _brief(self, c: dict):
-        """零章速览版式(研报首页式):章首导语与关键数据收在两条横线之间,每个 ### 小节带序号、细线起头、两栏排布。
+        """零章速览版式(研报首页式):章首导语在上,关键数据为浅灰底一行;每个 ### 小节带序号,单栏排列,以留白分隔,不加分隔线。
         含表格或图的卡片占满整行;两张整行卡片之间落单的半宽卡片自动改成整行,避免右侧留空。"""
         parts = c["parts"]
         head = parts[:1] if parts and parts[0].startswith("<h2") else []
@@ -2004,6 +2023,8 @@ def pm_check(st: dict, g: dict) -> list:
         long_secs = ["%s %d 字" % (h, n) for h, n in d0.get("secs", []) if n > g.get("ch0_sec_max", 10 ** 6)]
         if long_secs:
             fails.append("零章小节正文超过 %d 字(不含表、图、来源):%s;能进表的进表,细节留给正文" % (g["ch0_sec_max"], "、".join(long_secs)))
+        if d0.get("cases", 0) < g.get("ch0_min_cases", 0):
+            fails.append("零章典型案例 %d 个 < %d(案例节用表列 3–4 个:客户 / 时间 / 做法 / 效果与出处)" % (d0.get("cases", 0), g["ch0_min_cases"]))
         if not d0.get("kpis"):
             fails.append("零章缺关键数据(kpis 块,3–4 项)")
         elif d0.get("kpi_vague"):
@@ -2101,6 +2122,7 @@ def main(argv=None) -> int:
     ap.add_argument("--pm-ch0-max-acr", type=int, default=PM_DEFAULT["ch0_max_acr"])
     ap.add_argument("--pm-ch0-sec-max", type=int, default=PM_DEFAULT["ch0_sec_max"], help="零章每个小节正文汉字上限(不含表、图、来源)")
     ap.add_argument("--pm-ch0-lead-max", type=int, default=PM_DEFAULT["ch0_lead_max"], help="零章导语汉字上限")
+    ap.add_argument("--pm-ch0-min-cases", type=int, default=PM_DEFAULT["ch0_min_cases"], help="零章典型案例下限(案例节表格行数)")
     ap.add_argument("--pm-no-tech", action="store_true", help="本卡不要求技术白话章(消费品等,须用户同意)")
     ap.add_argument("--pm-allow", default="", help="不算术语的英文词(逗号分隔):公司名、代码、读者熟知的产品名")
     a = ap.parse_args(argv)
@@ -2126,7 +2148,7 @@ def main(argv=None) -> int:
     if a.pm:
         pf = pm_check(st, dict(min_glossary=a.pm_min_glossary, max_unexplained=a.pm_max_unexplained, ch0_min=a.pm_ch0_min,
                                ch0_max=a.pm_ch0_max, ch0_max_acr=a.pm_ch0_max_acr, ch0_sec_max=a.pm_ch0_sec_max,
-                               ch0_lead_max=a.pm_ch0_lead_max, tech=not a.pm_no_tech))
+                               ch0_lead_max=a.pm_ch0_lead_max, ch0_min_cases=a.pm_ch0_min_cases, tech=not a.pm_no_tech))
         fails = (fails or []) + pf
         st["pm_fails"] = pf
     if a.gate or a.pm:

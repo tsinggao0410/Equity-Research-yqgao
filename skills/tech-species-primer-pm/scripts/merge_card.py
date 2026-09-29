@@ -6,7 +6,7 @@
   - 顺序:work/00_header.md + parts/NN_*.md(按 NN 排序,跳过 NN_facts.md / NN_gaps.md / NN_terms.md / 以 _ 开头的文件)。
   - 术语词典:parts 里没有 ```glossary 块时,把各章 NN_terms.md(术语台账,表头「术语 | 含义 | 投资相关性」;旧的四列台账取第 1、2、4 列)
     按章序合并去重,自动追加一章「附录、术语小词典」;同一术语多章都写了,取第一次出现的那条,冲突写进输出提示。
-  - card.json 的 edition = "pm" 时加 --pm 验收,门槛取 plain{min_glossary, max_unexplained, ch0_min, ch0_max, ch0_max_acr, ch0_sec_max, ch0_lead_max,
+  - card.json 的 edition = "pm" 时加 --pm 验收,门槛取 plain{min_glossary, max_unexplained, ch0_min, ch0_max, ch0_max_acr, ch0_sec_max, ch0_lead_max, ch0_min_cases,
     tech, allow}(DESIGN_pm.md §5)。
   - card.json 的 nav:{"02": "三大主业", ...} → 在该章前插入 <!-- nav: 组名 -->(目录分组)。
   - 渲染参数取 card.json 的 date、gate(min_cjk/min_figs/min_charts/min_visuals/min_tables)、ref_bg(照抄检查背景语料,
@@ -102,7 +102,7 @@ if not a.no_gate:
     if card.get("edition") == "pm":
         pl = card.get("plain") or {}
         cmd.append("--pm")
-        for k in ("min_glossary", "max_unexplained", "ch0_min", "ch0_max", "ch0_max_acr", "ch0_sec_max", "ch0_lead_max"):
+        for k in ("min_glossary", "max_unexplained", "ch0_min", "ch0_max", "ch0_max_acr", "ch0_sec_max", "ch0_lead_max", "ch0_min_cases"):
             if pl.get(k) is not None:
                 cmd += ["--pm-" + k.replace("_", "-"), str(pl[k])]
         if pl.get("tech") is False:
