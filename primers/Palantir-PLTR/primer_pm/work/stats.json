@@ -20,7 +20,7 @@
   "timeline": 5
  },
  "tables": 24,
- "cjk_chars": 32343,
+ "cjk_chars": 32625,
  "chapters": [
   {
    "title": "零、业务速览：Palantir",
@@ -31,7 +31,7 @@
    "tables": 3,
    "figures": 2,
    "flows": 0,
-   "cjk": 1586,
+   "cjk": 1752,
    "missing": []
   },
   {
@@ -43,7 +43,7 @@
    "tables": 2,
    "figures": 9,
    "flows": 0,
-   "cjk": 2546,
+   "cjk": 2470,
    "missing": []
   },
   {
@@ -55,7 +55,7 @@
    "tables": 2,
    "figures": 4,
    "flows": 1,
-   "cjk": 2390,
+   "cjk": 2628,
    "missing": []
   },
   {
@@ -67,7 +67,7 @@
    "tables": 2,
    "figures": 13,
    "flows": 3,
-   "cjk": 2798,
+   "cjk": 2815,
    "missing": []
   },
   {
@@ -79,7 +79,7 @@
    "tables": 2,
    "figures": 14,
    "flows": 2,
-   "cjk": 2783,
+   "cjk": 2787,
    "missing": []
   },
   {
@@ -91,7 +91,7 @@
    "tables": 2,
    "figures": 13,
    "flows": 2,
-   "cjk": 2600,
+   "cjk": 2621,
    "missing": []
   },
   {
@@ -115,7 +115,7 @@
    "tables": 3,
    "figures": 5,
    "flows": 0,
-   "cjk": 1595,
+   "cjk": 1589,
    "missing": []
   },
   {
@@ -127,7 +127,7 @@
    "tables": 0,
    "figures": 2,
    "flows": 0,
-   "cjk": 672,
+   "cjk": 683,
    "missing": []
   },
   {
@@ -139,7 +139,7 @@
    "tables": 1,
    "figures": 11,
    "flows": 0,
-   "cjk": 1783,
+   "cjk": 1756,
    "missing": []
   },
   {
@@ -151,7 +151,7 @@
    "tables": 0,
    "figures": 7,
    "flows": 0,
-   "cjk": 1621,
+   "cjk": 1563,
    "missing": []
   },
   {
@@ -163,7 +163,7 @@
    "tables": 1,
    "figures": 0,
    "flows": 0,
-   "cjk": 1382,
+   "cjk": 1374,
    "missing": []
   },
   {
@@ -187,56 +187,57 @@
    "tables": 0,
    "figures": 0,
    "flows": 0,
-   "cjk": 7322,
+   "cjk": 7326,
    "missing": []
   }
  ],
- "cjk_glossary": 7322,
- "xrefs": 82,
+ "cjk_glossary": 7326,
+ "xrefs": 83,
  "xref_missing": [],
  "halfwidth_next_to_cjk": 7,
- "fullwidth_punct": 2620,
- "html_bytes": 1472283,
+ "fullwidth_punct": 2685,
+ "html_bytes": 1474497,
  "external_refs": 0,
  "pm": {
   "ch0": {
    "title": "零、业务速览：Palantir",
    "first": true,
-   "cjk": 1189,
+   "cjk": 1334,
    "plain": 3,
    "has_analogy": true,
    "has_example": true,
    "compare": true,
    "acronyms": [
-    "AIP"
+    "AIP",
+    "NDR"
    ],
    "images": 1,
    "compare_first": true,
-   "lead": 68,
+   "lead": 75,
    "secs": [
     [
      "与普通 SaaS 的差异",
-     70
+     82
     ],
     [
      "工作原理",
-     119
+     123
     ],
     [
      "典型案例",
-     83
+     90
     ],
     [
      "价值流向",
-     99
+     102
     ],
     [
      "技术演变",
-     24
+     36
     ],
     [
      "跟踪指标",
-     64
+     80
     ]
    ],
    "kpis": 4,
@@ -252,18 +253,18 @@
   },
   "roadmaps": 1,
   "business_no_plain": [],
-  "plain_blocks": 20,
+  "plain_blocks": 19,
   "glossary_terms": 150,
   "glossary_rows": 150,
   "acronyms": 34,
   "unexplained": [],
-  "gloss_marked": 223,
+  "gloss_marked": 226,
   "todo": 0
  },
  "errors": [],
  "warnings": [],
  "copy_check": {
-  "sentences": 733,
+  "sentences": 741,
   "hits": [],
   "review": []
  },
