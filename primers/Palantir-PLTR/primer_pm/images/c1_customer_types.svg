@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="'Microsoft YaHei','PingFang SC','Segoe UI',system-ui,sans-serif">
+  <rect x="0" y="0" width="960" height="540" fill="#ffffff"/>
+  <g fill="#0f4c81" font-size="15" font-weight="700" text-anchor="middle">
+    <text x="305" y="30">美国</text>
+    <text x="735" y="30">国际</text>
+    <text x="48" y="160">政府</text>
+    <text x="48" y="412">商业</text>
+  </g>
+  <!-- 美国政府 -->
+  <rect x="96" y="44" width="418" height="232" fill="#ffffff" stroke="#9aa4b5" stroke-width="1"/>
+  <text x="114" y="74" font-size="16" font-weight="700" fill="#0f4c81">美国政府</text>
+  <text x="114" y="114" font-size="30" font-weight="700" fill="#0f4c81">18.55<tspan font-size="14" font-weight="400" dx="6" fill="#0f4c81">亿美元</tspan></text>
+  <text x="114" y="138" font-size="12.5" fill="#5a6478">2025 年收入 · 占 41.4% · 同比 +55%</text>
+  <text x="114" y="168" font-size="11.5" fill="#5a6478">代表客户</text>
+  <text x="114" y="190" font-size="13" fill="#1a2233">美国陆军：十年期企业协议，上限 100 亿美元（2025-08）</text>
+  <text x="114" y="212" font-size="13" fill="#1a2233">国防部：Maven Smart System，上限约 12.75 亿美元</text>
+  <text x="114" y="250" font-size="12" fill="#0f4c81">合同形态：先定上限，按任务单分批拨付</text>
+  <!-- 国际政府 -->
+  <rect x="526" y="44" width="418" height="232" fill="#ffffff" stroke="#9aa4b5" stroke-width="1"/>
+  <text x="544" y="74" font-size="16" font-weight="700" fill="#0f4c81">国际政府</text>
+  <text x="544" y="114" font-size="30" font-weight="700" fill="#0f4c81">5.47<tspan font-size="14" font-weight="400" dx="6" fill="#0f4c81">亿美元</tspan></text>
+  <text x="544" y="138" font-size="12.5" fill="#5a6478">2025 年收入 · 占 12.2% · 同比 +47%（作者计算）</text>
+  <text x="544" y="168" font-size="11.5" fill="#5a6478">代表客户</text>
+  <text x="544" y="190" font-size="13" fill="#1a2233">英国 NHS England：联邦数据平台，7 年最高 3.30 亿英镑</text>
+  <text x="544" y="212" font-size="13" fill="#1a2233">北约：2025-03 采购 Maven Smart System NATO</text>
+  <text x="544" y="250" font-size="12" fill="#0f4c81">合同形态：NHS 按用量计费，金额为上限</text>
+  <!-- 美国商业 -->
+  <rect x="96" y="290" width="418" height="232" fill="#ffffff" stroke="#eb6834" stroke-width="2"/>
+  <text x="114" y="320" font-size="16" font-weight="700" fill="#0f4c81">美国商业</text>
+  <text x="114" y="360" font-size="30" font-weight="700" fill="#eb6834">14.65<tspan font-size="14" font-weight="400" dx="6" fill="#0f4c81">亿美元</tspan></text>
+  <text x="114" y="384" font-size="12.5" fill="#5a6478">2025 年收入 · 占 32.7% · 同比 +109%</text>
+  <text x="114" y="414" font-size="11.5" fill="#5a6478">代表客户</text>
+  <text x="114" y="436" font-size="13" fill="#1a2233">坦帕总医院：病床调度，入床安排耗时降 83%</text>
+  <text x="114" y="458" font-size="13" fill="#1a2233">花旗：客户开户审核从 9 天缩到几秒</text>
+  <text x="114" y="496" font-size="12" fill="#0f4c81">合同形态：训练营试用 1–5 天，再签多年合同</text>
+  <!-- 国际商业 -->
+  <rect x="526" y="290" width="418" height="232" fill="#ffffff" stroke="#9aa4b5" stroke-width="1"/>
+  <text x="544" y="320" font-size="16" font-weight="700" fill="#0f4c81">国际商业</text>
+  <text x="544" y="360" font-size="30" font-weight="700" fill="#0f4c81">6.08<tspan font-size="14" font-weight="400" dx="6" fill="#0f4c81">亿美元</tspan></text>
+  <text x="544" y="384" font-size="12.5" fill="#5a6478">2025 年收入 · 占 13.6% · 同比 +2.4%（作者计算）</text>
+  <text x="544" y="414" font-size="11.5" fill="#5a6478">代表客户</text>
+  <text x="544" y="436" font-size="13" fill="#1a2233">空客：A350 产能爬坡，2017 年推出 Skywise</text>
+  <text x="544" y="458" font-size="13" fill="#1a2233">BP：油气生产运营，生产成本约降 60%（BP 口径）</text>
+  <text x="544" y="496" font-size="12" fill="#0f4c81">合同形态：多年期订阅，如力拓 2024 年续约 4 年</text>
+</svg>

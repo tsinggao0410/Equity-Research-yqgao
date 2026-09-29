@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 50 960 410" width="960" height="410" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Segoe UI',system-ui,sans-serif">
+  <defs>
+    <marker id="an" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#0f4c81"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="960" height="470" fill="#ffffff"/>
+
+
+  <!-- 三列表头 -->
+  <g font-size="12.5" font-weight="700" fill="#ffffff">
+    <rect x="20" y="62" width="296" height="40" fill="#0f4c81"/>
+    <text x="32" y="80">国防与情报(国际政府)</text>
+    <rect x="332" y="62" width="296" height="40" fill="#0f4c81"/>
+    <text x="344" y="80">公共卫生(国际政府)</text>
+    <rect x="644" y="62" width="296" height="40" fill="#0f4c81"/>
+    <text x="656" y="80">企业(国际商业)</text>
+  </g>
+  <g font-size="11" fill="#dfe6ee">
+    <text x="32" y="96">Gotham 与 Maven Smart System</text>
+    <text x="344" y="96">Foundry</text>
+    <text x="656" y="96">Foundry 与 AIP</text>
+  </g>
+
+  <!-- 第一列 -->
+  <g fill="#1a2233">
+    <rect x="20" y="112" width="296" height="80" fill="#ffffff" stroke="#9aa4b5"/>
+    <text x="32" y="134" font-size="12.5" font-weight="700" fill="#0f4c81">Maven Smart System NATO</text>
+    <text x="32" y="154" font-size="11.5" fill="#5a6478">北约 NCIA 采购,2025-03-25 成交</text>
+    <text x="32" y="172" font-size="11.5" fill="#5a6478">汇总卫星、雷达与情报,</text>
+    <text x="32" y="186" font-size="11.5" fill="#5a6478">支持指挥控制</text>
+    <rect x="20" y="202" width="296" height="80" fill="#ffffff" stroke="#9aa4b5"/>
+    <text x="32" y="224" font-size="12.5" font-weight="700" fill="#0f4c81">英国国防部企业协议</text>
+    <text x="32" y="244" font-size="11.5" fill="#5a6478">2025-12-30,2.406 亿英镑,3 年</text>
+    <text x="32" y="262" font-size="11.5" fill="#5a6478">所含产品未公开披露</text>
+  </g>
+
+  <!-- 第二列 -->
+  <g fill="#1a2233">
+    <rect x="332" y="112" width="296" height="80" fill="#ffffff" stroke="#9aa4b5"/>
+    <text x="344" y="134" font-size="12.5" font-weight="700" fill="#0f4c81">NHS 联邦数据平台(FDP)</text>
+    <text x="344" y="154" font-size="11.5" fill="#5a6478">2023-11 授予,7 年,上限 3.30 亿英镑</text>
+    <text x="344" y="172" font-size="11.5" fill="#5a6478">病床与择期手术、疫苗、供应链</text>
+    <text x="344" y="186" font-size="11.5" fill="#5a6478">等 5 类用途</text>
+    <rect x="332" y="202" width="296" height="80" fill="#ffffff" stroke="#9aa4b5"/>
+    <text x="344" y="224" font-size="12.5" font-weight="700" fill="#0f4c81">NHS 新冠数据平台</text>
+    <text x="344" y="244" font-size="11.5" fill="#5a6478">2020-03 起,首份合同 1 英镑</text>
+    <text x="344" y="262" font-size="11.5" fill="#5a6478">2020-12 续签 2,300 万英镑</text>
+  </g>
+
+  <!-- 第三列 -->
+  <g fill="#1a2233">
+    <rect x="644" y="112" width="296" height="80" fill="#ffffff" stroke="#9aa4b5"/>
+    <text x="656" y="134" font-size="12.5" font-weight="700" fill="#0f4c81">空客 Skywise</text>
+    <text x="656" y="154" font-size="11.5" fill="#5a6478">2017-06 发布,2026-02 多年期续约</text>
+    <text x="656" y="172" font-size="11.5" fill="#5a6478">航空数据平台:连接空客生产</text>
+    <text x="656" y="186" font-size="11.5" fill="#5a6478">与航司维修数据</text>
+    <rect x="644" y="202" width="296" height="80" fill="#ffffff" stroke="#9aa4b5"/>
+    <text x="656" y="224" font-size="12.5" font-weight="700" fill="#0f4c81">海外企业的 AI 智能体(AIP)</text>
+    <text x="656" y="244" font-size="11.5" fill="#5a6478">例:喜力啤酒配送与运输优化</text>
+    <text x="656" y="262" font-size="11.5" fill="#5a6478">(2025 年一季度)</text>
+  </g>
+
+  <!-- 向下箭头 -->
+  <g stroke="#0f4c81" stroke-width="1.2" fill="none">
+    <path d="M168,282 V318" marker-end="url(#an)"/>
+    <path d="M480,282 V318" marker-end="url(#an)"/>
+    <path d="M792,282 V318" marker-end="url(#an)"/>
+  </g>
+
+  <!-- Apollo 部署层 -->
+  <rect x="20" y="322" width="920" height="124" fill="#e8f0f8" stroke="#0f4c81" stroke-width="1.5"/>
+  <text x="32" y="344" font-size="12.5" font-weight="700" fill="#0f4c81">Apollo:同一套代码的部署与升级(环境按 10-K 归类)</text>
+  <g font-size="12" fill="#1a2233">
+    <rect x="32" y="358" width="166" height="46" fill="#ffffff" stroke="#9aa4b5"/>
+    <text x="44" y="378">公有云</text>
+    <text x="44" y="395" font-size="11" fill="#5a6478">当地区域</text>
+    <rect x="212" y="358" width="166" height="46" fill="#ffffff" stroke="#9aa4b5"/>
+    <text x="224" y="378">主权云 / 政府云</text>
+    <text x="224" y="395" font-size="11" fill="#5a6478">受所在国管辖</text>
+    <rect x="392" y="358" width="166" height="46" fill="#ffffff" stroke="#9aa4b5"/>
+    <text x="404" y="378">客户自有机房</text>
+    <text x="404" y="395" font-size="11" fill="#5a6478">数据不出场所</text>
+    <rect x="572" y="358" width="166" height="46" fill="#ffffff" stroke="#9aa4b5"/>
+    <text x="584" y="378">涉密与断网网络</text>
+    <text x="584" y="395" font-size="11" fill="#5a6478">物理隔离</text>
+    <rect x="752" y="358" width="176" height="46" fill="#ffffff" stroke="#9aa4b5"/>
+    <text x="764" y="378">前线与边缘设备</text>
+    <text x="764" y="395" font-size="11" fill="#5a6478">车辆与舰船</text>
+  </g>
+  <!-- 唯一强调:数据驻留 -->
+  <rect x="205" y="352" width="540" height="58" fill="none" stroke="#eb6834" stroke-width="1.8" stroke-dasharray="6 4"/>
+  <text x="212" y="428" font-size="11.5" font-weight="700" fill="#eb6834">虚线框:数据留在客户所在国的三类环境</text>
+
+</svg>

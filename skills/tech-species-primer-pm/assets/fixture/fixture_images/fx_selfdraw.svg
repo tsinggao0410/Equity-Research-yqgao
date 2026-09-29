@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1108" height="551" viewBox="0 0 1108 551" font-family="-apple-system, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif" style="font-variant-numeric:tabular-nums" data-chart="structure"><rect width="1108" height="551" fill="#ffffff"/>
+<defs><marker id="whopays-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b6b6b"/></marker></defs>
+<text x="24.0" y="42.0" font-size="13" fill="#6b6b6b" text-anchor="start" font-weight="400" >2025 年 · 单位 亿元 / GW / GWh · 前五客户与供应商按 2025 年年报列</text>
+<text x="125.0" y="74.0" font-size="15" fill="#16395a" text-anchor="middle" font-weight="600" >上游(外购与自制)</text>
+<line x1="24.0" y1="82.0" x2="226.0" y2="82.0" stroke="#16395a" stroke-width="1.2"/>
+<rect x="24.0" y="100.0" width="202.0" height="102.0" rx="4" fill="#ffffff" stroke="#6b6b6b" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="125.0" y="124.0" font-size="15" fill="#222222" text-anchor="middle" font-weight="600" >电芯、电抗器、</text>
+<text x="125.0" y="145.0" font-size="15" fill="#222222" text-anchor="middle" font-weight="600" >散热器、集装箱</text>
+<text x="125.0" y="166.0" font-size="15" fill="#222222" text-anchor="middle" font-weight="400" >外购,</text>
+<text x="125.0" y="187.0" font-size="15" fill="#222222" text-anchor="middle" font-weight="400" >年报列为主要采购品类</text>
+<rect x="24.0" y="224.0" width="202.0" height="81.0" rx="4" fill="#ffffff" stroke="#6b6b6b" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="125.0" y="248.0" font-size="15" fill="#222222" text-anchor="middle" font-weight="600" >欣旺达 12.1 ·</text>
+<text x="125.0" y="269.0" font-size="15" fill="#222222" text-anchor="middle" font-weight="600" >瑞浦兰钧 12.1</text>
+<text x="125.0" y="290.0" font-size="15" fill="#222222" text-anchor="middle" font-weight="400" >前五供应商里的两家电芯厂</text>
+<rect x="24.0" y="327.0" width="202.0" height="81.0" rx="4" fill="#16395a" stroke="#16395a" stroke-width="1.2"/>
+<text x="125.0" y="351.0" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="600" >变流器、电池管理、</text>
+<text x="125.0" y="372.0" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="600" >能量管理</text>
+<text x="125.0" y="393.0" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="400" >自研自制</text>
+<rect x="24.0" y="430.0" width="202.0" height="81.0" rx="4" fill="#ffffff" stroke="#6b6b6b" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="125.0" y="454.0" font-size="15" fill="#222222" text-anchor="middle" font-weight="600" >风机整机</text>
+<text x="125.0" y="475.0" font-size="15" fill="#222222" text-anchor="middle" font-weight="400" >明阳新能源 13.4</text>
+<text x="125.0" y="496.0" font-size="15" fill="#222222" text-anchor="middle" font-weight="400" >(前五供应商)</text>
+<text x="411.0" y="74.0" font-size="15" fill="#16395a" text-anchor="middle" font-weight="600" >阳光电源(分产品)</text>
+<line x1="310.0" y1="82.0" x2="512.0" y2="82.0" stroke="#16395a" stroke-width="1.2"/>
+<rect x="310.0" y="142.0" width="202.0" height="60.0" rx="4" fill="#16395a" stroke="#16395a" stroke-width="1.2"/>
+<text x="411.0" y="166.0" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="600" >储能系统</text>
+<text x="411.0" y="187.0" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="400" >43GWh · 372.9 · 41.8%</text>
+<rect x="310.0" y="224.0" width="202.0" height="60.0" rx="4" fill="#16395a" stroke="#16395a" stroke-width="1.2"/>
+<text x="411.0" y="248.0" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="600" >光伏逆变器等</text>
+<text x="411.0" y="269.0" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="400" >143GW · 311.4 · 34.9%</text>
+<rect x="310.0" y="306.0" width="202.0" height="81.0" rx="4" fill="#f2f2f2" stroke="#cfcfcf" stroke-width="1.2"/>
+<text x="411.0" y="330.0" font-size="15" fill="#222222" text-anchor="middle" font-weight="600" >新能源投资开发</text>
+<text x="411.0" y="351.0" font-size="15" fill="#222222" text-anchor="middle" font-weight="400" >卖出分布式电站 3.22GW ·</text>
+<text x="411.0" y="372.0" font-size="15" fill="#222222" text-anchor="middle" font-weight="400" >165.6 · 18.6%</text>
+<rect x="310.0" y="409.0" width="202.0" height="60.0" rx="4" fill="#f2f2f2" stroke="#cfcfcf" stroke-width="1.2"/>
+<text x="411.0" y="433.0" font-size="15" fill="#222222" text-anchor="middle" font-weight="600" >光伏电站发电与其他</text>
+<text x="411.0" y="454.0" font-size="15" fill="#222222" text-anchor="middle" font-weight="400" >42.0 · 4.7%</text>
+<text x="697.0" y="74.0" font-size="15" fill="#16395a" text-anchor="middle" font-weight="600" >直接客户(谁付钱)</text>
+<line x1="596.0" y1="82.0" x2="798.0" y2="82.0" stroke="#16395a" stroke-width="1.2"/>
+<rect x="596.0" y="133.0" width="202.0" height="99.0" rx="4" fill="#f2f2f2" stroke="#cfcfcf" stroke-width="1.2"/>
+<text x="790.0" y="154.0" font-size="13" fill="#6b6b6b" text-anchor="end" font-weight="400" >前五合计 17.0%</text>
+<text x="697.0" y="175.0" font-size="15" fill="#222222" text-anchor="middle" font-weight="600" >电站总包与业主</text>
+<text x="697.0" y="196.0" font-size="15" fill="#222222" text-anchor="middle" font-weight="400" >Algihaz(沙特)·</text>
+<text x="697.0" y="217.0" font-size="15" fill="#222222" text-anchor="middle" font-weight="400" >中国能建 · L&amp;T(印度)</text>
+<rect x="596.0" y="254.0" width="202.0" height="60.0" rx="4" fill="#f2f2f2" stroke="#cfcfcf" stroke-width="1.2"/>
+<text x="697.0" y="278.0" font-size="15" fill="#222222" text-anchor="middle" font-weight="600" >融资租赁与地方国企平台</text>
+<text x="697.0" y="299.0" font-size="15" fill="#222222" text-anchor="middle" font-weight="400" >中建投租赁 · 湖北联投</text>
+<rect x="596.0" y="336.0" width="202.0" height="60.0" rx="4" fill="#f2f2f2" stroke="#cfcfcf" stroke-width="1.2"/>
+<text x="697.0" y="360.0" font-size="15" fill="#222222" text-anchor="middle" font-weight="600" >经销商与安装商</text>
+<text x="697.0" y="381.0" font-size="15" fill="#222222" text-anchor="middle" font-weight="400" >户用与工商业</text>
+<rect x="596.0" y="418.0" width="202.0" height="60.0" rx="4" fill="#ffffff" stroke="#6b6b6b" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="697.0" y="442.0" font-size="15" fill="#222222" text-anchor="middle" font-weight="600" >电站投资方</text>
+<text x="697.0" y="463.0" font-size="15" fill="#222222" text-anchor="middle" font-weight="400" >买走建成的电站</text>
+<text x="983.0" y="74.0" font-size="15" fill="#16395a" text-anchor="middle" font-weight="600" >终端(谁使用、谁选型)</text>
+<line x1="882.0" y1="82.0" x2="1084.0" y2="82.0" stroke="#16395a" stroke-width="1.2"/>
+<rect x="882.0" y="173.5" width="202.0" height="39.0" rx="4" fill="#f2f2f2" stroke="#cfcfcf" stroke-width="1.2"/>
+<text x="983.0" y="197.5" font-size="15" fill="#222222" text-anchor="middle" font-weight="400" >地面电站与独立储能电站</text>
+<rect x="882.0" y="234.5" width="202.0" height="39.0" rx="4" fill="#f2f2f2" stroke="#cfcfcf" stroke-width="1.2"/>
+<text x="983.0" y="258.5" font-size="15" fill="#222222" text-anchor="middle" font-weight="400" >工厂与商业屋顶</text>
+<rect x="882.0" y="295.5" width="202.0" height="39.0" rx="4" fill="#f2f2f2" stroke="#cfcfcf" stroke-width="1.2"/>
+<text x="983.0" y="319.5" font-size="15" fill="#222222" text-anchor="middle" font-weight="400" >家庭屋顶</text>
+<rect x="882.0" y="356.5" width="202.0" height="81.0" rx="4" fill="#ffffff" stroke="#6b6b6b" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="983.0" y="380.5" font-size="15" fill="#222222" text-anchor="middle" font-weight="600" >银行看可融资性名单</text>
+<text x="983.0" y="401.5" font-size="15" fill="#222222" text-anchor="middle" font-weight="400" >设计院选型 ·</text>
+<text x="983.0" y="422.5" font-size="15" fill="#222222" text-anchor="middle" font-weight="400" >电网并网测试</text>
+<path d="M226.0,151.0 C268.0,151.0 268.0,172.0 310.0,172.0" fill="none" stroke="#16395a" stroke-width="2" marker-end="url(#whopays-arr)"/>
+<path d="M226.0,264.5 C268.0,264.5 268.0,172.0 310.0,172.0" fill="none" stroke="#6b6b6b" stroke-width="1.2" marker-end="url(#whopays-arr)"/>
+<path d="M226.0,367.5 C268.0,367.5 268.0,172.0 310.0,172.0" fill="none" stroke="#16395a" stroke-width="2" marker-end="url(#whopays-arr)"/>
+<path d="M226.0,367.5 C268.0,367.5 268.0,254.0 310.0,254.0" fill="none" stroke="#6b6b6b" stroke-width="1.2" marker-end="url(#whopays-arr)"/>
+<path d="M226.0,470.5 C268.0,470.5 268.0,346.5 310.0,346.5" fill="none" stroke="#6b6b6b" stroke-width="1.2" marker-end="url(#whopays-arr)"/>
+<path d="M512.0,172.0 C554.0,172.0 554.0,182.5 596.0,182.5" fill="none" stroke="#16395a" stroke-width="2" marker-end="url(#whopays-arr)"/>
+<path d="M512.0,254.0 C554.0,254.0 554.0,182.5 596.0,182.5" fill="none" stroke="#16395a" stroke-width="2" marker-end="url(#whopays-arr)"/>
+<path d="M512.0,172.0 C554.0,172.0 554.0,284.0 596.0,284.0" fill="none" stroke="#6b6b6b" stroke-width="1.2" marker-end="url(#whopays-arr)"/>
+<path d="M512.0,254.0 C554.0,254.0 554.0,366.0 596.0,366.0" fill="none" stroke="#6b6b6b" stroke-width="1.2" marker-end="url(#whopays-arr)"/>
+<path d="M512.0,346.5 C554.0,346.5 554.0,448.0 596.0,448.0" fill="none" stroke="#6b6b6b" stroke-width="1.2" marker-end="url(#whopays-arr)"/>
+<path d="M798.0,182.5 C840.0,182.5 840.0,193.0 882.0,193.0" fill="none" stroke="#6b6b6b" stroke-width="1.2" marker-end="url(#whopays-arr)"/>
+<path d="M798.0,284.0 C840.0,284.0 840.0,193.0 882.0,193.0" fill="none" stroke="#6b6b6b" stroke-width="1.2" marker-end="url(#whopays-arr)"/>
+<path d="M798.0,366.0 C840.0,366.0 840.0,254.0 882.0,254.0" fill="none" stroke="#6b6b6b" stroke-width="1.2" marker-end="url(#whopays-arr)"/>
+<path d="M798.0,366.0 C840.0,366.0 840.0,315.0 882.0,315.0" fill="none" stroke="#6b6b6b" stroke-width="1.2" marker-end="url(#whopays-arr)"/>
+<path d="M882.0,397.0 C840.0,397.0 840.0,182.5 798.0,182.5" fill="none" stroke="#6b6b6b" stroke-width="1.2" marker-end="url(#whopays-arr)"/>
+<rect x="517.5" y="166.2" width="73.0" height="22.0" fill="#ffffff" opacity="0.94"/>
+<text x="554.0" y="181.2" font-size="13" fill="#6b6b6b" text-anchor="middle" font-weight="400" >招标与框架</text>
+<rect x="537.0" y="299.0" width="34.0" height="22.0" fill="#ffffff" opacity="0.94"/>
+<text x="554.0" y="314.0" font-size="13" fill="#6b6b6b" text-anchor="middle" font-weight="400" >渠道</text>
+<rect x="524.0" y="386.2" width="60.0" height="22.0" fill="#ffffff" opacity="0.94"/>
+<text x="554.0" y="401.2" font-size="13" fill="#6b6b6b" text-anchor="middle" font-weight="400" >建成转让</text>
+<rect x="810.0" y="269.8" width="60.0" height="40.0" fill="#ffffff" opacity="0.94"/>
+<text x="840.0" y="284.8" font-size="13" fill="#6b6b6b" text-anchor="middle" font-weight="400" >决定谁能</text>
+<text x="840.0" y="302.8" font-size="13" fill="#6b6b6b" text-anchor="middle" font-weight="400" >进名单</text>
+<text x="24.0" y="543.0" font-size="13" fill="#6b6b6b" text-anchor="start" font-weight="400" >金额为 2025 年收入或采购额(亿元);客户类型为作者按公司名归纳</text>
+</svg>

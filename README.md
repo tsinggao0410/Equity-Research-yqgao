@@ -24,6 +24,7 @@ onepagers/          40 份首次覆盖，按行业分 A–F 六组，组内保�
   └── INDEX.md                  ← 全库索引：分组总览 + 六张分组表 + 重复覆盖 + 版本时间线
 methodology/        深度思考方法论（中英文对照）+ 现场版 17 页 deck（HTML/PDF）+ 演示动线
 skills/             equity-onepager-interactive —— 生成上面每一份的 skill，全量
+                    tech-species-primer-pm —— 业务认知卡·基金经理版（业务速览 / 与竞品的差异 / 技术演变路线图 / 术语悬停释义）
 models/             顺络电子 002138 买方模型、三期限研究总纲
 ```
 
@@ -98,6 +99,15 @@ Then say *"make me a one-pager on X"* or *"help me get up to speed on company X.
   The FMP `api_key` **was removed before publishing**. Set `FMP_API_KEY` or fill it back in locally.
 - 数据源 client（iFind / AlphaPai / qcc / research-rag）按 `SKILL.md` 顶部说明配置；港美股腿走 `fetch_fundamentals_hkus.py`（东财 + SEC EDGAR），不需要 iFind。
 - 本机只有 `python3`：文档里所有 `python scripts/xxx.py` 一律用 `python3` 跑。
+
+### 业务认知卡 · 基金经理版 · Business primer, fund-manager edition
+
+```bash
+cp -r skills/tech-species-primer-pm ~/.claude/skills/        # 或 python3 skills/tech-species-primer-pm/scripts/pack_skill.py 打成 .skill 上传 claude.ai
+```
+
+在 tech-species-primer v3.2（科普卡）之上加一层通俗解释，给懂财务估值、不懂技术的基金经理读：最前面「业务速览」（v3.2 原版卡片样式，约 1,000 字：定位与带期间的关键数据；先与前代 / 同类产品对比，再讲工作原理并配产品图；客户案例 / 价值流向 / 技术演变 / 跟踪指标），技术章讲清与替代方案的差异（结构对比图 + 逐项对比表）并配技术演变路线图（每一代解决的问题、代价、受益与受损方），每个业务章开头一段通俗解释，术语词典与正文悬停释义，外行复述评审；用语遵循 buyside-voice，页面上不写「白话」这类标签。说「**做一份给基金经理看的 XX 业务认知**」或「**用通俗的话讲清 XX 的业务和技术演变**」触发。改动与起因见 [`CHANGELOG-PM-20260929.md`](skills/tech-species-primer-pm/CHANGELOG-PM-20260929.md)，写法样例见 [`examples/pm/`](skills/tech-species-primer-pm/examples/pm/)。
+Adds a plain-language layer on top of the v3.2 primer for fund managers who know finance but not the technology: a tear-sheet style business overview up front (positioning, key figures, numbered cards), an explicit "how is this different from X" comparison (e.g. Palantir vs. ordinary SaaS; CPO vs. pluggable optics and NPO), a technology-path chapter with a roadmap (what each generation solved, what it cost, who won and lost), plain-language openers per business chapter, a glossary with hover definitions, and a lay-reader retell review. No writing-style labels appear on the page.
 
 ---
 
