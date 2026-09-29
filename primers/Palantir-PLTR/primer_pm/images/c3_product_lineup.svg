@@ -1,108 +1,84 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" font-family="'Microsoft YaHei','PingFang SC','WenQuanYi Zen Hei','Segoe UI',system-ui,sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420" font-family="'Microsoft YaHei','PingFang SC','WenQuanYi Zen Hei','Segoe UI',system-ui,sans-serif">
   <defs>
     <marker id="an" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#1f3a5f"/>
     </marker>
   </defs>
-  <rect x="0" y="0" width="960" height="480" fill="#ffffff"/>
+  <rect x="0" y="0" width="960" height="420" fill="#ffffff"/>
 
-  <!-- 列标题 -->
   <g fill="#1c2128" font-size="13.5" font-weight="700">
     <text x="16" y="26">通用平台</text>
     <text x="340" y="26">任务应用</text>
     <text x="672" y="26">渠道与交付工具</text>
   </g>
   <g fill="#5b6370" font-size="11.5">
-    <text x="16" y="44">政府与企业共用;政府侧以 Gotham 起家</text>
-    <text x="340" y="44">面向具体作战、管理与执法任务</text>
-    <text x="672" y="44">扩大可销售范围,减少部署人力</text>
+    <text x="16" y="44">政府与企业共用</text>
+    <text x="340" y="44">作战、管理与执法</text>
+    <text x="672" y="44">扩大销售、减少部署人力</text>
   </g>
 
-  <!-- 第一列:通用平台 -->
   <g font-size="11.5" fill="#5b6370">
-    <rect x="16" y="60" width="290" height="96" fill="#f4f6f8" stroke="#1f3a5f" stroke-width="1.5"/>
-    <text x="28" y="84" font-size="13" font-weight="700" fill="#1f3a5f">Gotham</text>
-    <text x="28" y="104">整合情报、执法与救灾数据,分析人员、</text>
-    <text x="28" y="120">地点、事件之间的关系</text>
-    <text x="28" y="140">早期客户为美国情报机构</text>
+    <rect x="16" y="58" width="290" height="80" fill="#f4f6f8" stroke="#1f3a5f" stroke-width="1.5"/>
+    <text x="28" y="82" font-size="13" font-weight="700" fill="#1f3a5f">Gotham</text>
+    <text x="28" y="102">情报、执法数据的关系分析</text>
+    <text x="28" y="122">早期客户为美国情报机构</text>
 
-    <rect x="16" y="168" width="290" height="96" fill="#ffffff" stroke="#9aa1ab"/>
-    <text x="28" y="192" font-size="13" font-weight="700" fill="#1f3a5f">AIP(国防用途)</text>
-    <text x="28" y="212">大模型接入本体,在权限内读取数据、</text>
-    <text x="28" y="228">起草方案,经人工审批后执行</text>
-    <text x="28" y="248">2023-04 发布,面向企业与军事用途</text>
+    <rect x="16" y="150" width="290" height="80" fill="#ffffff" stroke="#9aa1ab"/>
+    <text x="28" y="174" font-size="13" font-weight="700" fill="#1f3a5f">AIP(国防用途)</text>
+    <text x="28" y="194">大模型在权限内读数、起草方案</text>
+    <text x="28" y="214">2023-04 发布</text>
 
-    <rect x="16" y="276" width="290" height="96" fill="#ffffff" stroke="#9aa1ab"/>
-    <text x="28" y="300" font-size="13" font-weight="700" fill="#1f3a5f">Apollo</text>
-    <text x="28" y="320">同一套软件部署、升级到公有云、</text>
-    <text x="28" y="336">客户机房、涉密网络与断网设备</text>
-    <text x="28" y="356">2021 年起对外销售</text>
+    <rect x="16" y="242" width="290" height="80" fill="#ffffff" stroke="#9aa1ab"/>
+    <text x="28" y="266" font-size="13" font-weight="700" fill="#1f3a5f">Apollo</text>
+    <text x="28" y="286">部署到云、机房、涉密网络与断网设备</text>
+    <text x="28" y="306">2021 年起对外销售</text>
   </g>
 
-  <!-- 平台 → 应用 -->
   <g stroke="#1f3a5f" stroke-width="1.2" fill="none">
-    <path d="M306,108 H322 M306,216 H322 M306,324 H322 M322,108 V324"/>
-    <path d="M322,216 H336" marker-end="url(#an)"/>
+    <path d="M306,98 H322 M306,190 H322 M306,282 H322 M322,98 V282"/>
+    <path d="M322,190 H336" marker-end="url(#an)"/>
   </g>
 
-  <!-- 第二列:任务应用 -->
   <g font-size="11.5" fill="#5b6370">
-    <rect x="340" y="60" width="306" height="72" fill="#ffffff" stroke="#a4532e" stroke-width="2"/>
-    <text x="352" y="82" font-size="13" font-weight="700" fill="#1f3a5f">Maven Smart System</text>
-    <text x="352" y="101">战场数据融合、目标识别与指挥控制</text>
-    <text x="352" y="120" fill="#a4532e">2026-03 列为国防部正式项目</text>
+    <rect x="340" y="58" width="306" height="60" fill="#ffffff" stroke="#a4532e" stroke-width="2"/>
+    <text x="352" y="80" font-size="13" font-weight="700" fill="#1f3a5f">Maven Smart System</text>
+    <text x="352" y="104">目标识别与指挥控制</text>
+    <text x="484" y="104" fill="#a4532e">2026-03 列为正式项目</text>
 
-    <rect x="340" y="140" width="306" height="72" fill="#ffffff" stroke="#9aa1ab"/>
-    <text x="352" y="162" font-size="13" font-weight="700" fill="#1f3a5f">TITAN(硬件 + 软件)</text>
-    <text x="352" y="181">机动地面站车辆,接收多源传感器数据</text>
-    <text x="352" y="200">原型 10 套(2024);首批生产 8 套(2026)</text>
+    <rect x="340" y="124" width="306" height="60" fill="#ffffff" stroke="#9aa1ab"/>
+    <text x="352" y="146" font-size="13" font-weight="700" fill="#1f3a5f">TITAN(硬件 + 软件)</text>
+    <text x="352" y="170">机动地面站车辆;原型 10 套,首批量产 8 套</text>
 
-    <rect x="340" y="220" width="306" height="72" fill="#ffffff" stroke="#9aa1ab"/>
-    <text x="352" y="242" font-size="13" font-weight="700" fill="#1f3a5f">Army Vantage</text>
-    <text x="352" y="261">陆军数据平台:战备、人员、后勤</text>
-    <text x="352" y="280">2019-12 生产协议;2020 年接入 160 多个系统</text>
+    <rect x="340" y="190" width="306" height="60" fill="#ffffff" stroke="#9aa1ab"/>
+    <text x="352" y="212" font-size="13" font-weight="700" fill="#1f3a5f">Army Vantage</text>
+    <text x="352" y="236">陆军战备与后勤数据;2019-12 生产协议</text>
 
-    <rect x="340" y="300" width="306" height="72" fill="#ffffff" stroke="#9aa1ab"/>
-    <text x="352" y="322" font-size="13" font-weight="700" fill="#1f3a5f">ImmigrationOS 等民事方案</text>
-    <text x="352" y="341">移民执法案件与流程管理(ICE,2025-04)</text>
-    <text x="352" y="360">ICE 调查案件系统 2014 年起基于 Gotham</text>
+    <rect x="340" y="256" width="306" height="66" fill="#ffffff" stroke="#9aa1ab"/>
+    <text x="352" y="278" font-size="13" font-weight="700" fill="#1f3a5f">ImmigrationOS(ICE)</text>
+    <text x="352" y="302">移民执法案件管理;2025-04 合同</text>
   </g>
 
-  <!-- 第三列:渠道与交付工具 -->
   <g font-size="11.5" fill="#5b6370">
-    <rect x="672" y="60" width="272" height="96" fill="#ffffff" stroke="#9aa1ab"/>
-    <text x="684" y="84" font-size="13" font-weight="700" fill="#1f3a5f">FedStart</text>
-    <text x="684" y="104">其他软件公司借用 Palantir 已取得</text>
-    <text x="684" y="120">认证的环境,向联邦机构销售</text>
-    <text x="684" y="140">不必各自申请 FedRAMP High 与 IL5</text>
+    <rect x="672" y="58" width="272" height="80" fill="#ffffff" stroke="#9aa1ab"/>
+    <text x="684" y="82" font-size="13" font-weight="700" fill="#1f3a5f">FedStart</text>
+    <text x="684" y="102">其他软件公司借用已认证环境</text>
+    <text x="684" y="122">向联邦机构销售</text>
 
-    <rect x="672" y="168" width="272" height="96" fill="#ffffff" stroke="#9aa1ab"/>
-    <text x="684" y="192" font-size="13" font-weight="700" fill="#1f3a5f">AI FDE</text>
-    <text x="684" y="212">由 AI 智能体承担数据接入、</text>
-    <text x="684" y="228">数据转换与建本体等部署工作</text>
-    <text x="684" y="248">2025 年三季度推出测试版</text>
-
-    <rect x="672" y="276" width="272" height="96" fill="#ffffff" stroke="#9aa1ab" stroke-dasharray="4 3"/>
-    <text x="684" y="300" font-size="13" font-weight="700" fill="#1c2128">合同载体</text>
-    <text x="684" y="320">原型合同 → IDIQ 生产合同 →</text>
-    <text x="684" y="336">部门级企业协议 / 一揽子采购协议</text>
-    <text x="684" y="356">(见本章交付流程图)</text>
+    <rect x="672" y="150" width="272" height="80" fill="#ffffff" stroke="#9aa1ab"/>
+    <text x="684" y="174" font-size="13" font-weight="700" fill="#1f3a5f">AI FDE</text>
+    <text x="684" y="194">AI 承担数据接入与建模</text>
+    <text x="684" y="214">2025 年三季度测试版</text>
   </g>
 
-  <!-- 底部:部署与认证环境 -->
-  <text x="16" y="400" font-size="12.5" font-weight="700" fill="#1c2128">部署与认证环境(Apollo 统一部署)</text>
+  <text x="16" y="354" font-size="12.5" font-weight="700" fill="#1c2128">部署与认证环境</text>
   <g font-size="11.5" fill="#1c2128">
-    <rect x="16" y="410" width="222" height="52" fill="#f4f6f8" stroke="#9aa1ab"/>
-    <text x="28" y="432">非密公有云</text>
-    <text x="28" y="450" fill="#5b6370">FedRAMP High(2024-12)</text>
-    <rect x="252" y="410" width="222" height="52" fill="#f4f6f8" stroke="#9aa1ab"/>
-    <text x="264" y="432">受控非密国防数据</text>
-    <text x="264" y="450" fill="#5b6370">国防部 IL5</text>
-    <rect x="488" y="410" width="222" height="52" fill="#f4f6f8" stroke="#9aa1ab"/>
-    <text x="500" y="432">机密级网络</text>
-    <text x="500" y="450" fill="#5b6370">国防部 IL6(2022-10)</text>
-    <rect x="724" y="410" width="220" height="52" fill="#f4f6f8" stroke="#9aa1ab"/>
-    <text x="736" y="432">前线车辆与断网设备</text>
-    <text x="736" y="450" fill="#5b6370">TITAN 等边缘部署</text>
+    <rect x="16" y="364" width="222" height="40" fill="#f4f6f8" stroke="#9aa1ab"/>
+    <text x="28" y="389">非密云:FedRAMP High</text>
+    <rect x="252" y="364" width="222" height="40" fill="#f4f6f8" stroke="#9aa1ab"/>
+    <text x="264" y="389">国防部 IL5</text>
+    <rect x="488" y="364" width="222" height="40" fill="#f4f6f8" stroke="#9aa1ab"/>
+    <text x="500" y="389">机密网络:IL6</text>
+    <rect x="724" y="364" width="220" height="40" fill="#f4f6f8" stroke="#9aa1ab"/>
+    <text x="736" y="389">前线车辆与断网设备</text>
   </g>
 </svg>
