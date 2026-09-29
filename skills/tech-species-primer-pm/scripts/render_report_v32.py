@@ -1764,7 +1764,7 @@ class Renderer:
             out.append('<div class="brief-hero">%s</div>' % "".join(hero))
         cells = []
         for n, (cd, w) in enumerate(zip(cards, wide), 1):
-            h3 = re.sub(r"^<h3([^>]*)>", lambda m: '<h3%s><span class="bno">%d</span>' % (m.group(1), n), cd[0], count=1)
+            h3 = re.sub(r"^<h3([^>]*)>", lambda m: '<h3%s><span class="bno">%02d</span>' % (m.group(1), n), cd[0], count=1)
             cells.append('<section class="bcard%s">%s<div class="bbody">%s</div></section>' % (" wide" if w else "", h3, "".join(cd[1:])))
         out.append('<div class="brief">%s</div>' % "".join(cells))
         c["parts"] = out

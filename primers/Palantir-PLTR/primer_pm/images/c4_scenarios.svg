@@ -1,86 +1,86 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" width="960" height="470" font-family="'PingFang SC','Microsoft YaHei','Noto Sans CJK SC','WenQuanYi Zen Hei',system-ui,sans-serif">
-<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#9aa1ab"/></marker></defs>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#9aa4b5"/></marker></defs>
 <rect x="0" y="0" width="960" height="470" fill="#ffffff"/>
-<rect x="128" y="16" width="22" height="14" fill="#1f3a5f"/><text x="156" y="28" font-size="12" fill="#1c2128">有公开案例的环节</text>
-<rect x="400" y="16" width="22" height="14" fill="#fff" stroke="#9aa1ab"/><text x="428" y="28" font-size="12" fill="#5b6370">其他环节</text>
-<rect x="16" y="50" width="100" height="46" fill="#f4f6f8" stroke="#9aa1ab"/>
-<text x="66" y="78" font-size="13" font-weight="700" fill="#1c2128" text-anchor="middle">医院</text>
-<rect x="128" y="52" width="140" height="42" fill="#1f3a5f"/>
+<rect x="128" y="16" width="22" height="14" fill="#0f4c81"/><text x="156" y="28" font-size="12" fill="#1a2233">有公开案例的环节</text>
+<rect x="400" y="16" width="22" height="14" fill="#fff" stroke="#9aa4b5"/><text x="428" y="28" font-size="12" fill="#5a6478">其他环节</text>
+<rect x="16" y="50" width="100" height="46" fill="#e8f0f8" stroke="#9aa4b5"/>
+<text x="66" y="78" font-size="13" font-weight="700" fill="#1a2233" text-anchor="middle">医院</text>
+<rect x="128" y="52" width="140" height="42" fill="#0f4c81"/>
 <text x="198.0" y="78" font-size="12.5" fill="#ffffff" text-anchor="middle">转诊接收</text>
-<text x="198.0" y="114" font-size="12" fill="#1c2128" text-anchor="middle">克利夫兰诊所</text>
-<path d="M271,73 H289" stroke="#9aa1ab" stroke-width="1.2" fill="none" marker-end="url(#ar)"/>
-<rect x="292" y="52" width="140" height="42" fill="#1f3a5f"/>
+<text x="198.0" y="114" font-size="12" fill="#1a2233" text-anchor="middle">克利夫兰诊所</text>
+<path d="M271,73 H289" stroke="#9aa4b5" stroke-width="1.2" fill="none" marker-end="url(#ar)"/>
+<rect x="292" y="52" width="140" height="42" fill="#0f4c81"/>
 <text x="362.0" y="78" font-size="12.5" fill="#ffffff" text-anchor="middle">入院分床</text>
-<text x="362.0" y="114" font-size="12" fill="#1c2128" text-anchor="middle">坦帕总医院</text>
-<path d="M435,73 H453" stroke="#9aa1ab" stroke-width="1.2" fill="none" marker-end="url(#ar)"/>
-<rect x="456" y="52" width="140" height="42" fill="#ffffff" stroke="#9aa1ab"/>
-<text x="526.0" y="78" font-size="12.5" fill="#5b6370" text-anchor="middle">手术排程</text>
-<path d="M599,73 H617" stroke="#9aa1ab" stroke-width="1.2" fill="none" marker-end="url(#ar)"/>
-<rect x="620" y="52" width="140" height="42" fill="#1f3a5f"/>
+<text x="362.0" y="114" font-size="12" fill="#1a2233" text-anchor="middle">坦帕总医院</text>
+<path d="M435,73 H453" stroke="#9aa4b5" stroke-width="1.2" fill="none" marker-end="url(#ar)"/>
+<rect x="456" y="52" width="140" height="42" fill="#ffffff" stroke="#9aa4b5"/>
+<text x="526.0" y="78" font-size="12.5" fill="#5a6478" text-anchor="middle">手术排程</text>
+<path d="M599,73 H617" stroke="#9aa4b5" stroke-width="1.2" fill="none" marker-end="url(#ar)"/>
+<rect x="620" y="52" width="140" height="42" fill="#0f4c81"/>
 <text x="690.0" y="78" font-size="12.5" fill="#ffffff" text-anchor="middle">护士排班</text>
-<text x="690.0" y="114" font-size="12" fill="#1c2128" text-anchor="middle">HCA</text>
-<path d="M763,73 H781" stroke="#9aa1ab" stroke-width="1.2" fill="none" marker-end="url(#ar)"/>
-<rect x="784" y="52" width="140" height="42" fill="#1f3a5f"/>
+<text x="690.0" y="114" font-size="12" fill="#1a2233" text-anchor="middle">HCA</text>
+<path d="M763,73 H781" stroke="#9aa4b5" stroke-width="1.2" fill="none" marker-end="url(#ar)"/>
+<rect x="784" y="52" width="140" height="42" fill="#0f4c81"/>
 <text x="854.0" y="78" font-size="12.5" fill="#ffffff" text-anchor="middle">出院与保险申诉</text>
-<text x="854.0" y="114" font-size="12" fill="#1c2128" text-anchor="middle">特种外科医院</text>
-<line x1="16" y1="138" x2="924" y2="138" stroke="#e3e6ea"/>
-<rect x="16" y="150" width="100" height="46" fill="#f4f6f8" stroke="#9aa1ab"/>
-<text x="66" y="178" font-size="13" font-weight="700" fill="#1c2128" text-anchor="middle">制造</text>
-<rect x="128" y="152" width="140" height="42" fill="#ffffff" stroke="#9aa1ab"/>
-<text x="198.0" y="178" font-size="12.5" fill="#5b6370" text-anchor="middle">接单</text>
-<path d="M271,173 H289" stroke="#9aa1ab" stroke-width="1.2" fill="none" marker-end="url(#ar)"/>
-<rect x="292" y="152" width="140" height="42" fill="#1f3a5f"/>
+<text x="854.0" y="114" font-size="12" fill="#1a2233" text-anchor="middle">特种外科医院</text>
+<line x1="16" y1="138" x2="924" y2="138" stroke="#e4e8ef"/>
+<rect x="16" y="150" width="100" height="46" fill="#e8f0f8" stroke="#9aa4b5"/>
+<text x="66" y="178" font-size="13" font-weight="700" fill="#1a2233" text-anchor="middle">制造</text>
+<rect x="128" y="152" width="140" height="42" fill="#ffffff" stroke="#9aa4b5"/>
+<text x="198.0" y="178" font-size="12.5" fill="#5a6478" text-anchor="middle">接单</text>
+<path d="M271,173 H289" stroke="#9aa4b5" stroke-width="1.2" fill="none" marker-end="url(#ar)"/>
+<rect x="292" y="152" width="140" height="42" fill="#0f4c81"/>
 <text x="362.0" y="178" font-size="12.5" fill="#ffffff" text-anchor="middle">生产排产</text>
-<text x="362.0" y="214" font-size="12" fill="#1c2128" text-anchor="middle">Land O'Frost</text>
-<path d="M435,173 H453" stroke="#9aa1ab" stroke-width="1.2" fill="none" marker-end="url(#ar)"/>
-<rect x="456" y="152" width="140" height="42" fill="#1f3a5f"/>
+<text x="362.0" y="214" font-size="12" fill="#1a2233" text-anchor="middle">Land O'Frost</text>
+<path d="M435,173 H453" stroke="#9aa4b5" stroke-width="1.2" fill="none" marker-end="url(#ar)"/>
+<rect x="456" y="152" width="140" height="42" fill="#0f4c81"/>
 <text x="526.0" y="178" font-size="12.5" fill="#ffffff" text-anchor="middle">缺料预警</text>
-<text x="526.0" y="214" font-size="12" fill="#1c2128" text-anchor="middle">Anduril</text>
-<path d="M599,173 H617" stroke="#9aa1ab" stroke-width="1.2" fill="none" marker-end="url(#ar)"/>
-<rect x="620" y="152" width="140" height="42" fill="#ffffff" stroke="#9aa1ab"/>
-<text x="690.0" y="178" font-size="12.5" fill="#5b6370" text-anchor="middle">质检</text>
-<path d="M763,173 H781" stroke="#9aa1ab" stroke-width="1.2" fill="none" marker-end="url(#ar)"/>
-<rect x="784" y="152" width="140" height="42" fill="#1f3a5f"/>
+<text x="526.0" y="214" font-size="12" fill="#1a2233" text-anchor="middle">Anduril</text>
+<path d="M599,173 H617" stroke="#9aa4b5" stroke-width="1.2" fill="none" marker-end="url(#ar)"/>
+<rect x="620" y="152" width="140" height="42" fill="#ffffff" stroke="#9aa4b5"/>
+<text x="690.0" y="178" font-size="12.5" fill="#5a6478" text-anchor="middle">质检</text>
+<path d="M763,173 H781" stroke="#9aa4b5" stroke-width="1.2" fill="none" marker-end="url(#ar)"/>
+<rect x="784" y="152" width="140" height="42" fill="#0f4c81"/>
 <text x="854.0" y="178" font-size="12.5" fill="#ffffff" text-anchor="middle">设备维修</text>
-<text x="854.0" y="214" font-size="12" fill="#1c2128" text-anchor="middle">松下能源北美</text>
-<line x1="16" y1="238" x2="924" y2="238" stroke="#e3e6ea"/>
-<rect x="16" y="250" width="100" height="46" fill="#f4f6f8" stroke="#9aa1ab"/>
-<text x="66" y="278" font-size="13" font-weight="700" fill="#1c2128" text-anchor="middle">供应链与零售</text>
-<rect x="128" y="252" width="140" height="42" fill="#ffffff" stroke="#9aa1ab"/>
-<text x="198.0" y="278" font-size="12.5" fill="#5b6370" text-anchor="middle">需求预测</text>
-<path d="M271,273 H289" stroke="#9aa1ab" stroke-width="1.2" fill="none" marker-end="url(#ar)"/>
-<rect x="292" y="252" width="140" height="42" fill="#ffffff" stroke="#9aa1ab"/>
-<text x="362.0" y="278" font-size="12.5" fill="#5b6370" text-anchor="middle">采购补货</text>
-<path d="M435,273 H453" stroke="#9aa1ab" stroke-width="1.2" fill="none" marker-end="url(#ar)"/>
-<rect x="456" y="252" width="140" height="42" fill="#1f3a5f"/>
+<text x="854.0" y="214" font-size="12" fill="#1a2233" text-anchor="middle">松下能源北美</text>
+<line x1="16" y1="238" x2="924" y2="238" stroke="#e4e8ef"/>
+<rect x="16" y="250" width="100" height="46" fill="#e8f0f8" stroke="#9aa4b5"/>
+<text x="66" y="278" font-size="13" font-weight="700" fill="#1a2233" text-anchor="middle">供应链与零售</text>
+<rect x="128" y="252" width="140" height="42" fill="#ffffff" stroke="#9aa4b5"/>
+<text x="198.0" y="278" font-size="12.5" fill="#5a6478" text-anchor="middle">需求预测</text>
+<path d="M271,273 H289" stroke="#9aa4b5" stroke-width="1.2" fill="none" marker-end="url(#ar)"/>
+<rect x="292" y="252" width="140" height="42" fill="#ffffff" stroke="#9aa4b5"/>
+<text x="362.0" y="278" font-size="12.5" fill="#5a6478" text-anchor="middle">采购补货</text>
+<path d="M435,273 H453" stroke="#9aa4b5" stroke-width="1.2" fill="none" marker-end="url(#ar)"/>
+<rect x="456" y="252" width="140" height="42" fill="#0f4c81"/>
 <text x="526.0" y="278" font-size="12.5" fill="#ffffff" text-anchor="middle">供应网络调度</text>
-<text x="526.0" y="314" font-size="12" fill="#1c2128" text-anchor="middle">通用磨坊</text>
-<path d="M599,273 H617" stroke="#9aa1ab" stroke-width="1.2" fill="none" marker-end="url(#ar)"/>
-<rect x="620" y="252" width="140" height="42" fill="#1f3a5f"/>
+<text x="526.0" y="314" font-size="12" fill="#1a2233" text-anchor="middle">通用磨坊</text>
+<path d="M599,273 H617" stroke="#9aa4b5" stroke-width="1.2" fill="none" marker-end="url(#ar)"/>
+<rect x="620" y="252" width="140" height="42" fill="#0f4c81"/>
 <text x="690.0" y="278" font-size="12.5" fill="#ffffff" text-anchor="middle">订单交付</text>
-<text x="690.0" y="314" font-size="12" fill="#1c2128" text-anchor="middle">Associated Materials</text>
-<path d="M763,273 H781" stroke="#9aa1ab" stroke-width="1.2" fill="none" marker-end="url(#ar)"/>
-<rect x="784" y="252" width="140" height="42" fill="#1f3a5f"/>
+<text x="690.0" y="314" font-size="12" fill="#1a2233" text-anchor="middle">Associated Materials</text>
+<path d="M763,273 H781" stroke="#9aa4b5" stroke-width="1.2" fill="none" marker-end="url(#ar)"/>
+<rect x="784" y="252" width="140" height="42" fill="#0f4c81"/>
 <text x="854.0" y="278" font-size="12.5" fill="#ffffff" text-anchor="middle">门店执行</text>
-<text x="854.0" y="314" font-size="12" fill="#1c2128" text-anchor="middle">沃尔格林</text>
-<line x1="16" y1="338" x2="924" y2="338" stroke="#e3e6ea"/>
-<rect x="16" y="350" width="100" height="46" fill="#f4f6f8" stroke="#9aa1ab"/>
-<text x="66" y="378" font-size="13" font-weight="700" fill="#1c2128" text-anchor="middle">金融</text>
-<rect x="128" y="352" width="140" height="42" fill="#1f3a5f"/>
+<text x="854.0" y="314" font-size="12" fill="#1a2233" text-anchor="middle">沃尔格林</text>
+<line x1="16" y1="338" x2="924" y2="338" stroke="#e4e8ef"/>
+<rect x="16" y="350" width="100" height="46" fill="#e8f0f8" stroke="#9aa4b5"/>
+<text x="66" y="378" font-size="13" font-weight="700" fill="#1a2233" text-anchor="middle">金融</text>
+<rect x="128" y="352" width="140" height="42" fill="#0f4c81"/>
 <text x="198.0" y="378" font-size="12.5" fill="#ffffff" text-anchor="middle">开户审核</text>
-<text x="198.0" y="414" font-size="12" fill="#1c2128" text-anchor="middle">花旗</text>
-<path d="M271,373 H289" stroke="#9aa1ab" stroke-width="1.2" fill="none" marker-end="url(#ar)"/>
-<rect x="292" y="352" width="140" height="42" fill="#ffffff" stroke="#9aa1ab"/>
-<text x="362.0" y="378" font-size="12.5" fill="#5b6370" text-anchor="middle">授信审批</text>
-<path d="M435,373 H453" stroke="#9aa1ab" stroke-width="1.2" fill="none" marker-end="url(#ar)"/>
-<rect x="456" y="352" width="140" height="42" fill="#1f3a5f"/>
+<text x="198.0" y="414" font-size="12" fill="#1a2233" text-anchor="middle">花旗</text>
+<path d="M271,373 H289" stroke="#9aa4b5" stroke-width="1.2" fill="none" marker-end="url(#ar)"/>
+<rect x="292" y="352" width="140" height="42" fill="#ffffff" stroke="#9aa4b5"/>
+<text x="362.0" y="378" font-size="12.5" fill="#5a6478" text-anchor="middle">授信审批</text>
+<path d="M435,373 H453" stroke="#9aa4b5" stroke-width="1.2" fill="none" marker-end="url(#ar)"/>
+<rect x="456" y="352" width="140" height="42" fill="#0f4c81"/>
 <text x="526.0" y="378" font-size="12.5" fill="#ffffff" text-anchor="middle">贷款欺诈识别</text>
-<text x="526.0" y="414" font-size="12" fill="#1c2128" text-anchor="middle">房利美</text>
-<path d="M599,373 H617" stroke="#9aa1ab" stroke-width="1.2" fill="none" marker-end="url(#ar)"/>
-<rect x="620" y="352" width="140" height="42" fill="#ffffff" stroke="#9aa1ab"/>
-<text x="690.0" y="378" font-size="12.5" fill="#5b6370" text-anchor="middle">客服与理赔</text>
-<path d="M763,373 H781" stroke="#9aa1ab" stroke-width="1.2" fill="none" marker-end="url(#ar)"/>
-<rect x="784" y="352" width="140" height="42" fill="#ffffff" stroke="#9aa1ab"/>
-<text x="854.0" y="378" font-size="12.5" fill="#5b6370" text-anchor="middle">合规报送</text>
-<text x="16" y="458" font-size="12.5" fill="#a4532e">共同点:都是跨系统取数后排程或审核的环节</text>
+<text x="526.0" y="414" font-size="12" fill="#1a2233" text-anchor="middle">房利美</text>
+<path d="M599,373 H617" stroke="#9aa4b5" stroke-width="1.2" fill="none" marker-end="url(#ar)"/>
+<rect x="620" y="352" width="140" height="42" fill="#ffffff" stroke="#9aa4b5"/>
+<text x="690.0" y="378" font-size="12.5" fill="#5a6478" text-anchor="middle">客服与理赔</text>
+<path d="M763,373 H781" stroke="#9aa4b5" stroke-width="1.2" fill="none" marker-end="url(#ar)"/>
+<rect x="784" y="352" width="140" height="42" fill="#ffffff" stroke="#9aa4b5"/>
+<text x="854.0" y="378" font-size="12.5" fill="#5a6478" text-anchor="middle">合规报送</text>
+<text x="16" y="458" font-size="12.5" fill="#eb6834">共同点:都是跨系统取数后排程或审核的环节</text>
 </svg>

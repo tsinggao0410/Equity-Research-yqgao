@@ -129,7 +129,7 @@ def main():
     # 2 路线图计入示意图,now 徽标,分岔
     assert 'class="rstage now' in doc and "当前主流" in doc and 'class="rfork"' in doc
     # 2b 零章速览版式:导语与关键数据 + 编号分节(单栏,以留白分隔)
-    assert '<div class="brief-hero">' in doc and '<div class="brief">' in doc and '<span class="bno">1</span>' in doc
+    assert '<div class="brief-hero">' in doc and '<div class="brief">' in doc and '<span class="bno">01</span>' in doc
     assert '<div class="plain imp"><p><span class="nh">投资含义:</span>' in doc or '<div class="plain imp"><p><span class="nh">投资含义：</span>' in doc
     assert doc.count('<section class="bcard') == 5 and doc.count('<section class="bcard wide">') >= 2   # 差异表、产品图整行
     assert st["diagrams"]["total"] >= 1 and pm["roadmaps"] == 1 and pm["tech"]["roadmaps"] == 1
