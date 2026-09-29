@@ -1,0 +1,66 @@
+{
+ "generator": "tech-species-primer-pm 3.3.0 render_report_v32(基金经理版)",
+ "title": "Palantir（PLTR.US）业务认知 · 基金经理版",
+ "date": "2026-09-29",
+ "figures_total": 11,
+ "charts": 11,
+ "visuals_non_chart": 0,
+ "images": {
+  "total": 0,
+  "ref": 0,
+  "official": 0,
+  "product": 0,
+  "diagram": 0,
+  "other": 0
+ },
+ "diagrams": {
+  "total": 0,
+  "flow": 0,
+  "chain": 0,
+  "timeline": 0
+ },
+ "tables": 1,
+ "cjk_chars": 1937,
+ "chapters": [
+  {
+   "title": "九、UE与经营效率",
+   "business": false,
+   "charts": 11,
+   "images": 0,
+   "diagrams": 0,
+   "tables": 1,
+   "figures": 11,
+   "flows": 0,
+   "cjk": 1780,
+   "missing": []
+  }
+ ],
+ "cjk_glossary": 0,
+ "xrefs": 11,
+ "xref_missing": [],
+ "halfwidth_next_to_cjk": 12,
+ "fullwidth_punct": 203,
+ "html_bytes": 1112717,
+ "external_refs": 0,
+ "pm": {
+  "ch0": null,
+  "label_leaks": [],
+  "colloquial": [],
+  "tech": null,
+  "roadmaps": 0,
+  "business_no_plain": [],
+  "plain_blocks": 1,
+  "glossary_terms": 0,
+  "glossary_rows": 0,
+  "acronyms": 3,
+  "unexplained": [
+   "UE",
+   "AIP",
+   "NDR"
+  ],
+  "gloss_marked": 0,
+  "todo": 0
+ },
+ "errors": [],
+ "warnings": []
+}

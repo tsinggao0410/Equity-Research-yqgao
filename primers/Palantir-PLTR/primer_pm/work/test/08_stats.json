@@ -1,0 +1,65 @@
+{
+ "generator": "tech-species-primer-pm 3.3.0 render_report_v32(基金经理版)",
+ "title": "Palantir（PLTR.US）业务认知 · 基金经理版",
+ "date": "2026-09-29",
+ "figures_total": 2,
+ "charts": 2,
+ "visuals_non_chart": 0,
+ "images": {
+  "total": 0,
+  "ref": 0,
+  "official": 0,
+  "product": 0,
+  "diagram": 0,
+  "other": 0
+ },
+ "diagrams": {
+  "total": 0,
+  "flow": 0,
+  "chain": 0,
+  "timeline": 0
+ },
+ "tables": 0,
+ "cjk_chars": 827,
+ "chapters": [
+  {
+   "title": "八、非主要业务简述",
+   "business": false,
+   "charts": 2,
+   "images": 0,
+   "diagrams": 0,
+   "tables": 0,
+   "figures": 2,
+   "flows": 0,
+   "cjk": 670,
+   "missing": []
+  }
+ ],
+ "cjk_glossary": 0,
+ "xrefs": 2,
+ "xref_missing": [],
+ "halfwidth_next_to_cjk": 9,
+ "fullwidth_punct": 69,
+ "html_bytes": 1091021,
+ "external_refs": 0,
+ "pm": {
+  "ch0": null,
+  "label_leaks": [],
+  "colloquial": [],
+  "tech": null,
+  "roadmaps": 0,
+  "business_no_plain": [],
+  "plain_blocks": 1,
+  "glossary_terms": 0,
+  "glossary_rows": 0,
+  "acronyms": 2,
+  "unexplained": [
+   "SPAC",
+   "SpaceX"
+  ],
+  "gloss_marked": 0,
+  "todo": 0
+ },
+ "errors": [],
+ "warnings": []
+}

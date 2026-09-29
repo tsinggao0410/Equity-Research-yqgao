@@ -1,0 +1,74 @@
+{
+ "generator": "tech-species-primer-pm 3.3.0 render_report_v32(基金经理版)",
+ "title": "Palantir（PLTR.US）业务认知 · 基金经理版",
+ "date": "2026-09-29",
+ "figures_total": 13,
+ "charts": 8,
+ "visuals_non_chart": 5,
+ "images": {
+  "total": 1,
+  "ref": 0,
+  "official": 0,
+  "product": 0,
+  "diagram": 1,
+  "other": 0
+ },
+ "diagrams": {
+  "total": 4,
+  "flow": 2,
+  "chain": 1,
+  "timeline": 1
+ },
+ "tables": 2,
+ "cjk_chars": 3990,
+ "chapters": [
+  {
+   "title": "五、国际业务（国际政府与国际商业）",
+   "business": true,
+   "charts": 8,
+   "images": 1,
+   "diagrams": 4,
+   "tables": 2,
+   "figures": 13,
+   "flows": 2,
+   "cjk": 3250,
+   "missing": []
+  },
+  {
+   "title": "附录、术语小词典",
+   "business": false,
+   "charts": 0,
+   "images": 0,
+   "diagrams": 0,
+   "tables": 0,
+   "figures": 0,
+   "flows": 0,
+   "cjk": 1030,
+   "missing": []
+  }
+ ],
+ "cjk_glossary": 1030,
+ "xrefs": 11,
+ "xref_missing": [],
+ "halfwidth_next_to_cjk": 9,
+ "fullwidth_punct": 301,
+ "html_bytes": 1130261,
+ "external_refs": 0,
+ "pm": {
+  "ch0": null,
+  "label_leaks": [],
+  "colloquial": [],
+  "tech": null,
+  "roadmaps": 0,
+  "business_no_plain": [],
+  "plain_blocks": 2,
+  "glossary_terms": 22,
+  "glossary_rows": 22,
+  "acronyms": 9,
+  "unexplained": [],
+  "gloss_marked": 18,
+  "todo": 0
+ },
+ "errors": [],
+ "warnings": []
+}
