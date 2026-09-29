@@ -14,7 +14,7 @@
     <rect x="20" y="62" width="296" height="40" fill="#1f3a5f"/>
     <text x="32" y="80">国防与情报(国际政府)</text>
     <rect x="332" y="62" width="296" height="40" fill="#1f3a5f"/>
-    <text x="344" y="80">公共卫生与公共服务(国际政府)</text>
+    <text x="344" y="80">公共卫生(国际政府)</text>
     <rect x="644" y="62" width="296" height="40" fill="#1f3a5f"/>
     <text x="656" y="80">企业(国际商业)</text>
   </g>
@@ -60,7 +60,7 @@
     <rect x="644" y="202" width="296" height="80" fill="#ffffff" stroke="#9aa1ab"/>
     <text x="656" y="224" font-size="12.5" font-weight="700" fill="#1f3a5f">海外企业的 AI 智能体(AIP)</text>
     <text x="656" y="244" font-size="11.5" fill="#5b6370">例:喜力啤酒配送与运输优化</text>
-    <text x="656" y="262" font-size="11.5" fill="#5b6370">(公司 2025 年一季度材料)</text>
+    <text x="656" y="262" font-size="11.5" fill="#5b6370">(2025 年一季度)</text>
   </g>
 
   <!-- 向下箭头 -->
@@ -69,15 +69,10 @@
     <path d="M480,282 V318" marker-end="url(#an)"/>
     <path d="M792,282 V318" marker-end="url(#an)"/>
   </g>
-  <g font-size="11" fill="#1f3a5f">
-    <text x="176" y="304">部署到</text>
-    <text x="488" y="304">部署到</text>
-    <text x="800" y="304">部署到</text>
-  </g>
 
   <!-- Apollo 部署层 -->
   <rect x="20" y="322" width="920" height="124" fill="#f4f6f8" stroke="#1f3a5f" stroke-width="1.5"/>
-  <text x="32" y="344" font-size="12.5" font-weight="700" fill="#1f3a5f">Apollo:同一套代码的部署与升级控制层(环境按 10-K 描述归类)</text>
+  <text x="32" y="344" font-size="12.5" font-weight="700" fill="#1f3a5f">Apollo:同一套代码的部署与升级(环境按 10-K 归类)</text>
   <g font-size="12" fill="#1c2128">
     <rect x="32" y="358" width="166" height="46" fill="#ffffff" stroke="#9aa1ab"/>
     <text x="44" y="378">公有云</text>
