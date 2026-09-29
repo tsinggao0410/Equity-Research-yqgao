@@ -1,0 +1,37 @@
+{
+ "name": "Palantir",
+ "code": "PLTR.US",
+ "type": "company",
+ "title": "Palantir(PLTR.US)业务认知 · 基金经理版",
+ "date": "2026-09-29",
+ "out_stem": "Palantir-业务认知-基金经理版",
+ "feishu_name": "Palantir科普-基金经理版-260929",
+ "nav": {
+  "00": "先看这里",
+  "03": "主要业务",
+  "06": "客户与治理",
+  "08": "经营与跟踪",
+  "12": "附录"
+ },
+ "gate": {
+  "min_cjk": 10000
+ },
+ "ref_bg": [],
+ "edition": "pm",
+ "plain": {
+  "min_glossary": 15,
+  "max_unexplained": 3,
+  "ch0_min": 400,
+  "ch0_max": 1400,
+  "ch0_max_acr": 3,
+  "ch0_sec_max": 160,
+  "ch0_lead_max": 90,
+  "ch0_min_cases": 3,
+  "tech": true,
+  "allow": [
+   "PLTR",
+   "Palantir"
+  ]
+ },
+ "_note": "nav 键是两位章号(该章前开始新的目录分组),按最终章节改;gate 可加 min_figs/min_charts/min_visuals/min_tables (默认 55/30/20/10,只在用户同意时下调);ref_bg 填年报、招股书按页文本(相对 R),照抄检查时当公共语料。edition=pm 时 merge_card 加 --pm 验收;plain.allow 填公司英文名、代码等不算术语的词;plain.tech=false 须用户同意。"
+}
