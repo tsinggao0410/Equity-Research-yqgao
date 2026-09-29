@@ -182,6 +182,9 @@ a.xref:hover{border-bottom-style:solid;}
 .bbody .plain,.bbody .plain.an,.bbody .plain.eg{background:none;border:0;padding:0;margin:0 0 6px;font-size:14.3px;line-height:1.8;border-radius:0;}
 .bbody .plain.eg{color:var(--ink);}
 .bbody figure{border:0;box-shadow:none;padding:0;margin:12px 0 2px;background:none;}
+.bbody figure.shot{text-align:center;margin-top:10px;}
+.bbody figure.shot .fig-h,.bbody figure.shot figcaption{text-align:left;}
+.bbody figure.shot>img{max-height:460px;border:1px solid var(--line);border-radius:8px;}
 .bbody .tblock{margin:10px 0 4px;}
 .bbody .tl{margin:8px 0 4px 4px;}
 .bbody .srcline{margin:4px 0 0;}

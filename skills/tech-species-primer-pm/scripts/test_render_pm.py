@@ -14,6 +14,8 @@ from render_report_v32 import PM_DEFAULT, Renderer, pm_check  # noqa: E402
 SKILL = HERE.parent
 G = dict(PM_DEFAULT)
 
+IMG = '![示意图:测试产品界面](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg== "来源:自测")'
+
 MD_OK = """# 测试公司(TEST.US)业务认知
 
 > 2026-09-29 · 基金经理版 · 自测
@@ -22,14 +24,6 @@ MD_OK = """# 测试公司(TEST.US)业务认知
 
 > [!lead] **测试公司卖一种让机器互相说话的软件。**客户是工厂。
 
-### 业务本质
-
-> [!analogy] 它像工厂里的翻译,把各台机器的方言翻成普通话。公司把这层叫 Ontology(本体)。工厂以前要派人挨台抄表,现在屏幕上直接看到每台机器的状态,还能一键下指令,指令会写回原来的系统去执行,不用再开会对表格。
-
-### 客户案例
-
-> [!example] 某车企用它之前,查一台设备停机原因要两天;用了之后,十分钟就能在屏幕上找到是哪个零件出了问题,并直接派单给维修班组。
-
 ### 与普通 SaaS 的差异
 
 表 0-1　测试公司和普通 SaaS 差在哪
@@ -37,6 +31,16 @@ MD_OK = """# 测试公司(TEST.US)业务认知
 | 比什么 | 普通 SaaS | 测试公司 |
 |---|---|---|
 | 管什么 | 一个部门 | 跨部门 |
+
+### 工作原理
+
+> [!analogy] 它像工厂里的翻译,把各台机器的方言翻成普通话。公司把这层叫 Ontology(本体)。工厂以前要派人挨台抄表,现在屏幕上直接看到每台机器的状态,还能一键下指令,指令会写回原来的系统去执行,不用再开会对表格。
+
+![示意图:测试产品界面](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg== "来源:自测")
+
+### 客户案例
+
+> [!example] 某车企用它之前,查一台设备停机原因要两天;用了之后,十分钟就能在屏幕上找到是哪个零件出了问题,并直接派单给维修班组。
 
 ### 价值流向
 
@@ -108,7 +112,7 @@ def main():
     assert 'class="rstage now' in doc and "当前主流" in doc and 'class="rfork"' in doc
     # 2b 零章速览版式:摘要面板 + 编号卡片;落单的半宽卡片自动整行
     assert '<div class="brief-hero">' in doc and '<div class="brief">' in doc and '<span class="bno">01</span>' in doc
-    assert doc.count('<section class="bcard') == 5 and doc.count('<section class="bcard wide">') >= 1
+    assert doc.count('<section class="bcard') == 5 and doc.count('<section class="bcard wide">') >= 2   # 差异表、产品图整行
     assert st["diagrams"]["total"] >= 1 and pm["roadmaps"] == 1 and pm["tech"]["roadmaps"] == 1
     # 3 词典:行锚点、悬停释义每章只加一次、不进词典章本身
     assert 'id="gl-1"' in doc and pm["glossary_terms"] == 16
@@ -119,6 +123,7 @@ def main():
     # 5 零章指标
     d0 = pm["ch0"]
     assert d0["first"] and d0["has_analogy"] and d0["has_example"] and d0["compare"] and d0["plain"] == 2, d0
+    assert d0["compare_first"] and d0["images"] == 1, d0
     assert pm["tech"]["compare"] and pm["tech"]["roadmaps"] == 1, pm["tech"]
     assert pm["business_no_plain"] == [], pm["business_no_plain"]
     GS = dict(G, ch0_min=200)          # 自测文档零章较短
@@ -133,6 +138,12 @@ def main():
         "## 二、技术与产品:原理、差异与演变", "## 二、技术白话:原理、差异与演变")
     f = ";".join(pm_check(render(leak)[1], GS))
     assert "写作标签 2 处" in f, f
+    # 5e 先比后讲:差异节不在首位、零章没有产品图 → 报出
+    moved = MD_OK.replace(IMG, "")
+    k1 = moved.index("### 与普通 SaaS 的差异"); k2 = moved.index("### 工作原理"); k3 = moved.index("### 客户案例")
+    moved = moved[:k1] + moved[k2:k3] + moved[k1:k2] + moved[k3:]
+    f = ";".join(pm_check(render(moved)[1], GS))
+    assert "第一个小节应是「与 XX" in f and "零章缺产品图" in f, f
     # 5d 口语化小标题(第三轮反馈):「钱怎么来」「最该盯的一件事」→ 报出
     col = MD_OK.replace("### 价值流向\n", "### 钱怎么来\n").replace("### 跟踪指标\n", "### 最该盯的一件事\n")
     f = ";".join(pm_check(render(col)[1], GS))

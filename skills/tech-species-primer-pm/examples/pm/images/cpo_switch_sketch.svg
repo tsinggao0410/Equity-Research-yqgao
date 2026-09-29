@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" width="720" height="440" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif">
+  <rect x="0" y="0" width="720" height="440" fill="#f7f8fa"/>
+  <!-- 左:可插拔 -->
+  <text x="185" y="30" font-size="14" font-weight="700" fill="#5a6478" text-anchor="middle">可插拔光模块交换机(前代)</text>
+  <rect x="20" y="44" width="330" height="330" rx="10" fill="#ffffff" stroke="#cfd8e4" stroke-width="1.5"/>
+  <text x="34" y="66" font-size="11" fill="#9aa4b5">主板(俯视)</text>
+  <rect x="150" y="110" width="70" height="70" rx="6" fill="#0f4c81"/>
+  <text x="185" y="142" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">交换</text><text x="185" y="158" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">芯片</text>
+  <g stroke="#eb6834" stroke-width="1.6" fill="none">
+    <path d="M160 180 C 160 250, 52 270, 52 332"/><path d="M170 180 C 170 250, 92 270, 92 332"/>
+    <path d="M180 180 C 180 250, 132 270, 132 332"/><path d="M190 180 C 190 250, 172 270, 172 332"/>
+    <path d="M200 180 C 200 250, 212 270, 212 332"/><path d="M205 180 C 210 250, 252 270, 252 332"/>
+    <path d="M210 180 C 220 250, 292 270, 292 332"/>
+  </g>
+  <rect x="70" y="232" width="110" height="22" rx="11" fill="#fff4ee" stroke="#eb6834"/>
+  <text x="125" y="247" font-size="11" fill="#c2521f" text-anchor="middle">电走线 十几厘米</text>
+  <g fill="#e8f0f8" stroke="#0f4c81" stroke-width="1.2">
+    <rect x="38" y="332" width="28" height="42"/><rect x="78" y="332" width="28" height="42"/><rect x="118" y="332" width="28" height="42"/>
+    <rect x="158" y="332" width="28" height="42"/><rect x="198" y="332" width="28" height="42"/><rect x="238" y="332" width="28" height="42"/>
+    <rect x="278" y="332" width="28" height="42"/>
+  </g>
+  <line x1="20" y1="374" x2="350" y2="374" stroke="#5a6478" stroke-width="3"/>
+  <text x="185" y="396" font-size="11.5" fill="#1a2233" text-anchor="middle">前面板:一排光模块(内含 DSP、激光器、探测器)</text>
+  <text x="185" y="414" font-size="11" fill="#5a6478" text-anchor="middle">单个模块故障,拔出更换</text>
+  <!-- 右:CPO -->
+  <text x="535" y="30" font-size="14" font-weight="700" fill="#0f4c81" text-anchor="middle">CPO 交换机</text>
+  <rect x="370" y="44" width="330" height="330" rx="10" fill="#ffffff" stroke="#0f4c81" stroke-width="1.5"/>
+  <text x="384" y="66" font-size="11" fill="#9aa4b5">主板(俯视)</text>
+  <rect x="455" y="80" width="160" height="160" rx="10" fill="#f4f6f9" stroke="#0f4c81" stroke-dasharray="5 4" stroke-width="1.4"/>
+  <text x="535" y="98" font-size="10.5" fill="#0f4c81" text-anchor="middle">同一封装基板</text>
+  <rect x="500" y="125" width="70" height="70" rx="6" fill="#0f4c81"/>
+  <text x="535" y="157" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">交换</text><text x="535" y="173" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">芯片</text>
+  <g fill="#eb6834">
+    <rect x="468" y="130" width="22" height="18" rx="3"/><rect x="468" y="172" width="22" height="18" rx="3"/>
+    <rect x="580" y="130" width="22" height="18" rx="3"/><rect x="580" y="172" width="22" height="18" rx="3"/>
+    <rect x="505" y="103" width="22" height="16" rx="3"/><rect x="543" y="103" width="22" height="16" rx="3"/>
+    <rect x="505" y="203" width="22" height="16" rx="3"/><rect x="543" y="203" width="22" height="16" rx="3"/>
+  </g>
+  <rect x="610" y="96" width="82" height="22" rx="11" fill="#fff4ee" stroke="#eb6834"/>
+  <text x="651" y="111" font-size="11" fill="#c2521f" text-anchor="middle">光引擎 ×8</text>
+  <rect x="604" y="206" width="92" height="22" rx="11" fill="#fff4ee" stroke="#eb6834"/>
+  <text x="650" y="221" font-size="11" fill="#c2521f" text-anchor="middle">电走线 几毫米</text>
+  <g stroke="#2a78d6" stroke-width="1.3" fill="none">
+    <path d="M516 219 C 510 280, 420 290, 410 332"/><path d="M522 219 C 520 285, 450 295, 446 332"/>
+    <path d="M548 219 C 548 285, 482 295, 482 332"/><path d="M556 219 C 560 285, 518 300, 518 332"/>
+    <path d="M479 190 C 440 260, 420 300, 400 332" opacity=".7"/><path d="M591 190 C 620 260, 600 300, 590 332" opacity=".7"/>
+    <path d="M591 148 C 650 230, 630 300, 626 332" opacity=".7"/><path d="M479 148 C 420 200, 420 290, 430 332" opacity=".5"/>
+  </g>
+  <rect x="440" y="262" width="96" height="22" rx="11" fill="#e8f0f8" stroke="#2a78d6"/>
+  <text x="488" y="277" font-size="11" fill="#1f5fa8" text-anchor="middle">光纤引到面板</text>
+  <g fill="#ffffff" stroke="#2a78d6" stroke-width="1.2">
+    <rect x="392" y="332" width="24" height="42"/><rect x="428" y="332" width="24" height="42"/><rect x="464" y="332" width="24" height="42"/>
+    <rect x="500" y="332" width="24" height="42"/><rect x="578" y="332" width="24" height="42"/><rect x="614" y="332" width="24" height="42"/>
+  </g>
+  <g fill="#fff4ee" stroke="#eb6834" stroke-width="1.4">
+    <rect x="542" y="332" width="26" height="42"/><rect x="652" y="332" width="30" height="42"/>
+  </g>
+  <line x1="370" y1="374" x2="700" y2="374" stroke="#0f4c81" stroke-width="3"/>
+  <text x="535" y="396" font-size="11.5" fill="#1a2233" text-anchor="middle">前面板:光纤接口 + 外置激光光源(橙色)</text>
+  <text x="535" y="414" font-size="11" fill="#5a6478" text-anchor="middle">光引擎难以单独更换,光源可插拔</text>
+</svg>

@@ -108,7 +108,7 @@ PM_DEFAULT = dict(min_glossary=15, max_unexplained=3, ch0_min=500, ch0_max=2200,
 CH0_RE = re.compile(r"一分钟看懂|速览")
 TECH_RE = re.compile(r"技术白话|是怎么回事|怎么回事|往哪走|技术路径|技术演进|技术演变|技术解析|技术与产品")
 CMP_RE = re.compile(r"区别|差在哪|差异|不同|对比|比较|替代方案|相比|比一比")      # 「与同类 / 替代方案的差异」节
-ANALOGY_H3 = re.compile(r"本质|像什么|比方|类比|比喻")
+ANALOGY_H3 = re.compile(r"原理|本质|像什么|比方|类比|比喻")
 EXAMPLE_H3 = re.compile(r"例子|案例|实例")
 # 口语化 / 问句式表述(基金经理第三轮反馈):改成买方用语,如 价值流向、技术演变、跟踪指标、业务本质、客户案例、与 XX 的差异
 COLLOQ_RE = re.compile(r"钱怎么来|钱怎么流|钱会流向谁|钱往哪里?流|一步步变过来|最该盯的一件事|说白了|大白话|它像什么|一个真实的例子|有什么不同|到底差在哪|是怎么回事|往哪走")
@@ -1672,7 +1672,9 @@ class Renderer:
             d0 = dict(title=ch0["title"], first=(real[0] is ch0), cjk=cjk_count(txt), plain=ch0["plain"],
                       has_analogy=bool(ch0.get("has_analogy") or any(ANALOGY_H3.search(h) for h in ch0["h3"]) or "打个比方" in txt),
                       has_example=bool(ch0.get("has_eg") or any(EXAMPLE_H3.search(h) for h in ch0["h3"]) or "举个例子" in txt),
-                      compare=cmp_of(ch0), acronyms=per_ch.get(ch0["id"], []))
+                      compare=cmp_of(ch0), acronyms=per_ch.get(ch0["id"], []),
+                      images=ch0["st"].get("images", 0),
+                      compare_first=bool(ch0["h3"]) and bool(CMP_RE.search(ch0["h3"][0])))
         colloq = sorted({m.group(0) for _cid, t in self.pm_prose for m in COLLOQ_RE.finditer(plain(t))}
                         | {m.group(0) for c in real for h in [c["title"]] + c["h3"] for m in COLLOQ_RE.finditer(h)})
         leaks = [plain(t)[:24] for _cid, t in self.pm_prose if LABEL_LEAK.match(t)]
@@ -1970,6 +1972,10 @@ def pm_check(st: dict, g: dict) -> list:
             fails.append("零章缺案例([!example] 块,或节题含「案例」;具体客户或场景的前后对比)")
         if not d0["compare"]:
             fails.append("零章缺「与 XX 的差异」对比节(节题含 差异 / 区别 / 对比)与对比表")
+        elif not d0.get("compare_first"):
+            fails.append("零章第一个小节应是「与 XX(前代或同类方案)的差异」:读者先靠熟悉的参照物理解新产品")
+        if not d0.get("images"):
+            fails.append("零章缺产品图(工作原理之后放一张:官网 / 发布会 / 招股书 / 研报原图优先,拿不到时用示意图并注明)")
         if len(d0["acronyms"]) > g["ch0_max_acr"]:
             fails.append("零章英文缩写 %d 个 > %d(%s)" % (len(d0["acronyms"]), g["ch0_max_acr"], "、".join(d0["acronyms"][:10])))
     if g["tech"]:
