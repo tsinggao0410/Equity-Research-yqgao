@@ -105,11 +105,13 @@ MUST_HAVE = [  # 每个主要业务章必须有的图(设计规格 §3「必放�
 ]
 # ---- 基金经理版(PM)验收:DESIGN_pm.md §5
 PM_DEFAULT = dict(min_glossary=15, max_unexplained=3, ch0_min=500, ch0_max=2200, ch0_max_acr=3, tech=True)
-CH0_RE = re.compile(r"一分钟看懂|大白话|白话速览")
-TECH_RE = re.compile(r"技术白话|是怎么回事|怎么回事|往哪走|技术路径|技术演进")
-CMP_RE = re.compile(r"区别|差在哪|不同|对比|比较|替代方案|相比|比一比")      # 「和同类 / 替代方案比」节
-ANALOGY_H3 = re.compile(r"像什么|比方|类比|比喻")
+CH0_RE = re.compile(r"一分钟看懂|速览")
+TECH_RE = re.compile(r"技术白话|是怎么回事|怎么回事|往哪走|技术路径|技术演进|技术演变|技术解析|技术与产品")
+CMP_RE = re.compile(r"区别|差在哪|差异|不同|对比|比较|替代方案|相比|比一比")      # 「与同类 / 替代方案的差异」节
+ANALOGY_H3 = re.compile(r"本质|像什么|比方|类比|比喻")
 EXAMPLE_H3 = re.compile(r"例子|案例|实例")
+# 口语化 / 问句式表述(基金经理第三轮反馈):改成买方用语,如 价值流向、技术演变、跟踪指标、业务本质、客户案例、与 XX 的差异
+COLLOQ_RE = re.compile(r"钱怎么来|钱怎么流|钱会流向谁|钱往哪里?流|一步步变过来|最该盯的一件事|说白了|大白话|它像什么|一个真实的例子|有什么不同|到底差在哪|是怎么回事|往哪走")
 # 页面上不许出现的「写作标签」:段首「白话:」「打个比方:」这类前缀,章节标题里的「白话」
 LABEL_LEAK = re.compile(r"^\s*(?:\*\*)?(白话|大白话|打个比方|打个比喻|举个例子|一句话|钱怎么来|技术怎么变|要盯的一件事)\s*[:：]")
 GLOSS_CH_RE = re.compile(r"词典|名词表|术语表")
@@ -1544,7 +1546,7 @@ class Renderer:
             if not e or e["id"] in seen:
                 return m.group(0)
             seen.add(e["id"])
-            tip = plain(e["expl"]) + (("　可以理解成：" + plain(e["ana"])) if e.get("ana") else "")
+            tip = plain(e["expl"]) + (("　可以理解为：" + plain(e["ana"])) if e.get("ana") else "")
             return '<span class="gl" tabindex="0" data-gl="%s" data-tip="%s">%s</span>' % (e["id"], esc(tip), m.group(0))
         for i, seg in enumerate(parts):
             if seg.startswith("<"):
@@ -1572,12 +1574,12 @@ class Renderer:
         if len(stages) < 2:
             self.err("roadmap 至少要 2 个阶段", b["line"])
         keys = ["solves", "cost", "who"]
-        rows = spec.get("rows") or ["解决了什么", "代价", "谁受益谁受损"]
+        rows = spec.get("rows") or ["解决的问题", "代价", "受益与受损方"]
         rk = [(r[0], r[1]) if isinstance(r, (list, tuple)) else (r, keys[k] if k < len(keys) else "r%d" % k) for k, r in enumerate(rows)]
         out = ['<div class="rm" style="--n:%d">' % max(1, len(stages))]
         for k, st in enumerate(stages):
             cls = "rstage" + "".join(" " + f for f in ("now", "future", "hot") if st.get(f)) + (" last" if k == len(stages) - 1 else "")
-            badge = '<span class="rnow">今天在这</span>' if st.get("now") else ('<span class="rfut">还没到</span>' if st.get("future") else "")
+            badge = '<span class="rnow">当前主流</span>' if st.get("now") else ('<span class="rfut">尚未量产</span>' if st.get("future") else "")
             h = ['<div class="%s">' % cls, '<div class="rera">%s%s</div>' % (inline(str(st.get("era", ""))), badge),
                  '<div class="rname">%s</div>' % inline(str(st.get("name", "")))]
             if st.get("gist"):
@@ -1592,15 +1594,15 @@ class Renderer:
         out.append("</div>")
         fork = spec.get("fork") or {}
         if fork.get("options"):
-            fo = ['<div class="rfork"><div class="rfl">%s</div><div class="rfo">' % inline(str(fork.get("label") or "下一步的分岔"))]
+            fo = ['<div class="rfork"><div class="rfl">%s</div><div class="rfo">' % inline(str(fork.get("label") or "下一阶段的可能路径"))]
             for o in fork["options"]:
                 for key in ("if", "signal"):
                     if o.get(key):
                         self._prose(str(o[key]))
                 fo.append('<div class="ropt"><div class="rname">%s</div>%s%s</div>' % (
                     inline(str(o.get("name", ""))),
-                    ('<div class="rrow"><span class="rl2">赢的条件</span>%s</div>' % inline(str(o["if"]))) if o.get("if") else "",
-                    ('<div class="rrow"><span class="rl2">看什么信号</span>%s</div>' % inline(str(o["signal"]))) if o.get("signal") else ""))
+                    ('<div class="rrow"><span class="rl2">成立条件</span>%s</div>' % inline(str(o["if"]))) if o.get("if") else "",
+                    ('<div class="rrow"><span class="rl2">验证信号</span>%s</div>' % inline(str(o["signal"]))) if o.get("signal") else ""))
             fo.append("</div></div>")
             out.append("".join(fo))
         if self.cur is not None:
@@ -1624,7 +1626,7 @@ class Renderer:
                 (' id="%s"' % gid) if gid else "", inline(e["term"], False), inline(e["expl"]),
                 inline(e["ana"]) if e["ana"] else "—", inline(e["why"]) if e["why"] else "—"))
         self.glossary_rows += len(es)
-        head = "".join("<th>%s</th>" % x for x in ("术语", "是什么", "可以理解成", "对投资意味着什么"))
+        head = "".join("<th>%s</th>" % x for x in ("术语", "含义", "可以理解为", "投资相关性"))
         return '<div class="tblock gloss"><div class="tbl-wrap"><table><thead><tr>%s</tr></thead><tbody>%s</tbody></table></div></div>' % (
             head, "".join(rows))
 
@@ -1671,17 +1673,57 @@ class Renderer:
                       has_analogy=bool(ch0.get("has_analogy") or any(ANALOGY_H3.search(h) for h in ch0["h3"]) or "打个比方" in txt),
                       has_example=bool(ch0.get("has_eg") or any(EXAMPLE_H3.search(h) for h in ch0["h3"]) or "举个例子" in txt),
                       compare=cmp_of(ch0), acronyms=per_ch.get(ch0["id"], []))
+        colloq = sorted({m.group(0) for _cid, t in self.pm_prose for m in COLLOQ_RE.finditer(plain(t))}
+                        | {m.group(0) for c in real for h in [c["title"]] + c["h3"] for m in COLLOQ_RE.finditer(h)})
         leaks = [plain(t)[:24] for _cid, t in self.pm_prose if LABEL_LEAK.match(t)]
         leaks += ["标题:" + c["title"] for c in real if "白话" in c["title"]]
         leaks += ["标题:" + h for c in real for h in c["h3"] if "白话" in h]
         return dict(
-            ch0=d0, label_leaks=leaks,
+            ch0=d0, label_leaks=leaks, colloquial=colloq,
             tech=(dict(title=tech["title"], roadmaps=tech["roadmap"], compare=cmp_of(tech)) if tech is not None else None),
             roadmaps=sum(c["roadmap"] for c in real),
             business_no_plain=[c["title"] for c, x in zip(real, chapters) if x["business"] and not c["plain_top"]],
             plain_blocks=sum(c["plain"] for c in real),
             glossary_terms=len(self.gloss), glossary_rows=self.glossary_rows,
             acronyms=len(first), unexplained=unexpl, gloss_marked=sum(len(c["gl_seen"]) for c in real))
+
+    def _brief(self, c: dict):
+        """零章速览版式:章首导语与关键数据收进一个摘要面板,每个 ### 小节排成带序号的卡片(两列网格)。
+        含表格或图的卡片占满整行;两张整行卡片之间落单的半宽卡片自动改成整行,避免右侧留空。"""
+        parts = c["parts"]
+        head = parts[:1] if parts and parts[0].startswith("<h2") else []
+        hero, cards, cur = [], [], None
+        for h in parts[len(head):]:
+            if h.startswith("<h3"):
+                cur = [h]
+                cards.append(cur)
+            elif cur is None:
+                hero.append(h)
+            else:
+                cur.append(h)
+        if not cards:
+            return
+        wide = [bool(re.search(r'<figure|class="tblock|<table|class="kpis', "".join(cd[1:]))) for cd in cards]
+        k = 0
+        while k < len(cards):          # 连续半宽卡片为奇数时,最后一张改整行
+            if wide[k]:
+                k += 1
+                continue
+            j = k
+            while j < len(cards) and not wide[j]:
+                j += 1
+            if (j - k) % 2 == 1:
+                wide[j - 1] = True
+            k = j
+        out = head[:]
+        if hero:
+            out.append('<div class="brief-hero">%s</div>' % "".join(hero))
+        cells = []
+        for n, (cd, w) in enumerate(zip(cards, wide), 1):
+            h3 = re.sub(r"^<h3([^>]*)>", lambda m: '<h3%s><span class="bno">%02d</span>' % (m.group(1), n), cd[0], count=1)
+            cells.append('<section class="bcard%s">%s<div class="bbody">%s</div></section>' % (" wide" if w else "", h3, "".join(cd[1:])))
+        out.append('<div class="brief">%s</div>' % "".join(cells))
+        c["parts"] = out
 
     # ------------------------------------------------------------ 组装
     def _auto_groups(self):
@@ -1838,6 +1880,9 @@ class Renderer:
         if not self.title:
             self.warn("没有一级标题 #")
             self.title = self.md_path.stem
+        ch0 = next((c for c in self.chapters if not c.get("pre") and CH0_RE.search(c["title"])), None)
+        if ch0 is not None:
+            self._brief(ch0)
         main = ["<h1>%s</h1>" % inline(self.title)]
         if self.meta_html:
             main.append('<div class="meta">%s</div>' % self.meta_html)
@@ -1913,32 +1958,35 @@ def pm_check(st: dict, g: dict) -> list:
     fails = []
     d0 = pm["ch0"]
     if not d0:
-        fails.append("缺零章「一分钟看懂」(章题含 一分钟看懂 / 大白话 / 白话速览)")
+        fails.append("缺零章「业务速览」(章题含 速览)")
     else:
         if not d0["first"]:
             fails.append("零章「%s」不在最前" % d0["title"])
         if not (g["ch0_min"] <= d0["cjk"] <= g["ch0_max"]):
             fails.append("零章汉字 %d 不在 %d–%d" % (d0["cjk"], g["ch0_min"], g["ch0_max"]))
         if not d0["has_analogy"]:
-            fails.append("零章缺类比([!analogy] 块,或节题含「像什么」)")
+            fails.append("零章缺类比([!analogy] 块,或节题含「本质」)")
         if not d0["has_example"]:
-            fails.append("零章缺真实例子([!example] 块,或节题含「例子 / 案例」;具体客户或场景的前后对比)")
+            fails.append("零章缺案例([!example] 块,或节题含「案例」;具体客户或场景的前后对比)")
         if not d0["compare"]:
-            fails.append("零章缺「和同类 / 替代方案有什么不同」对比节(节题含 不同 / 区别 / 对比 / 差在哪)与对比表")
+            fails.append("零章缺「与 XX 的差异」对比节(节题含 差异 / 区别 / 对比)与对比表")
         if len(d0["acronyms"]) > g["ch0_max_acr"]:
             fails.append("零章英文缩写 %d 个 > %d(%s)" % (len(d0["acronyms"]), g["ch0_max_acr"], "、".join(d0["acronyms"][:10])))
     if g["tech"]:
         if not pm["tech"]:
-            fails.append("缺技术章(章题含 是怎么回事 / 往哪走 / 技术路径 / 技术演进)")
+            fails.append("缺技术章(章题含 技术与产品 / 技术解析 / 技术演变)")
         else:
             if pm["tech"]["roadmaps"] < 1:
                 fails.append("技术章缺路线图(roadmap 块)")
             if not pm["tech"]["compare"]:
-                fails.append("技术章缺「和替代方案比差在哪」对比节(节题含 不同 / 区别 / 对比 / 差在哪)与对比表")
+                fails.append("技术章缺「与替代方案的差异」对比节(节题含 差异 / 区别 / 对比)与对比表")
     for t in pm["business_no_plain"]:
         fails.append("「%s」第一个 ### 前缺通俗解释块([!plain] / [!analogy] / [!example])" % t)
     if pm.get("todo"):
         fails.append("正文残留 TODO %d 处(模板占位没写完)" % pm["todo"])
+    if pm.get("colloquial"):
+        fails.append("口语化表述 %d 种(改成买方用语,如「价值流向」「技术演变」「跟踪指标」「与 XX 的差异」):%s" % (
+            len(pm["colloquial"]), "、".join(pm["colloquial"][:8])))
     if pm.get("label_leaks"):
         fails.append("页面上出现写作标签 %d 处(段首「白话:」「打个比方:」或标题含「白话」;改成自然句或小标题):%s" % (
             len(pm["label_leaks"]), "、".join(pm["label_leaks"][:6])))

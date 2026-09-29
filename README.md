@@ -24,7 +24,7 @@ onepagers/          40 份首次覆盖，按行业分 A–F 六组，组内保�
   └── INDEX.md                  ← 全库索引：分组总览 + 六张分组表 + 重复覆盖 + 版本时间线
 methodology/        深度思考方法论（中英文对照）+ 现场版 17 页 deck（HTML/PDF）+ 演示动线
 skills/             equity-onepager-interactive —— 生成上面每一份的 skill，全量
-                    tech-species-primer-pm —— 业务认知卡·基金经理版（通俗层：一分钟看懂 / 和竞品差在哪 / 技术路线图 / 术语悬停释义）
+                    tech-species-primer-pm —— 业务认知卡·基金经理版（业务速览 / 与竞品的差异 / 技术演变路线图 / 术语悬停释义）
 models/             顺络电子 002138 买方模型、三期限研究总纲
 ```
 
@@ -106,8 +106,8 @@ Then say *"make me a one-pager on X"* or *"help me get up to speed on company X.
 cp -r skills/tech-species-primer-pm ~/.claude/skills/        # 或 python3 skills/tech-species-primer-pm/scripts/pack_skill.py 打成 .skill 上传 claude.ai
 ```
 
-在 tech-species-primer v3.2（科普卡）之上加一层通俗解释，给懂财务估值、不懂技术的基金经理读：最前面「一分钟看懂」（它像什么 / 一个真实的例子 / 和同类产品有什么不同 / 钱怎么来），技术章讲清和替代方案差在哪（结构对比图 + 逐项对比表）并配技术演进路线图（每一代解决了什么、代价、谁受益谁受损），每个业务章开头一段通俗解释，术语词典与正文悬停释义，外行复述评审；页面上不写「白话」这类标签。说「**做一份给基金经理看的 XX 业务认知**」或「**用大白话讲清 XX 的业务和技术路径**」触发。改动与起因见 [`CHANGELOG-PM-20260929.md`](skills/tech-species-primer-pm/CHANGELOG-PM-20260929.md)，写法样例见 [`examples/pm/`](skills/tech-species-primer-pm/examples/pm/)。
-Adds a plain-language layer on top of the v3.2 primer for fund managers who know finance but not the technology: a one-minute summary up front, an explicit "how is this different from X" comparison (e.g. Palantir vs. ordinary SaaS; CPO vs. pluggable optics and NPO), a technology-path chapter with a roadmap (what each generation solved, what it cost, who won and lost), plain-language openers per business chapter, a glossary with hover definitions, and a lay-reader retell review. No writing-style labels appear on the page.
+在 tech-species-primer v3.2（科普卡）之上加一层通俗解释，给懂财务估值、不懂技术的基金经理读：最前面「业务速览」（摘要面板：定位与关键数据；编号卡片：业务本质 / 客户案例 / 与同类产品的差异 / 价值流向 / 技术演变 / 跟踪指标），技术章讲清与替代方案的差异（结构对比图 + 逐项对比表）并配技术演变路线图（每一代解决的问题、代价、受益与受损方），每个业务章开头一段通俗解释，术语词典与正文悬停释义，外行复述评审；用语遵循 buyside-voice，页面上不写「白话」这类标签。说「**做一份给基金经理看的 XX 业务认知**」或「**用通俗的话讲清 XX 的业务和技术演变**」触发。改动与起因见 [`CHANGELOG-PM-20260929.md`](skills/tech-species-primer-pm/CHANGELOG-PM-20260929.md)，写法样例见 [`examples/pm/`](skills/tech-species-primer-pm/examples/pm/)。
+Adds a plain-language layer on top of the v3.2 primer for fund managers who know finance but not the technology: a tear-sheet style business overview up front (positioning, key figures, numbered cards), an explicit "how is this different from X" comparison (e.g. Palantir vs. ordinary SaaS; CPO vs. pluggable optics and NPO), a technology-path chapter with a roadmap (what each generation solved, what it cost, who won and lost), plain-language openers per business chapter, a glossary with hover definitions, and a lay-reader retell review. No writing-style labels appear on the page.
 
 ---
 

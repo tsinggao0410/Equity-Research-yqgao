@@ -158,6 +158,34 @@ a.xref:hover{border-bottom-style:solid;}
 .plain.eg{background:#f2f8f6;border-left-color:#a7cfc3;}
 .plain p{margin:5px 0;}
 .plain .nh{font-weight:700;}
+/* 基金经理版:零章速览版式(摘要面板 + 编号卡片网格) */
+.brief-hero{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:12px;
+  padding:18px 22px 14px;margin:16px 0 18px;box-shadow:0 1px 3px rgba(16,24,40,.05);}
+.brief-hero p.lead,.brief-hero div.lead{background:none;border:0;padding:0;margin:0 0 4px;font-size:16px;line-height:1.85;color:var(--ink);}
+.brief-hero p.lead strong,.brief-hero div.lead strong{color:var(--accent);}
+.brief-hero .kpis{margin:14px 0 2px;gap:0;border-top:1px solid var(--line);padding-top:12px;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));}
+.brief-hero .kpi{border:0;border-radius:0;background:none;padding:2px 14px;border-left:1px solid var(--line);}
+.brief-hero .kpi:first-child{border-left:0;padding-left:0;}
+.brief-hero .kpi .val{font-size:18.5px;}
+.brief-hero .srcline{margin-top:8px;}
+.brief{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:4px 0 8px;}
+.bcard{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 18px 12px;min-width:0;
+  box-shadow:0 1px 2px rgba(16,24,40,.04);}
+.bcard.wide{grid-column:1 / -1;}
+.bcard h3{margin:0 0 10px;padding:0 0 9px;border-left:0;border-bottom:1px solid var(--line);font-size:15.5px;color:var(--ink);
+  display:flex;align-items:center;gap:9px;}
+.bcard h3 .bno{font-size:11.5px;font-weight:700;color:var(--accent);background:var(--accent-soft);border-radius:6px;
+  padding:1px 7px;letter-spacing:.5px;font-variant-numeric:tabular-nums;}
+.bbody{font-size:14.3px;line-height:1.8;}
+.bbody>p:first-child{margin-top:0;}
+.bbody .plain,.bbody .plain.an,.bbody .plain.eg{background:none;border:0;padding:0;margin:0 0 6px;font-size:14.3px;line-height:1.8;border-radius:0;}
+.bbody .plain.eg{color:var(--ink);}
+.bbody figure{border:0;box-shadow:none;padding:0;margin:12px 0 2px;background:none;}
+.bbody .tblock{margin:10px 0 4px;}
+.bbody .tl{margin:8px 0 4px 4px;}
+.bbody .srcline{margin:4px 0 0;}
+@media (max-width:1000px){ .brief{grid-template-columns:minmax(0,1fr);} .brief-hero .kpi{border-left:0;padding-left:0;} }
 /* 基金经理版:技术演进路线图 */
 .rm{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));column-gap:26px;margin:8px 0 6px;}
 .rstage{position:relative;background:#fff;border:1px solid var(--box);border-radius:10px;padding:9px 11px 10px;min-width:0;}
@@ -327,7 +355,7 @@ details.figidx>summary{cursor:pointer;font-size:13.5px;font-weight:600;color:var
   body{background:#fff;font-size:12.5px;}
   .layout{display:block;max-width:none;}
   main{padding:0;}
-  figure,.shot,.card,.kpi,.tblock,.note,.plain,.tl,.two-up,.three-up,.flow,.chain,.lineup,.rm{break-inside:avoid;}
+  figure,.shot,.card,.kpi,.tblock,.note,.plain,.tl,.two-up,.three-up,.flow,.chain,.lineup,.rm,.bcard,.brief-hero{break-inside:avoid;}
   h2,h3{break-after:avoid;}
   details.dv:not([open]){display:none;}
   /* 兜底:resize 没赶上纸面宽度时整图等比缩进纸面,不裁切(.chart 高度不能改 auto,ECharts resize 要读它) */

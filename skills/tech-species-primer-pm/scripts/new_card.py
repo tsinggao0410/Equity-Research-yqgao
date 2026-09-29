@@ -14,7 +14,7 @@
   work/BRIEF.md             由 references/BRIEF_template.md 填好路径占位符,主线再按本卡改 §0 读者目标、§1 材料表
   work/facts_spine.md       数字底座骨架(六块)
   work/reader_test.md       外行复述评审(评审 C)的记录骨架
-  parts/00_一分钟看懂.md、parts/02_技术是怎么回事.md   零章与技术章骨架(照 assets/templates/,写完删掉 TODO 行)
+  parts/00_业务速览.md、parts/02_技术与产品.md   零章与技术章骨架(照 assets/templates/,写完删掉 TODO 行)
   parts/ images/ sources/{text,cninfo,reports,alphapai,market,peers,web}/ work/{test,shots,pdfimg}/
 主题卡(公司里的一块业务)用 --type theme,产业链或技术物种卡用 --type industry;title 默认按类型生成。
 """
@@ -127,12 +127,12 @@ put("work/reader_test.md", """# %s · 外行复述评审记录(评审 C)
 > 协议见 skill 的 references/review_protocol.md §3。
 
 ## 1 复述(评审人不看原文,用自己的话写)
-- 这家公司卖什么:
+- 业务本质(卖什么):
 - 卖给谁、谁付钱:
-- 怎么赚钱、钱从哪来:
-- 和最常被拿来比的同类产品 / 替代技术差在哪:
-- 技术怎么变过来、下一步往哪走:
-- 最该盯的一件事:
+- 价值流向(怎么赚钱):
+- 与最常被拿来比较的同类产品 / 替代技术的差异:
+- 技术演变与下一阶段的可能路径:
+- 跟踪指标:
 
 ## 2 卡住的地方(逐条:位置 / 原文 / 为什么没看懂;含像模板标签、打断阅读的排版)
 
@@ -140,7 +140,7 @@ put("work/reader_test.md", """# %s · 外行复述评审记录(评审 C)
 
 ## 4 处理(改了什么、改在哪)
 """ % title)
-for rel, tpl_name in (("parts/00_一分钟看懂.md", "ch00_plain.md"), ("parts/02_技术是怎么回事.md", "ch_tech_plain.md")):
+for rel, tpl_name in (("parts/00_业务速览.md", "ch00_plain.md"), ("parts/02_技术与产品.md", "ch_tech_plain.md")):
     if rel.startswith("parts/02") and a.no_tech:
         continue
     tp = SKILL / "assets" / "templates" / tpl_name
