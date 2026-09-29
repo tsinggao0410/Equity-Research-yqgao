@@ -13,9 +13,9 @@ Apache-2.0 头注释保留),图片 base64 内嵌,离线可开、无任何外部�
                 汉字 ≥10,000、每个主要业务章有流程图与产品谱系图),不达标退出码 3。门槛可用 --min-figs 等改。
     --lax       缺图 / 图表 JSON 错误只警告,不以退出码 2 结束。
     --offline   不下载 http(s) 图片(遇到即报错)。
-    --pm        基金经理版验收(DESIGN_pm.md §5):零章「一分钟看懂」在最前且篇幅合适、有「打个比方」「举个例子」;
-                技术白话章有路线图(roadmap 块);每个主要业务章在第一个 ### 之前有 [!plain] 白话块;术语词典条目够数;
-                正文英文缩写首现有白话解释(括注 / 进词典)。与 --gate 同用;门槛用 --pm-* 改。
+    --pm        基金经理版验收(DESIGN_pm.md §5):零章「一分钟看懂」在最前且篇幅合适、有类比与真实例子、有「和同类 / 替代方案
+                有什么不同」对比节与表;技术章有路线图(roadmap 块)与对比节;每个主要业务章在第一个 ### 之前有 [!plain] 块;
+                术语词典条目够数;正文英文缩写首现有白话解释(括注 / 进词典)。与 --gate 同用;门槛用 --pm-* 改。
 退出码:0 正常;2 有错误(缺图、JSON 错、外链残留);3 --gate / --pm 未达标。
 
 MD 写法(DESIGN_v32 §4,另加 flow / chain / lineup / cards 四种图块)
@@ -29,7 +29,7 @@ MD 写法(DESIGN_v32 §4,另加 flow / chain / lineup / cards 四种图块)
     ```chart  {JSON}```               → ECharts;type = stack/bar/barh/group/line/area/combo/pie/waterfall
     ```timeline  年份 | 事件 | hot```  可加 `title: 图 1-6 …` / `subtitle:` / `source:` 行,加了标题就是一张图
     ```flow   {JSON}```               → 生产 / 工艺 / 交付流程图(泳道、阶段、自制外协标签)
-    ```chain  {JSON}```               → 产业链与商业模式结构图(列 + 货流 / 钱流箭头)
+    ```chain  {JSON}```               → 产业链与商业模式结构图(列 + 货流 / 钱流箭头;legend:false 或自定义图例文字)
     ```lineup {JSON}```               → 产品谱系:多张实物图按功率段 / 容量排成一张(items[{img,label,sub,group,hot}], cols)
     ```cards  ① 标题 | 正文```        → 编号卡片
     ```footer  MD 段落```             → 替换默认页脚声明
@@ -39,11 +39,13 @@ MD 写法(DESIGN_v32 §4,另加 flow / chain / lineup / cards 四种图块)
     〔卖方估计〕〔管理层口径〕〔第三方统计〕〔作者计算〕 → 小号灰字读者标签;{{good:文字}} → 彩色小标签
 
 基金经理版另加(DESIGN_pm.md §4)
-    > [!plain] 打个比方:…            → 白话块(紫色,「白话」徽标);> [!example] 举个例子:… → 例子块(青色)
+    > [!plain] …  > [!analogy] …  > [!example] …
+                                      → 通俗解释块 / 类比块 / 真实例子块:浅底色段落,页面上不显示任何标签字样
+                                         (类比与例子用块类型标记,验收按块类型识别,正文不必写「打个比方:」「举个例子:」)
     ```roadmap {JSON}```              → 技术演进路线图:stages[{era, name, gist, solves, cost, who, now, future, hot}],
                                          rows(改行名,默认 解决了什么 / 代价 / 谁受益谁受损),fork{label, options[{name, if, signal}]},
                                          title / subtitle / source / note;计入示意图(diagrams / roadmap)
-    ```glossary  术语 | 白话解释 | 打个比方 | 对投资意味着什么```
+    ```glossary  术语 | 是什么 | 可以理解成 | 对投资意味着什么```
                                       → 术语词典表(行锚点 gl-N);术语可写别名「Ontology / 本体」。正文里每章第一次出现的
                                          词典术语自动加虚线下划线,悬停 / 点按显示白话解释(离线 JS,不改原文)
 
@@ -102,9 +104,14 @@ MUST_HAVE = [  # 每个主要业务章必须有的图(设计规格 §3「必放�
     ("应用场景图", r"场景|应用|所处环节|在.{0,6}中的位置", False, ("diagrams", "images")),
 ]
 # ---- 基金经理版(PM)验收:DESIGN_pm.md §5
-PM_DEFAULT = dict(min_glossary=15, max_unexplained=3, ch0_min=500, ch0_max=1800, ch0_max_acr=3, tech=True)
+PM_DEFAULT = dict(min_glossary=15, max_unexplained=3, ch0_min=500, ch0_max=2200, ch0_max_acr=3, tech=True)
 CH0_RE = re.compile(r"一分钟看懂|大白话|白话速览")
-TECH_RE = re.compile(r"技术白话|技术是怎么回事|技术怎么回事|往哪走")
+TECH_RE = re.compile(r"技术白话|是怎么回事|怎么回事|往哪走|技术路径|技术演进")
+CMP_RE = re.compile(r"区别|差在哪|不同|对比|比较|替代方案|相比|比一比")      # 「和同类 / 替代方案比」节
+ANALOGY_H3 = re.compile(r"像什么|比方|类比|比喻")
+EXAMPLE_H3 = re.compile(r"例子|案例|实例")
+# 页面上不许出现的「写作标签」:段首「白话:」「打个比方:」这类前缀,章节标题里的「白话」
+LABEL_LEAK = re.compile(r"^\s*(?:\*\*)?(白话|大白话|打个比方|打个比喻|举个例子|一句话|钱怎么来|技术怎么变|要盯的一件事)\s*[:：]")
 GLOSS_CH_RE = re.compile(r"词典|名词表|术语表")
 GLOSS_FENCE = re.compile(r"^\s*```glossary[^\n]*\n(.*?)^\s*```", re.S | re.M)
 # 两个以上大写字母的英文词当「缩写 / 术语」(CPO、SiC、FDE、AIP、PowerTitan);单位、财务通用词与读者都认得的词不算
@@ -407,7 +414,7 @@ def parse_blocks(lines: list, i: int = 0, closing: bool = False):
 
 
 def parse_glossary(body: str) -> list:
-    """glossary 块:每行「术语 | 白话解释 | 打个比方 | 对投资意味着什么」;术语可写别名「Ontology / 本体」(斜杠两侧留空格)。"""
+    """glossary 块:每行「术语 | 是什么 | 可以理解成 | 对投资意味着什么」;术语可写别名「Ontology / 本体」(斜杠两侧留空格)。"""
     out = []
     for ln in body.splitlines():
         t = ln.strip()
@@ -1085,8 +1092,9 @@ class Renderer:
                 a.append("</div>")
                 out.append("".join(a))
         out.append("</div>")
-        if any(isinstance(lk, dict) and lk.get("back") for lk in links):
-            out.append('<div class="flow-legend">实线箭头 = 货 / 服务流向；绿色虚线 = 钱的流向</div>')
+        lg = spec.get("legend", True)   # false 隐藏;字符串 = 自定义图例(虚线不是钱时用)
+        if lg and any(isinstance(lk, dict) and lk.get("back") for lk in links):
+            out.append('<div class="flow-legend">%s</div>' % (inline(lg) if isinstance(lg, str) else "实线箭头 = 货 / 服务流向；绿色虚线 = 钱的流向"))
         return self._fig_wrap("chainfig", spec, "".join(out), "diagrams", "chain", src_line, b["line"])
 
     def render_lineup(self, b: dict, src_line: str = None) -> str:
@@ -1463,19 +1471,21 @@ class Renderer:
             for p in paras:
                 self._prose(p)
         if qtype in ("plain", "analogy", "example", "eg"):
-            lab = {"plain": "白话", "analogy": "打个比方", "example": "举个例子", "eg": "举个例子"}[qtype]
-            cls = "plain" if qtype in ("plain", "analogy") else "plain eg"
+            # 页面上不写「白话」「打个比方」这类标签:块类型只用于排版和验收
+            cls = {"plain": "plain", "analogy": "plain an", "example": "plain eg", "eg": "plain eg"}[qtype]
             if self.cur is not None:
                 self.cur["plain"] += 1
                 if not self.cur["h3"]:
                     self.cur["plain_top"] = True
+                if qtype == "analogy":
+                    self.cur["has_analogy"] = True
                 if qtype in ("example", "eg"):
                     self.cur["has_eg"] = True
             ps = []
             for j, p in enumerate(paras):
                 t = inline(p)
                 if j == 0:
-                    t = '<span class="plab">%s</span>' % lab + re.sub(r"^([^<:：。]{1,10}[:：])", r'<span class="nh">\1</span>', t)
+                    t = re.sub(r"^([^<:：。]{1,10}[:：])", r'<span class="nh">\1</span>', t)
                 ps.append("<p>%s</p>" % t)
             return '<div class="%s">%s</div>' % (cls, "".join(ps))
         if qtype == "lead":
@@ -1534,7 +1544,7 @@ class Renderer:
             if not e or e["id"] in seen:
                 return m.group(0)
             seen.add(e["id"])
-            tip = plain(e["expl"]) + (("　打个比方：" + plain(e["ana"])) if e.get("ana") else "")
+            tip = plain(e["expl"]) + (("　可以理解成：" + plain(e["ana"])) if e.get("ana") else "")
             return '<span class="gl" tabindex="0" data-gl="%s" data-tip="%s">%s</span>' % (e["id"], esc(tip), m.group(0))
         for i, seg in enumerate(parts):
             if seg.startswith("<"):
@@ -1614,7 +1624,7 @@ class Renderer:
                 (' id="%s"' % gid) if gid else "", inline(e["term"], False), inline(e["expl"]),
                 inline(e["ana"]) if e["ana"] else "—", inline(e["why"]) if e["why"] else "—"))
         self.glossary_rows += len(es)
-        head = "".join("<th>%s</th>" % x for x in ("术语", "白话解释", "打个比方", "对投资意味着什么"))
+        head = "".join("<th>%s</th>" % x for x in ("术语", "是什么", "可以理解成", "对投资意味着什么"))
         return '<div class="tblock gloss"><div class="tbl-wrap"><table><thead><tr>%s</tr></thead><tbody>%s</tbody></table></div></div>' % (
             head, "".join(rows))
 
@@ -1650,16 +1660,23 @@ class Renderer:
             unexpl.append(tok)
         real = [c for c in self.chapters if not c.get("pre")]
         ch0 = next((c for c in real if CH0_RE.search(c["title"])), None)
-        tech = next((c for c in real if TECH_RE.search(c["title"])), None)
+        tech = next((c for c in real if c is not ch0 and TECH_RE.search(c["title"])), None)
+
+        def cmp_of(c):   # 有「和同类 / 替代方案比」的节,且本章至少一张表
+            return any(CMP_RE.search(h) for h in c["h3"]) and c["st"].get("tables", 0) >= 1
         d0 = None
         if ch0 is not None:
             txt = strip_tags(re.sub(r'<details class="dv">[\s\S]*?</details>', "", "".join(ch0["parts"])))
             d0 = dict(title=ch0["title"], first=(real[0] is ch0), cjk=cjk_count(txt), plain=ch0["plain"],
-                      has_analogy=("打个比方" in txt or "打个比喻" in txt), has_example=(bool(ch0.get("has_eg")) or "举个例子" in txt),
-                      acronyms=per_ch.get(ch0["id"], []))
+                      has_analogy=bool(ch0.get("has_analogy") or any(ANALOGY_H3.search(h) for h in ch0["h3"]) or "打个比方" in txt),
+                      has_example=bool(ch0.get("has_eg") or any(EXAMPLE_H3.search(h) for h in ch0["h3"]) or "举个例子" in txt),
+                      compare=cmp_of(ch0), acronyms=per_ch.get(ch0["id"], []))
+        leaks = [plain(t)[:24] for _cid, t in self.pm_prose if LABEL_LEAK.match(t)]
+        leaks += ["标题:" + c["title"] for c in real if "白话" in c["title"]]
+        leaks += ["标题:" + h for c in real for h in c["h3"] if "白话" in h]
         return dict(
-            ch0=d0,
-            tech=(dict(title=tech["title"], roadmaps=tech["roadmap"]) if tech is not None else None),
+            ch0=d0, label_leaks=leaks,
+            tech=(dict(title=tech["title"], roadmaps=tech["roadmap"], compare=cmp_of(tech)) if tech is not None else None),
             roadmaps=sum(c["roadmap"] for c in real),
             business_no_plain=[c["title"] for c, x in zip(real, chapters) if x["business"] and not c["plain_top"]],
             plain_blocks=sum(c["plain"] for c in real),
@@ -1903,20 +1920,28 @@ def pm_check(st: dict, g: dict) -> list:
         if not (g["ch0_min"] <= d0["cjk"] <= g["ch0_max"]):
             fails.append("零章汉字 %d 不在 %d–%d" % (d0["cjk"], g["ch0_min"], g["ch0_max"]))
         if not d0["has_analogy"]:
-            fails.append("零章缺「打个比方」")
+            fails.append("零章缺类比([!analogy] 块,或节题含「像什么」)")
         if not d0["has_example"]:
-            fails.append("零章缺「举个例子」(具体客户或场景的前后对比)")
+            fails.append("零章缺真实例子([!example] 块,或节题含「例子 / 案例」;具体客户或场景的前后对比)")
+        if not d0["compare"]:
+            fails.append("零章缺「和同类 / 替代方案有什么不同」对比节(节题含 不同 / 区别 / 对比 / 差在哪)与对比表")
         if len(d0["acronyms"]) > g["ch0_max_acr"]:
             fails.append("零章英文缩写 %d 个 > %d(%s)" % (len(d0["acronyms"]), g["ch0_max_acr"], "、".join(d0["acronyms"][:10])))
     if g["tech"]:
         if not pm["tech"]:
-            fails.append("缺技术白话章(章题含 技术白话 / 技术是怎么回事 / 往哪走)")
-        elif pm["tech"]["roadmaps"] < 1:
-            fails.append("技术白话章缺路线图(roadmap 块)")
+            fails.append("缺技术章(章题含 是怎么回事 / 往哪走 / 技术路径 / 技术演进)")
+        else:
+            if pm["tech"]["roadmaps"] < 1:
+                fails.append("技术章缺路线图(roadmap 块)")
+            if not pm["tech"]["compare"]:
+                fails.append("技术章缺「和替代方案比差在哪」对比节(节题含 不同 / 区别 / 对比 / 差在哪)与对比表")
     for t in pm["business_no_plain"]:
-        fails.append("「%s」第一个 ### 前缺 [!plain] 白话块" % t)
+        fails.append("「%s」第一个 ### 前缺通俗解释块([!plain] / [!analogy] / [!example])" % t)
     if pm.get("todo"):
         fails.append("正文残留 TODO %d 处(模板占位没写完)" % pm["todo"])
+    if pm.get("label_leaks"):
+        fails.append("页面上出现写作标签 %d 处(段首「白话:」「打个比方:」或标题含「白话」;改成自然句或小标题):%s" % (
+            len(pm["label_leaks"]), "、".join(pm["label_leaks"][:6])))
     if pm["glossary_terms"] < g["min_glossary"]:
         fails.append("术语词典 %d 条 < %d" % (pm["glossary_terms"], g["min_glossary"]))
     if len(pm["unexplained"]) > g["max_unexplained"]:
@@ -1946,13 +1971,13 @@ def print_summary(st: dict, out: Path, fails):
     pm = st.get("pm")
     if pm:
         d0 = pm["ch0"]
-        w("基金经理版:零章 %s;技术白话章 %s;白话块 %d;路线图 %d;词典 %d 条(正文悬停释义 %d 处);英文缩写 %d 个,首现无解释 %d 个%s\n" % (
-            ("汉字 %d、白话块 %d、缩写 %d" % (d0["cjk"], d0["plain"], len(d0["acronyms"]))) if d0 else "缺",
-            ("路线图 %d" % pm["tech"]["roadmaps"]) if pm["tech"] else "缺", pm["plain_blocks"], pm["roadmaps"],
+        w("基金经理版:零章 %s;技术章 %s;通俗解释块 %d;路线图 %d;词典 %d 条(正文悬停释义 %d 处);英文缩写 %d 个,首现无解释 %d 个%s\n" % (
+            ("汉字 %d、解释块 %d、缩写 %d、对比%s" % (d0["cjk"], d0["plain"], len(d0["acronyms"]), "有" if d0["compare"] else "缺")) if d0 else "缺",
+            ("路线图 %d、对比%s" % (pm["tech"]["roadmaps"], "有" if pm["tech"]["compare"] else "缺")) if pm["tech"] else "缺", pm["plain_blocks"], pm["roadmaps"],
             pm["glossary_terms"], pm["gloss_marked"], pm["acronyms"], len(pm["unexplained"]),
             ("(" + "、".join(pm["unexplained"][:20]) + ")") if pm["unexplained"] else ""))
         if pm["business_no_plain"]:
-            w("  章首缺白话块:%s\n" % "、".join(pm["business_no_plain"]))
+            w("  章首缺通俗解释块:%s\n" % "、".join(pm["business_no_plain"]))
     w("交叉引用 %d 处(失效 %d);与汉字相邻的半角标点 %d 处,全角 %d 处\n" % (st.get("xrefs", 0), len(st.get("xref_missing", [])), st.get("halfwidth_next_to_cjk", 0), st.get("fullwidth_punct", 0)))
     for e in st["errors"]:
         w("错误: %s\n" % e)

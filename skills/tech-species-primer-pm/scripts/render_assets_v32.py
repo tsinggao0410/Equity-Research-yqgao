@@ -151,16 +151,13 @@ a.xref:hover{border-bottom-style:solid;}
 .note.good{background:var(--good-soft);border-left-color:var(--good);}
 .note.bad{background:var(--bad-soft);border-left-color:var(--bad);}
 .note .nh{font-weight:700;}
-/* 基金经理版:白话块 / 例子块 */
-.plain{background:#f5f3ff;border-left:3px solid #6d5bd0;padding:11px 16px;border-radius:0 10px 10px 0;
-  margin:14px 0 16px;font-size:14.8px;line-height:1.85;}
-.plain.eg{background:#effaf8;border-left-color:#0f766e;}
+/* 基金经理版:通俗解释块 / 类比块 / 例子块(不显示任何标签,只用底色区分层次) */
+.plain{background:#f6f7fb;border-left:3px solid #b9c5da;padding:10px 16px;border-radius:0 10px 10px 0;
+  margin:12px 0 16px;font-size:14.8px;line-height:1.85;}
+.plain.an{background:#f7f5fc;border-left-color:#c6bde6;}
+.plain.eg{background:#f2f8f6;border-left-color:#a7cfc3;}
 .plain p{margin:5px 0;}
-.plain .plab{display:inline-block;font-size:11.5px;font-weight:700;color:#fff;background:#6d5bd0;border-radius:999px;
-  padding:0 9px;margin-right:8px;line-height:1.75;vertical-align:1px;}
-.plain.eg .plab{background:#0f766e;}
-.plain .nh{font-weight:700;color:#3f2f99;}
-.plain.eg .nh{color:#0f5c56;}
+.plain .nh{font-weight:700;}
 /* 基金经理版:技术演进路线图 */
 .rm{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));column-gap:26px;margin:8px 0 6px;}
 .rstage{position:relative;background:#fff;border:1px solid var(--box);border-radius:10px;padding:9px 11px 10px;min-width:0;}

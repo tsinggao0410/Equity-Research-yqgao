@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""建一张基金经理版业务认知卡(v3.3-PM,在 v3.2 之上加白话层)的工作目录(第 0 步)。已存在的文件一律不覆盖。
+"""建一张基金经理版业务认知卡(v3.3-PM,在 v3.2 之上加通俗层)的工作目录(第 0 步)。已存在的文件一律不覆盖。
 
 用法:
   python3 new_card.py --root ~/Desktop/research-materials/宏和科技-603256/primer_v32 \
@@ -14,7 +14,7 @@
   work/BRIEF.md             由 references/BRIEF_template.md 填好路径占位符,主线再按本卡改 §0 读者目标、§1 材料表
   work/facts_spine.md       数字底座骨架(六块)
   work/reader_test.md       外行复述评审(评审 C)的记录骨架
-  parts/00_一分钟看懂.md、parts/02_技术白话.md   零章与技术白话章骨架(照 assets/templates/,写完删掉 TODO 注释)
+  parts/00_一分钟看懂.md、parts/02_技术是怎么回事.md   零章与技术章骨架(照 assets/templates/,写完删掉 TODO 行)
   parts/ images/ sources/{text,cninfo,reports,alphapai,market,peers,web}/ work/{test,shots,pdfimg}/
 主题卡(公司里的一块业务)用 --type theme,产业链或技术物种卡用 --type industry;title 默认按类型生成。
 """
@@ -34,8 +34,8 @@ ap.add_argument("--code", default="", help="证券代码,如 603256.SH / 09992.H
 ap.add_argument("--type", default="company", choices=["company", "theme", "industry"])
 ap.add_argument("--date", default=dt.date.today().isoformat())
 ap.add_argument("--title")
-ap.add_argument("--business", default="三、四、五", help="业务章中文序号,写进 BRIEF §3(零章、一总览、二技术白话之后)")
-ap.add_argument("--no-tech", action="store_true", help="不要技术白话章(消费品等技术不是看点的公司;须用户同意)")
+ap.add_argument("--business", default="三、四、五", help="业务章中文序号,写进 BRIEF §3(零章、一总览、二技术章之后)")
+ap.add_argument("--no-tech", action="store_true", help="不要技术章(消费品等技术不是看点的公司;须用户同意)")
 a = ap.parse_args()
 
 R = Path(a.root).expanduser().resolve()
@@ -62,7 +62,7 @@ card = {
     "gate": {"min_cjk": 10000},
     "ref_bg": [],
     "edition": "pm",
-    "plain": {"min_glossary": 15, "max_unexplained": 3, "ch0_min": 500, "ch0_max": 1800, "ch0_max_acr": 3,
+    "plain": {"min_glossary": 15, "max_unexplained": 3, "ch0_min": 500, "ch0_max": 2200, "ch0_max_acr": 3,
               "tech": not a.no_tech, "allow": [x for x in [a.code.split(".")[0] if a.code and not a.code[0].isdigit() else ""] if x]},
     "_note": "nav 键是两位章号(该章前开始新的目录分组),按最终章节改;gate 可加 min_figs/min_charts/min_visuals/min_tables "
              "(默认 55/30/20/10,只在用户同意时下调);ref_bg 填年报、招股书按页文本(相对 R),照抄检查时当公共语料。"
@@ -123,23 +123,24 @@ put("work/facts_spine.md", """# %s 全卡统一数字底座(facts spine)
 """ % (title, a.date))
 put("work/reader_test.md", """# %s · 外行复述评审记录(评审 C)
 
-> 评审人设:懂财务报表和估值、不懂这门技术的基金经理;只读零章、各章章首 lead 与白话块、技术白话章。
+> 评审人设:懂财务报表和估值、不懂这门技术的基金经理;只读零章、各章 lead 与通俗解释块、技术章。
 > 协议见 skill 的 references/review_protocol.md §3。
 
 ## 1 复述(评审人不看原文,用自己的话写)
 - 这家公司卖什么:
 - 卖给谁、谁付钱:
 - 怎么赚钱、钱从哪来:
+- 和最常被拿来比的同类产品 / 替代技术差在哪:
 - 技术怎么变过来、下一步往哪走:
 - 最该盯的一件事:
 
-## 2 卡住的词与句(逐条:位置 / 原文 / 为什么没看懂)
+## 2 卡住的地方(逐条:位置 / 原文 / 为什么没看懂;含像模板标签、打断阅读的排版)
 
 ## 3 复述与原意的偏差(主线对照原文判定:对 / 偏 / 错)
 
 ## 4 处理(改了什么、改在哪)
 """ % title)
-for rel, tpl_name in (("parts/00_一分钟看懂.md", "ch00_plain.md"), ("parts/02_技术白话.md", "ch_tech_plain.md")):
+for rel, tpl_name in (("parts/00_一分钟看懂.md", "ch00_plain.md"), ("parts/02_技术是怎么回事.md", "ch_tech_plain.md")):
     if rel.startswith("parts/02") and a.no_tech:
         continue
     tp = SKILL / "assets" / "templates" / tpl_name

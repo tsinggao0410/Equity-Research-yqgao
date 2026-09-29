@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""基金经理版渲染器回归测试:白话块 / 例子块、roadmap 路线图、glossary 词典与悬停释义、英文缩写首现检查、--pm 验收。
+"""基金经理版渲染器回归测试:通俗解释 / 类比 / 例子块(页面不显示标签)、roadmap 路线图、glossary 词典与悬停释义、
+「和同类 / 替代方案比」对比节检查、英文缩写首现检查、--pm 验收。
 用法:python3 test_render_pm.py   (全部通过打印 OK,失败抛 AssertionError)"""
 import sys
 import tempfile
@@ -19,23 +20,45 @@ MD_OK = """# 测试公司(TEST.US)业务认知
 
 ## 零、一分钟看懂测试公司
 
-> [!lead] **一句话:测试公司卖一种让机器互相说话的软件。**客户是工厂。
+> [!lead] **测试公司卖一种让机器互相说话的软件。**客户是工厂。
 
-> [!plain] 打个比方:它像工厂里的翻译,把各台机器的方言翻成普通话。公司把这层叫 Ontology(本体)。工厂以前要派人挨台抄表,现在屏幕上直接看到每台机器的状态,还能一键下指令,指令会写回原来的系统去执行,不用再开会对表格。
+### 它像什么
 
-> [!example] 举个例子:某车企用它之前,查一台设备停机原因要两天;用了之后,十分钟就能在屏幕上找到是哪个零件出了问题,并直接派单给维修班组。
+> [!analogy] 它像工厂里的翻译,把各台机器的方言翻成普通话。公司把这层叫 Ontology(本体)。工厂以前要派人挨台抄表,现在屏幕上直接看到每台机器的状态,还能一键下指令,指令会写回原来的系统去执行,不用再开会对表格。
 
-> [!plain] 钱怎么来:客户按年付费,先试一个车间,见效后扩到全厂,所以收入主要靠老客户越用越多;成本大头是派驻现场的工程师。
+### 一个真实的例子
 
-> [!plain] 技术怎么变:从抄表、到联网、到让 AI 在屏幕上直接干活,每一步都在减少人工。细节见第二章。
+> [!example] 某车企用它之前,查一台设备停机原因要两天;用了之后,十分钟就能在屏幕上找到是哪个零件出了问题,并直接派单给维修班组。
 
-> [!plain] 要盯的一件事:老客户每年多花多少钱。这是判断「先小后大」是否成立的唯一硬指标,每季度业绩稿里都能看到。
+### 和普通 SaaS 有什么不同
+
+表 0-1　测试公司和普通 SaaS 差在哪
+
+| 比什么 | 普通 SaaS | 测试公司 |
+|---|---|---|
+| 管什么 | 一个部门 | 跨部门 |
+
+### 钱怎么来
+
+客户按年付费,先试一个车间,见效后扩到全厂,所以收入主要靠老客户越用越多;成本大头是派驻现场的工程师。
+
+### 最该盯的一件事
+
+老客户每年多花多少钱。这是判断「先小后大」是否成立的唯一硬指标,每季度业绩稿里都能看到。
 
 ## 一、公司总览
 
 正文提到 XYZ 但没解释,另有 ABC(自造缩写,一种测试用的接口)已括注,SaaS 在白名单里,TEST 在 allow 里。
 
-## 二、技术白话:测试技术是怎么回事、往哪走
+## 二、测试技术是怎么回事、往哪走
+
+### 2.1 和替代方案比,差在哪
+
+表 2-1　三种方案对比
+
+| 比什么 | 甲 | 乙 |
+|---|---|---|
+| 位置 | 远 | 近 |
 
 ```roadmap
 {"title":"图 2-1 技术路线:从抄表到 AI 干活","stages":[
@@ -48,7 +71,7 @@ MD_OK = """# 测试公司(TEST.US)业务认知
 
 ## 三、业务甲
 
-> [!plain] 白话:业务甲就是把翻译软件卖给大工厂。
+> [!plain] 业务甲就是把翻译软件卖给大工厂。
 
 ### 3.1 行业规模
 
@@ -57,7 +80,7 @@ Ontology 在本章第一次出现,应加悬停释义;第二次 Ontology 不加�
 ## 附录、术语小词典
 
 ```glossary
-术语 | 白话解释 | 打个比方 | 对投资意味着什么
+术语 | 是什么 | 可以理解成 | 对投资意味着什么
 Ontology / 本体 | 按现实里的东西重新摆数据 | 带按钮的地图 | 最难被复制的部分
 """ + "\n".join("术语%d | 解释%d | 比方%d | 意义%d" % (k, k, k, k) for k in range(2, 17)) + """
 ```
@@ -76,9 +99,11 @@ def render(md, allow=("TEST",)):
 def main():
     doc, st = render(MD_OK)
     pm = st["pm"]
-    # 1 白话块与例子块
-    assert '<div class="plain"><p><span class="plab">白话</span><span class="nh">打个比方：</span>' in doc
-    assert '<div class="plain eg"><p><span class="plab">举个例子</span>' in doc
+    # 1 通俗解释 / 类比 / 例子块:按块类型排版,页面上不出现「白话」「打个比方」「举个例子」这类标签字样
+    assert '<div class="plain an"><p>它像工厂里的翻译' in doc
+    assert '<div class="plain eg"><p>某车企用它之前' in doc
+    assert '<div class="plain"><p>业务甲就是' in doc
+    assert "plab" not in doc and ">白话<" not in doc and ">举个例子<" not in doc
     # 2 路线图计入示意图,now 徽标,分岔
     assert 'class="rstage now' in doc and "今天在这" in doc and 'class="rfork"' in doc
     assert st["diagrams"]["total"] >= 1 and pm["roadmaps"] == 1 and pm["tech"]["roadmaps"] == 1
@@ -90,13 +115,23 @@ def main():
     assert pm["unexplained"] == ["XYZ"], pm["unexplained"]
     # 5 零章指标
     d0 = pm["ch0"]
-    assert d0["first"] and d0["has_analogy"] and d0["has_example"] and d0["plain"] == 5, d0
+    assert d0["first"] and d0["has_analogy"] and d0["has_example"] and d0["compare"] and d0["plain"] == 2, d0
+    assert pm["tech"]["compare"] and pm["tech"]["roadmaps"] == 1, pm["tech"]
     assert pm["business_no_plain"] == [], pm["business_no_plain"]
     GS = dict(G, ch0_min=200)          # 自测文档零章较短
     assert pm_check(st, GS) == [], pm_check(st, GS)
     assert any("零章汉字" in x for x in pm_check(st, G))   # 默认下限 500 应报出
+    # 5b 对比节:零章或技术章去掉「和 XX 比」的节 / 表 → 报出
+    nocmp = MD_OK.replace("### 和普通 SaaS 有什么不同", "### 其他").replace("### 2.1 和替代方案比,差在哪", "### 2.1 其他")
+    f = ";".join(pm_check(render(nocmp)[1], GS))
+    assert "零章缺「和同类" in f and "技术章缺「和替代方案比" in f, f
+    # 5c 标签外露:段首写「打个比方:」、标题含「白话」→ 报出
+    leak = MD_OK.replace("> [!analogy] 它像工厂里的翻译", "> [!analogy] 打个比方:它像工厂里的翻译").replace(
+        "## 二、测试技术是怎么回事、往哪走", "## 二、技术白话:测试技术是怎么回事、往哪走")
+    f = ";".join(pm_check(render(leak)[1], GS))
+    assert "写作标签 2 处" in f, f
     # 6 反例:去掉业务章白话块、词典不够、零章不在最前、残留 TODO → 各自报出
-    bad = MD_OK.replace("> [!plain] 白话:业务甲就是把翻译软件卖给大工厂。", "TODO 章首白话")
+    bad = MD_OK.replace("> [!plain] 业务甲就是把翻译软件卖给大工厂。", "TODO 章首说明")
     bad = bad.replace("## 零、一分钟看懂测试公司", "## 零、一分钟看懂测试公司(放后面)", 1)
     bad = bad.replace("## 一、公司总览", "## 一、公司总览\n\n先放一段。", 1)
     head, rest = bad.split("## 零、", 1)
@@ -105,14 +140,14 @@ def main():
     doc2, st2 = render(bad)
     f = pm_check(st2, dict(GS, min_glossary=20))
     txt = ";".join(f)
-    assert "不在最前" in txt and "缺 [!plain]" in txt and "术语词典 16 条 < 20" in txt and "TODO" in txt, f
+    assert "不在最前" in txt and "缺通俗解释块" in txt and "术语词典 16 条 < 20" in txt and "TODO" in txt, f
     # 7 两份写法样例本身必须过 --pm
     for name, allow in (("pltr_plain_sample.md", ("Palantir", "PLTR")), ("cpo_tech_path_sample.md", ())):
         p = SKILL / "examples" / "pm" / name
         _d, st3 = Renderer(p).build(p.read_text(encoding="utf-8")) if not allow else render_file(p, allow)
         assert pm_check(st3, G) == [], (name, pm_check(st3, G))
         assert not st3["errors"], st3["errors"]
-    print("OK 基金经理版:白话块 %d、路线图 %d、词典 %d 条、悬停释义 %d 处" % (pm["plain_blocks"], pm["roadmaps"], pm["glossary_terms"], pm["gloss_marked"]))
+    print("OK 基金经理版:解释块 %d、路线图 %d、词典 %d 条、悬停释义 %d 处" % (pm["plain_blocks"], pm["roadmaps"], pm["glossary_terms"], pm["gloss_marked"]))
 
 
 def render_file(p, allow):

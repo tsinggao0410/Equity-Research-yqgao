@@ -1,7 +1,7 @@
 # 业务认知卡 v3.2 设计规格(以用户 2026-09-24 提供的参考报告为准)
 
 > **基金经理版(tech-species-primer-pm)说明**:本文件仍是结构、图表密度、MD 写法、视觉规范与数据纪律的正本;基金经理版的增量
-> (零章「一分钟看懂」、技术白话章与路线图、业务章章首白话块、术语词典与悬停释义、`--pm` 验收、评审 C)见 `references/DESIGN_pm.md`,
+> (零章「一分钟看懂」、技术章「XX 是怎么回事、往哪走」与路线图、和竞品 / 替代方案的对比节、业务章开头的通俗解释、术语词典与悬停释义、`--pm` 验收、评审 C;页面上不写写作标签)见 `references/DESIGN_pm.md`,
 > 两者冲突时以 DESIGN_pm.md 为准。下文的「读者是买方 PM」在本版具体为「懂财务估值、不懂技术的基金经理」。
 
 > 本文件是 tech-species-primer v3.2.0 的规格正本(原件:`~/Desktop/research-materials/_认知卡v3规划/v3.2_工具包/DESIGN_v32.md`)。§4 的 MD 写法之外,渲染器另支持 flow / chain / lineup / cards / footer 图块、`:::half` 半宽容器与 `{{good:标签}}`,见 `assets/fixture/fixture.md` 与 `scripts/render_report_v32.py` 文件头。

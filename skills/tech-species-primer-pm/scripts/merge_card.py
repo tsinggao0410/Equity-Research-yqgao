@@ -4,7 +4,7 @@
 
 用法:python3 merge_card.py [--root R] [--no-gate] [--lax] [--feishu]
   - 顺序:work/00_header.md + parts/NN_*.md(按 NN 排序,跳过 NN_facts.md / NN_gaps.md / NN_terms.md / 以 _ 开头的文件)。
-  - 术语词典:parts 里没有 ```glossary 块时,把各章 NN_terms.md(术语台账,表头「术语 | 白话解释 | 打个比方 | 对投资意味着什么」)
+  - 术语词典:parts 里没有 ```glossary 块时,把各章 NN_terms.md(术语台账,表头「术语 | 是什么 | 可以理解成 | 对投资意味着什么」)
     按章序合并去重,自动追加一章「附录、术语小词典」;同一术语多章都写了,取第一次出现的那条,冲突写进输出提示。
   - card.json 的 edition = "pm" 时加 --pm 验收,门槛取 plain{min_glossary, max_unexplained, ch0_min, ch0_max, ch0_max_acr,
     tech, allow}(DESIGN_pm.md §5)。
@@ -76,8 +76,8 @@ if card.get("edition") == "pm" and not has_gloss:
     trows, clash = collect_terms()
     if trows:
         out.append("<!-- nav: 附录 -->\n" if "附录" not in nav.values() else "")
-        out.append("## 附录、术语小词典\n\n> [!lead] 正文里第一次出现下列术语时,鼠标悬停(手机上点一下)就能看到白话解释;"
-                   "这里按章节出现顺序集中列出。\n\n```glossary\n术语 | 白话解释 | 打个比方 | 对投资意味着什么\n%s\n```\n" % "\n".join(trows))
+        out.append("## 附录、术语小词典\n\n> [!lead] 正文里第一次出现下列术语时,鼠标悬停(手机上点一下)就能看到解释;"
+                   "这里按章节出现顺序集中列出。\n\n```glossary\n术语 | 是什么 | 可以理解成 | 对投资意味着什么\n%s\n```\n" % "\n".join(trows))
         print("术语词典:由 %d 份 NN_terms.md 合成 %d 条" % (len(list((R / "parts").glob("[0-9][0-9]_terms.md"))), len(trows)))
         for x in clash:
             print("术语冲突:", x)
