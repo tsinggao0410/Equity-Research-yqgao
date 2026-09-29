@@ -20,7 +20,7 @@
   "timeline": 5
  },
  "tables": 24,
- "cjk_chars": 31866,
+ "cjk_chars": 32343,
  "chapters": [
   {
    "title": "零、业务速览：Palantir",
@@ -175,7 +175,7 @@
    "tables": 3,
    "figures": 0,
    "flows": 0,
-   "cjk": 1545,
+   "cjk": 2022,
    "missing": []
   },
   {
@@ -192,11 +192,11 @@
   }
  ],
  "cjk_glossary": 7322,
- "xrefs": 81,
+ "xrefs": 82,
  "xref_missing": [],
  "halfwidth_next_to_cjk": 7,
- "fullwidth_punct": 2601,
- "html_bytes": 1469775,
+ "fullwidth_punct": 2620,
+ "html_bytes": 1472283,
  "external_refs": 0,
  "pm": {
   "ch0": {
@@ -263,7 +263,7 @@
  "errors": [],
  "warnings": [],
  "copy_check": {
-  "sentences": 722,
+  "sentences": 733,
   "hits": [],
   "review": []
  },

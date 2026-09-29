@@ -905,7 +905,7 @@ class Renderer:
         if single:
             se = ser[0]
             u = se.get("unit") or unit
-            hdr = [head0 or "项目", "%s%s" % (se["name"], "(%s)" % u if u else "")]
+            hdr = [head0 or "项目", "%s%s" % (se["name"], "（%s）" % u if u else "")]
             share = t == "pie" or spec.get("table_share")
             tot = sum(v for v in se["data"] if isinstance(v, (int, float))) if share else 0
             if share:
@@ -921,12 +921,12 @@ class Renderer:
             if share and tot:
                 rows_html.append('<tr class="tot"><td>合计</td><td class="n">%s</td><td class="n">100%%</td></tr>' % self.fmt_num(round(tot, 3), se.get("digits", dg)))
         else:
-            hdr0 = head0 or ("项目(%s)" % unit if unit and not any(se.get("unit") and se.get("unit") != unit for se in ser) else "项目")
+            hdr0 = head0 or ("项目（%s）" % unit if unit and not any(se.get("unit") and se.get("unit") != unit for se in ser) else "项目")
             th = "<th>%s</th>" % esc(hdr0) + "".join('<th class="n">%s</th>' % esc(c) for c in cats)
             mixed = any(se.get("unit") and se.get("unit") != unit for se in ser) or js.get("y2")
             for se in ser:
                 u = se.get("unit") or (js.get("y2_unit") if se.get("yAxisIndex") == 1 else unit)
-                nm = se["name"] + ("(%s)" % u if (mixed and u) else "")
+                nm = se["name"] + ("（%s）" % u if (mixed and u) else "")
                 if js.get("hi_series") == se["name"]:
                     nm = "<strong>%s</strong>" % esc(nm)
                 else:
@@ -1866,10 +1866,10 @@ class Renderer:
         if self.footer_html:
             return '<div class="footer">%s</div>' % self.footer_html
         body = (
-            "<p>本卡依据公司定期报告与公告、授权券商研究及第三方机构数据整理,供内部业务研究使用;"
-            "<b>不含估值结论、目标价与投资评级</b>,不构成任何证券的买卖建议。</p>"
-            "<p>交互图按底稿数值重绘(ECharts 5.5.1 内联,离线可开),每张图下「表格视图」可逐项核对;"
-            "标「研报原图」「官方图」「招股书」的截图直接取自原文件并注明页码,对外分发前请移除研报原图。</p>")
+            "<p>本卡依据公司定期报告与公告、授权券商研究及第三方机构数据整理，供内部业务研究使用；"
+            "<b>不含估值结论、目标价与投资评级</b>，不构成任何证券的买卖建议。</p>"
+            "<p>交互图按底稿数值重绘（ECharts 5.5.1 内联，离线可开），每张图下「表格视图」可逐项核对；"
+            "标「研报原图」「官方图」「招股书」的截图直接取自原文件并注明页码，对外分发前请移除研报原图。</p>")
         return '<div class="footer"><p><b>%s</b>　·　%s　·　买方内部研究</p>%s</div>' % (esc(t), esc(self.report_date()), body)
 
     def stats(self, html_doc: str, main_html: str) -> dict:
