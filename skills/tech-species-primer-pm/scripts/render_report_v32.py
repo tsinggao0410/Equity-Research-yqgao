@@ -40,12 +40,12 @@ MD 写法(DESIGN_v32 §4,另加 flow / chain / lineup / cards 四种图块)
 
 基金经理版另加(DESIGN_pm.md §4)
     > [!plain] …  > [!analogy] …  > [!example] …
-                                      → 通俗解释块 / 类比块 / 真实例子块:浅底色段落,页面上不显示任何标签字样
+                                      → 通俗解释块 / 类比块 / 真实例子块:正文字号、左侧细线,页面上不显示任何标签字样;「投资含义:」开头的块加浅灰底
                                          (类比与例子用块类型标记,验收按块类型识别,正文不必写「打个比方:」「举个例子:」)
     ```roadmap {JSON}```              → 技术演进路线图:stages[{era, name, gist, solves, cost, who, now, future, hot}],
                                          rows(改行名,默认 解决了什么 / 代价 / 谁受益谁受损),fork{label, options[{name, if, signal}]},
                                          title / subtitle / source / note;计入示意图(diagrams / roadmap)
-    ```glossary  术语 | 是什么 | 可以理解成 | 对投资意味着什么```
+    ```glossary  术语 | 含义 | 投资相关性```(三列;旧的四列「术语 | 是什么 | 可以理解成 | 对投资意味着什么」仍可渲染)
                                       → 术语词典表(行锚点 gl-N);术语可写别名「Ontology / 本体」。正文里每章第一次出现的
                                          词典术语自动加虚线下划线,悬停 / 点按显示白话解释(离线 JS,不改原文)
 
@@ -104,8 +104,11 @@ MUST_HAVE = [  # 每个主要业务章必须有的图(设计规格 §3「必放�
     ("应用场景图", r"场景|应用|所处环节|在.{0,6}中的位置", False, ("diagrams", "images")),
 ]
 # ---- 基金经理版(PM)验收:DESIGN_pm.md §5
-PM_DEFAULT = dict(min_glossary=15, max_unexplained=3, ch0_min=500, ch0_max=2200, ch0_max_acr=3, tech=True)
+PM_DEFAULT = dict(min_glossary=15, max_unexplained=3, ch0_min=400, ch0_max=1200, ch0_max_acr=3, ch0_sec_max=160, ch0_lead_max=90, tech=True)
 CH0_RE = re.compile(r"一分钟看懂|速览")
+# 零章关键数据:不写模糊量词;标签 / 数值 / 注释里要有期间(年份、季度、财年、年月)
+KPI_VAGUE = re.compile(r"约|大约|左右|上下|~|≈|接近|近\d|数十|几十|常年")
+KPI_PERIOD = re.compile(r"(?:19|20)\d{2}|[1-4]Q\d{2}|FY\d{2,4}|[12]H\d{2}")
 TECH_RE = re.compile(r"技术白话|是怎么回事|怎么回事|往哪走|技术路径|技术演进|技术演变|技术解析|技术与产品")
 CMP_RE = re.compile(r"区别|差在哪|差异|不同|对比|比较|替代方案|相比|比一比")      # 「与同类 / 替代方案的差异」节
 ANALOGY_H3 = re.compile(r"原理|本质|像什么|比方|类比|比喻")
@@ -416,13 +419,16 @@ def parse_blocks(lines: list, i: int = 0, closing: bool = False):
 
 
 def parse_glossary(body: str) -> list:
-    """glossary 块:每行「术语 | 是什么 | 可以理解成 | 对投资意味着什么」;术语可写别名「Ontology / 本体」(斜杠两侧留空格)。"""
+    """glossary 块:每行「术语 | 含义 | 投资相关性」(三列,推荐)或「术语 | 含义 | 可以理解为 | 投资相关性」(四列);
+    术语可写别名「Ontology / 本体」(斜杠两侧留空格)。"""
     out = []
     for ln in body.splitlines():
         t = ln.strip()
         if not t or t.startswith("<!--") or is_align_row(t):
             continue
         c = split_row(t) if t.startswith("|") else [x.strip() for x in re.split(r"(?<!\\)\|", t)]
+        if len(c) == 3:
+            c = [c[0], c[1], "", c[2]]
         c = (c + ["", "", "", ""])[:4]
         if c[0] in ("术语", "名词", "术语 / 别名"):
             continue
@@ -465,6 +471,7 @@ class Renderer:
         self.anchors: set = set()
         # 基金经理版
         self.pm_prose: list = []     # (章 id, 文本):英文缩写首现检查
+        self.sec_prose: dict = {}    # (章 id, 第几个 ### 之后) → 正文汉字数(零章分节篇幅)
         self.pm_allow: list = []     # card.json plain.allow:公司名、代码等不算术语
         self.gloss: list = []        # 术语词典条目(全文预扫)
         self.gloss_alias: dict = {}
@@ -1050,7 +1057,7 @@ class Renderer:
         out.append("</div>")
         if spec.get("legend", True) and tags_seen:
             out.append('<div class="flow-legend">标签：%s%s</div>' % ("".join('<span class="tag %s">%s</span>' % (self._tag_cls(t), esc(t)) for t in tags_seen),
-                                                                  "　橙框 = 关键工序 / 价值所在" if any(st.get("hot") for ln in lanes for st in (ln.get("steps") or [])) else ""))
+                                                                  "　强调框 = 关键工序 / 价值所在" if any(st.get("hot") for ln in lanes for st in (ln.get("steps") or [])) else ""))
         return self._fig_wrap("flowfig", spec, "".join(out), "diagrams", "flow", src_line, b["line"])
 
     def render_chain(self, b: dict, src_line: str = None) -> str:
@@ -1096,7 +1103,7 @@ class Renderer:
         out.append("</div>")
         lg = spec.get("legend", True)   # false 隐藏;字符串 = 自定义图例(虚线不是钱时用)
         if lg and any(isinstance(lk, dict) and lk.get("back") for lk in links):
-            out.append('<div class="flow-legend">%s</div>' % (inline(lg) if isinstance(lg, str) else "实线箭头 = 货 / 服务流向；绿色虚线 = 钱的流向"))
+            out.append('<div class="flow-legend">%s</div>' % (inline(lg) if isinstance(lg, str) else "实线箭头 = 货 / 服务流向；虚线 = 钱的流向"))
         return self._fig_wrap("chainfig", spec, "".join(out), "diagrams", "chain", src_line, b["line"])
 
     def render_lineup(self, b: dict, src_line: str = None) -> str:
@@ -1203,6 +1210,8 @@ class Renderer:
             sh = inline(sub)
             sh = re.sub(r"(?<![\w.\-])([+＋][\d.,]+\s*(?:%|pct|个百分点)?)", r'<b class="up">\1</b>', sh)
             sh = re.sub(r"(?<![\w.\-])([−–-][\d.,]+\s*(?:%|pct|个百分点)?)", r'<b class="down">\1</b>', sh)
+            if self.cur is not None:
+                self.cur.setdefault("kpis", []).append((lab, val, unit, sub))
             cards.append('<div class="kpi"><div class="lab">%s</div><div class="val">%s%s</div>%s</div>' % (
                 inline(lab), inline(val), ('<span class="u">%s</span>' % inline(unit)) if unit else "",
                 ('<div class="sub">%s</div>' % sh) if sub else ""))
@@ -1483,6 +1492,8 @@ class Renderer:
                     self.cur["has_analogy"] = True
                 if qtype in ("example", "eg"):
                     self.cur["has_eg"] = True
+            if paras and re.match(r"^\s*(\*\*)?投资含义", paras[0]):
+                cls += " imp"
             ps = []
             for j, p in enumerate(paras):
                 t = inline(p)
@@ -1510,6 +1521,8 @@ class Renderer:
     def _prose(self, text: str):
         if self.cur is not None and not self.cur.get("is_gloss") and text and text.strip():
             self.pm_prose.append((self.cur["id"], text))
+            k = (self.cur["id"], len(self.cur["h3"]))
+            self.sec_prose[k] = self.sec_prose.get(k, 0) + cjk_count(plain(re.sub(r"〔[^〕]*〕", "", text)))
 
     def load_glossary(self, md: str):
         """全文预扫 glossary 块:正文里的术语在词典之前出现也能加悬停释义。"""
@@ -1614,6 +1627,7 @@ class Renderer:
         if not es:
             self.err("glossary 为空", b["line"])
         ids = {e["term"]: e["id"] for e in self.gloss}
+        has_ana = any(e["ana"] for e in es)
         rows = []
         for e in es:
             gid = ids.get(e["term"], "")
@@ -1622,11 +1636,12 @@ class Renderer:
             self.gloss_ids_used.add(gid)
             if not e["expl"]:
                 self.warn("术语「%s」缺白话解释" % e["term"], b["line"])
-            rows.append('<tr%s><td class="glt">%s</td><td>%s</td><td>%s</td><td>%s</td></tr>' % (
+            ana = ("<td>%s</td>" % (inline(e["ana"]) if e["ana"] else "—")) if has_ana else ""
+            rows.append('<tr%s><td class="glt">%s</td><td>%s</td>%s<td>%s</td></tr>' % (
                 (' id="%s"' % gid) if gid else "", inline(e["term"], False), inline(e["expl"]),
-                inline(e["ana"]) if e["ana"] else "—", inline(e["why"]) if e["why"] else "—"))
+                ana, inline(e["why"]) if e["why"] else "—"))
         self.glossary_rows += len(es)
-        head = "".join("<th>%s</th>" % x for x in ("术语", "含义", "可以理解为", "投资相关性"))
+        head = "".join("<th>%s</th>" % x for x in (("术语", "含义", "可以理解为", "投资相关性") if has_ana else ("术语", "含义", "投资相关性")))
         return '<div class="tblock gloss"><div class="tbl-wrap"><table><thead><tr>%s</tr></thead><tbody>%s</tbody></table></div></div>' % (
             head, "".join(rows))
 
@@ -1668,13 +1683,21 @@ class Renderer:
             return any(CMP_RE.search(h) for h in c["h3"]) and c["st"].get("tables", 0) >= 1
         d0 = None
         if ch0 is not None:
-            txt = strip_tags(re.sub(r'<details class="dv">[\s\S]*?</details>', "", "".join(ch0["parts"])))
+            # 零章篇幅按读者要读的文字算:不含图片内部文字(SVG)、来源行与图注、表格视图副本
+            h0 = re.sub(r'<details class="dv">[\s\S]*?</details>|<svg[\s\S]*?</svg>|<figcaption>[\s\S]*?</figcaption>', "", "".join(ch0["parts"]))
+            h0 = re.sub(r'<div class="srcline">[\s\S]*?</div>', "", h0)
+            txt = strip_tags(h0)
             d0 = dict(title=ch0["title"], first=(real[0] is ch0), cjk=cjk_count(txt), plain=ch0["plain"],
                       has_analogy=bool(ch0.get("has_analogy") or any(ANALOGY_H3.search(h) for h in ch0["h3"]) or "打个比方" in txt),
                       has_example=bool(ch0.get("has_eg") or any(EXAMPLE_H3.search(h) for h in ch0["h3"]) or "举个例子" in txt),
                       compare=cmp_of(ch0), acronyms=per_ch.get(ch0["id"], []),
                       images=ch0["st"].get("images", 0),
-                      compare_first=bool(ch0["h3"]) and bool(CMP_RE.search(ch0["h3"][0])))
+                      compare_first=bool(ch0["h3"]) and bool(CMP_RE.search(ch0["h3"][0])),
+                      lead=self.sec_prose.get((ch0["id"], 0), 0),
+                      secs=[(h, self.sec_prose.get((ch0["id"], k), 0)) for k, h in enumerate(ch0["h3"], 1)],
+                      kpis=len(ch0.get("kpis", [])),
+                      kpi_vague=[plain(lab) for lab, val, unit, sub in ch0.get("kpis", [])
+                                 if KPI_VAGUE.search(val) or not KPI_PERIOD.search(" ".join((lab, val, unit, sub)))])
         colloq = sorted({m.group(0) for _cid, t in self.pm_prose for m in COLLOQ_RE.finditer(plain(t))}
                         | {m.group(0) for c in real for h in [c["title"]] + c["h3"] for m in COLLOQ_RE.finditer(h)})
         leaks = [plain(t)[:24] for _cid, t in self.pm_prose if LABEL_LEAK.match(t)]
@@ -1690,7 +1713,7 @@ class Renderer:
             acronyms=len(first), unexplained=unexpl, gloss_marked=sum(len(c["gl_seen"]) for c in real))
 
     def _brief(self, c: dict):
-        """零章速览版式:章首导语与关键数据收进一个摘要面板,每个 ### 小节排成带序号的卡片(两列网格)。
+        """零章速览版式(研报首页式):章首导语与关键数据收在两条横线之间,每个 ### 小节带序号、细线起头、两栏排布。
         含表格或图的卡片占满整行;两张整行卡片之间落单的半宽卡片自动改成整行,避免右侧留空。"""
         parts = c["parts"]
         head = parts[:1] if parts and parts[0].startswith("<h2") else []
@@ -1722,7 +1745,7 @@ class Renderer:
             out.append('<div class="brief-hero">%s</div>' % "".join(hero))
         cells = []
         for n, (cd, w) in enumerate(zip(cards, wide), 1):
-            h3 = re.sub(r"^<h3([^>]*)>", lambda m: '<h3%s><span class="bno">%02d</span>' % (m.group(1), n), cd[0], count=1)
+            h3 = re.sub(r"^<h3([^>]*)>", lambda m: '<h3%s><span class="bno">%d</span>' % (m.group(1), n), cd[0], count=1)
             cells.append('<section class="bcard%s">%s<div class="bbody">%s</div></section>' % (" wide" if w else "", h3, "".join(cd[1:])))
         out.append('<div class="brief">%s</div>' % "".join(cells))
         c["parts"] = out
@@ -1976,6 +1999,15 @@ def pm_check(st: dict, g: dict) -> list:
             fails.append("零章第一个小节应是「与 XX(前代或同类方案)的差异」:读者先靠熟悉的参照物理解新产品")
         if not d0.get("images"):
             fails.append("零章缺产品图(工作原理之后放一张:官网 / 发布会 / 招股书 / 研报原图优先,拿不到时用示意图并注明)")
+        if d0.get("lead", 0) > g.get("ch0_lead_max", 10 ** 6):
+            fails.append("零章导语 %d 字 > %d:一句定位 + 一句变化" % (d0["lead"], g["ch0_lead_max"]))
+        long_secs = ["%s %d 字" % (h, n) for h, n in d0.get("secs", []) if n > g.get("ch0_sec_max", 10 ** 6)]
+        if long_secs:
+            fails.append("零章小节正文超过 %d 字(不含表、图、来源):%s;能进表的进表,细节留给正文" % (g["ch0_sec_max"], "、".join(long_secs)))
+        if not d0.get("kpis"):
+            fails.append("零章缺关键数据(kpis 块,3–4 项)")
+        elif d0.get("kpi_vague"):
+            fails.append("零章关键数据需写精确值并注明期间(年份 / 季度 / 财年),不写「约」「常年」:%s" % "、".join(d0["kpi_vague"]))
         if len(d0["acronyms"]) > g["ch0_max_acr"]:
             fails.append("零章英文缩写 %d 个 > %d(%s)" % (len(d0["acronyms"]), g["ch0_max_acr"], "、".join(d0["acronyms"][:10])))
     if g["tech"]:
@@ -2067,6 +2099,8 @@ def main(argv=None) -> int:
     ap.add_argument("--pm-ch0-min", type=int, default=PM_DEFAULT["ch0_min"])
     ap.add_argument("--pm-ch0-max", type=int, default=PM_DEFAULT["ch0_max"])
     ap.add_argument("--pm-ch0-max-acr", type=int, default=PM_DEFAULT["ch0_max_acr"])
+    ap.add_argument("--pm-ch0-sec-max", type=int, default=PM_DEFAULT["ch0_sec_max"], help="零章每个小节正文汉字上限(不含表、图、来源)")
+    ap.add_argument("--pm-ch0-lead-max", type=int, default=PM_DEFAULT["ch0_lead_max"], help="零章导语汉字上限")
     ap.add_argument("--pm-no-tech", action="store_true", help="本卡不要求技术白话章(消费品等,须用户同意)")
     ap.add_argument("--pm-allow", default="", help="不算术语的英文词(逗号分隔):公司名、代码、读者熟知的产品名")
     a = ap.parse_args(argv)
@@ -2091,7 +2125,8 @@ def main(argv=None) -> int:
         st["gate_fails"] = fails
     if a.pm:
         pf = pm_check(st, dict(min_glossary=a.pm_min_glossary, max_unexplained=a.pm_max_unexplained, ch0_min=a.pm_ch0_min,
-                               ch0_max=a.pm_ch0_max, ch0_max_acr=a.pm_ch0_max_acr, tech=not a.pm_no_tech))
+                               ch0_max=a.pm_ch0_max, ch0_max_acr=a.pm_ch0_max_acr, ch0_sec_max=a.pm_ch0_sec_max,
+                               ch0_lead_max=a.pm_ch0_lead_max, tech=not a.pm_no_tech))
         fails = (fails or []) + pf
         st["pm_fails"] = pf
     if a.gate or a.pm:

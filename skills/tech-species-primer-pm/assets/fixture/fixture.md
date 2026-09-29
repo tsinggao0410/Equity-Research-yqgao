@@ -147,7 +147,7 @@ source: 来源:示例公司招股书 p45、历年年报
 ![示意图:自绘 SVG 内嵌(自测)](fixture_images/fx_selfdraw.svg "来源:作者自绘")
 
 ```flow
-{"title":"图 2-5 储能系统从电芯到并网的生产与交付流程","subtitle":"单泳道 + 阶段分组;橙框为价值集中的工序",
+{"title":"图 2-5 储能系统从电芯到并网的生产与交付流程","subtitle":"单泳道 + 阶段分组;强调框为价值集中的工序",
  "steps":[{"label":"电芯来料检验","sub":"外购电芯,抽检容量与内阻","tag":"外购","phase":"来料"},
           {"label":"模组 / PACK","sub":"自动化线,激光焊接","tag":"自制","phase":"电池段","hot":true},
           {"label":"PCS 生产","sub":"SMT → 功率模块 → 整机","tag":"自制","phase":"电力电子段","hot":true},
@@ -205,7 +205,7 @@ source: 来源:示例公司招股书 p45、历年年报
 ### 3.3 具体产品
 
 ```lineup
-{"title":"图 3-2 产品谱系:按功率段排列(lineup 块,多张实物图合成一张)","subtitle":"橙框为主力型号;点击任一图片放大",
+{"title":"图 3-2 产品谱系:按功率段排列(lineup 块,多张实物图合成一张)","subtitle":"强调框为主力型号;点击任一图片放大",
  "cols":4,
  "items":[{"img":"fixture_images/fx_official.png","label":"XX-3000","sub":"大型地面 · 3.0MW","group":"集中式 / 模块化"},
           {"img":"fixture_images/fx_c.jpg","label":"XX-320","sub":"组串式 · 320kW","group":"组串式","hot":true},

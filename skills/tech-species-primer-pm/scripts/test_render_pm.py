@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """基金经理版渲染器回归测试:通俗解释 / 类比 / 例子块(页面不显示标签)、roadmap 路线图、glossary 词典与悬停释义、
-「和同类 / 替代方案比」对比节检查、英文缩写首现检查、--pm 验收。
+「和同类 / 替代方案比」对比节检查、英文缩写首现检查、零章篇幅(导语 / 分节上限)与关键数据精确性、--pm 验收。
 用法:python3 test_render_pm.py   (全部通过打印 OK,失败抛 AssertionError)"""
 import sys
 import tempfile
@@ -24,6 +24,13 @@ MD_OK = """# 测试公司(TEST.US)业务认知
 
 > [!lead] **测试公司卖一种让机器互相说话的软件。**客户是工厂。
 
+```kpis
+收入(2Q26) | 1.23 | 亿美元 | 同比 +20%
+美国收入占比(FY2025) | 64 | % | 按收入
+```
+
+> 来源:自测
+
 ### 与普通 SaaS 的差异
 
 表 0-1　测试公司和普通 SaaS 差在哪
@@ -31,6 +38,8 @@ MD_OK = """# 测试公司(TEST.US)业务认知
 | 比什么 | 普通 SaaS | 测试公司 |
 |---|---|---|
 | 管什么 | 一个部门 | 跨部门 |
+
+> [!plain] 投资含义:跟踪老客户扩容。
 
 ### 工作原理
 
@@ -111,7 +120,8 @@ def main():
     # 2 路线图计入示意图,now 徽标,分岔
     assert 'class="rstage now' in doc and "当前主流" in doc and 'class="rfork"' in doc
     # 2b 零章速览版式:摘要面板 + 编号卡片;落单的半宽卡片自动整行
-    assert '<div class="brief-hero">' in doc and '<div class="brief">' in doc and '<span class="bno">01</span>' in doc
+    assert '<div class="brief-hero">' in doc and '<div class="brief">' in doc and '<span class="bno">1</span>' in doc
+    assert '<div class="plain imp"><p><span class="nh">投资含义:</span>' in doc or '<div class="plain imp"><p><span class="nh">投资含义：</span>' in doc
     assert doc.count('<section class="bcard') == 5 and doc.count('<section class="bcard wide">') >= 2   # 差异表、产品图整行
     assert st["diagrams"]["total"] >= 1 and pm["roadmaps"] == 1 and pm["tech"]["roadmaps"] == 1
     # 3 词典:行锚点、悬停释义每章只加一次、不进词典章本身
@@ -122,13 +132,26 @@ def main():
     assert pm["unexplained"] == ["XYZ"], pm["unexplained"]
     # 5 零章指标
     d0 = pm["ch0"]
-    assert d0["first"] and d0["has_analogy"] and d0["has_example"] and d0["compare"] and d0["plain"] == 2, d0
+    assert d0["first"] and d0["has_analogy"] and d0["has_example"] and d0["compare"] and d0["plain"] == 3, d0
+    assert d0["kpis"] == 2 and d0["kpi_vague"] == [] and 0 < d0["lead"] <= G["ch0_lead_max"], d0
+    assert all(n <= G["ch0_sec_max"] for _h, n in d0["secs"]), d0["secs"]
     assert d0["compare_first"] and d0["images"] == 1, d0
     assert pm["tech"]["compare"] and pm["tech"]["roadmaps"] == 1, pm["tech"]
     assert pm["business_no_plain"] == [], pm["business_no_plain"]
     GS = dict(G, ch0_min=200)          # 自测文档零章较短
     assert pm_check(st, GS) == [], pm_check(st, GS)
-    assert any("零章汉字" in x for x in pm_check(st, G))   # 默认下限 500 应报出
+    assert any("零章汉字" in x for x in pm_check(st, G))   # 默认下限 400 应报出
+    # 5f 精炼与准确(第五轮反馈):关键数据写「约」或不写期间、缺关键数据、小节超长、导语超长 → 各自报出
+    vague = MD_OK.replace("收入(2Q26) | 1.23 | 亿美元 | 同比 +20%", "收入 | 约 1.2 | 亿美元 | 常年水平")
+    f = ";".join(pm_check(render(vague)[1], GS))
+    assert "关键数据需写精确值并注明期间" in f and "收入" in f, f
+    nokpi = MD_OK.split("```kpis")[0] + MD_OK.split("> 来源:自测\n", 1)[1]
+    f = ";".join(pm_check(render(nokpi)[1], GS))
+    assert "零章缺关键数据" in f, f
+    long = MD_OK.replace("客户按年付费,先试一个车间", "客户按年付费。" + "这一段写得太长,细节应该留给正文。" * 12 + "先试一个车间")
+    long = long.replace("客户是工厂。", "客户是工厂。" + "导语也写长了。" * 14)
+    f = ";".join(pm_check(render(long)[1], GS))
+    assert "零章小节正文超过 160 字" in f and "价值流向" in f and "零章导语" in f, f
     # 5b 对比节:零章或技术章去掉「和 XX 比」的节 / 表 → 报出
     nocmp = MD_OK.replace("### 与普通 SaaS 的差异", "### 其他").replace("### 2.1 与替代方案的差异", "### 2.1 其他")
     f = ";".join(pm_check(render(nocmp)[1], GS))
@@ -159,6 +182,10 @@ def main():
     f = pm_check(st2, dict(GS, min_glossary=20))
     txt = ";".join(f)
     assert "不在最前" in txt and "缺通俗解释块" in txt and "术语词典 16 条 < 20" in txt and "TODO" in txt, f
+    # 6b 三列词典(术语 | 含义 | 投资相关性):表头不出现「可以理解为」
+    g3 = MD_OK.split("```glossary")[0] + "```glossary\n术语 | 含义 | 投资相关性\nOntology / 本体 | 按业务对象重组数据 | 替换成本高\n```\n"
+    doc3, st3g = render(g3)
+    assert "<th>投资相关性</th>" in doc3 and "<th>可以理解为</th>" not in doc3 and st3g["pm"]["glossary_terms"] == 1
     # 7 两份写法样例本身必须过 --pm
     for name, allow in (("pltr_plain_sample.md", ("Palantir", "PLTR")), ("cpo_tech_path_sample.md", ())):
         p = SKILL / "examples" / "pm" / name

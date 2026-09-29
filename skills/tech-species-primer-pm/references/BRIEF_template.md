@@ -14,7 +14,7 @@
 - 图片一律存 `R/images/`,文件名以 `cN_` 开头(N 为章号阿拉伯数字),例如 `images/c2_process_flow.jpg`。MD 里写 `images/c2_xxx.jpg`(相对 R)。
 - 规格与语法(先读):
   - 设计规格 `{SKILL}/references/DESIGN_v32.md`(§2 结构、§3 图表密度、§4 MD 写法、§6 质量门槛)
-  - **基金经理版增量规格** `{SKILL}/references/DESIGN_pm.md`(§3 技术章、§4 全卡写作纪律)与**通俗写法与买方用语指南** `{SKILL}/references/plain_language_guide.md`(必读 §2 句子级规则、§5 与竞品的差异怎么讲、§6 买方用语、§7 类比库、§8 改写前后对照);语言规范以 buyside-voice 的 `references/voice-rules.md` 为准(若本机装有)
+  - **基金经理版增量规格** `{SKILL}/references/DESIGN_pm.md`(§3 技术章、§4 全卡写作纪律)与**通俗写法与买方用语指南** `{SKILL}/references/plain_language_guide.md`(必读 §2 句子级规则、§5 与竞品的差异怎么讲、§6 买方用语、§7 参照物库、§8 改写前后对照);语言规范以 buyside-voice 的 `references/voice-rules.md` 为准(若本机装有)
   - **写法样例**(各约 1.5 万字节,可全读):`{SKILL}/examples/pm/pltr_plain_sample.md`(平台软件)、`{SKILL}/examples/pm/cpo_tech_path_sample.md`(技术路径)
   - 语法样例 `{SKILL}/assets/fixture/fixture.md`(kpis / chart / flow / chain / lineup / timeline / cards / :::two-up / :::three-up / [!lead] / [!note] / 读者标签 / 表题)
   - chart JSON 全字段:`{SKILL}/scripts/render_report_v32.py` 文件头 docstring
@@ -96,9 +96,9 @@
 
 ## 5b 术语台账 `NN_terms.md`(合成全卡「附录、术语小词典」,并生成正文悬停释义)
 
-表格:`| 术语 | 是什么 | 可以理解成 | 对投资意味着什么 |`。本章**第一次出现**的每个技术或行业术语、英文缩写、产品平台名都要登记(读者已懂的财务词如毛利率、同比不登记)。
+表格:`| 术语 | 含义 | 投资相关性 |`。本章**第一次出现**的每个技术或行业术语、英文缩写、产品平台名都要登记(读者已懂的财务词如毛利率、同比不登记)。
 - 术语列:正文里写的原样;有别名用「 / 」分隔(两侧留空格),例 `CPO / 共封装光学`、`Ontology / 本体`。正文出现任一别名都会挂上悬停释义。
-- 是什么:≤50 字,不用术语解释术语。可以理解成:≤20 字的类比,没有合适的写「—」。对投资意味着什么:一句具体的话(影响哪一块收入、成本、份额、风险),不写「很重要」。
+- 含义:≤50 字,不用术语解释术语,不写比喻。投资相关性:一句具体的话(影响哪一块收入、成本、份额、风险),不写「很重要」。
 - `merge_card.py` 按章序合并、去重(同一术语取第一次出现的那条);和别章写法冲突会在合并输出里提示。
 
 ## 6 `NN_gaps.md`

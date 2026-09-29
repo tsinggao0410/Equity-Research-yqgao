@@ -4,9 +4,9 @@
 
 用法:python3 merge_card.py [--root R] [--no-gate] [--lax] [--feishu]
   - 顺序:work/00_header.md + parts/NN_*.md(按 NN 排序,跳过 NN_facts.md / NN_gaps.md / NN_terms.md / 以 _ 开头的文件)。
-  - 术语词典:parts 里没有 ```glossary 块时,把各章 NN_terms.md(术语台账,表头「术语 | 含义 | 可以理解为 | 投资相关性」)
+  - 术语词典:parts 里没有 ```glossary 块时,把各章 NN_terms.md(术语台账,表头「术语 | 含义 | 投资相关性」;旧的四列台账取第 1、2、4 列)
     按章序合并去重,自动追加一章「附录、术语小词典」;同一术语多章都写了,取第一次出现的那条,冲突写进输出提示。
-  - card.json 的 edition = "pm" 时加 --pm 验收,门槛取 plain{min_glossary, max_unexplained, ch0_min, ch0_max, ch0_max_acr,
+  - card.json 的 edition = "pm" 时加 --pm 验收,门槛取 plain{min_glossary, max_unexplained, ch0_min, ch0_max, ch0_max_acr, ch0_sec_max, ch0_lead_max,
     tech, allow}(DESIGN_pm.md §5)。
   - card.json 的 nav:{"02": "三大主业", ...} → 在该章前插入 <!-- nav: 组名 -->(目录分组)。
   - 渲染参数取 card.json 的 date、gate(min_cjk/min_figs/min_charts/min_visuals/min_tables)、ref_bg(照抄检查背景语料,
@@ -58,7 +58,8 @@ def collect_terms():
             t = ln.strip()
             if not t.startswith("|") or re.match(r"^\|?\s*:?-{2,}", t):
                 continue
-            c = (split_row(t) + ["", "", "", ""])[:4]
+            c = split_row(t)
+            c = ([c[0], c[1], c[3]] if len(c) >= 4 else (c + ["", "", ""])[:3])
             if not c[0] or c[0] in ("术语", "名词"):
                 continue
             key = re.split(r"\s+[/／]\s+", c[0])[0].strip().lower()
@@ -77,7 +78,7 @@ if card.get("edition") == "pm" and not has_gloss:
     if trows:
         out.append("<!-- nav: 附录 -->\n" if "附录" not in nav.values() else "")
         out.append("## 附录、术语小词典\n\n> [!lead] 正文中每章首次出现的术语可悬停(手机上点按)查看解释;"
-                   "下表按章节出现顺序集中列出含义、类比与投资相关性。\n\n```glossary\n术语 | 含义 | 可以理解为 | 投资相关性\n%s\n```\n" % "\n".join(trows))
+                   "下表按章节出现顺序列出含义与投资相关性。\n\n```glossary\n术语 | 含义 | 投资相关性\n%s\n```\n" % "\n".join(trows))
         print("术语词典:由 %d 份 NN_terms.md 合成 %d 条" % (len(list((R / "parts").glob("[0-9][0-9]_terms.md"))), len(trows)))
         for x in clash:
             print("术语冲突:", x)
@@ -101,7 +102,7 @@ if not a.no_gate:
     if card.get("edition") == "pm":
         pl = card.get("plain") or {}
         cmd.append("--pm")
-        for k in ("min_glossary", "max_unexplained", "ch0_min", "ch0_max", "ch0_max_acr"):
+        for k in ("min_glossary", "max_unexplained", "ch0_min", "ch0_max", "ch0_max_acr", "ch0_sec_max", "ch0_lead_max"):
             if pl.get(k) is not None:
                 cmd += ["--pm-" + k.replace("_", "-"), str(pl[k])]
         if pl.get("tech") is False:

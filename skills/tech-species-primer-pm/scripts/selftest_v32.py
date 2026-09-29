@@ -497,7 +497,7 @@ def make_stress_md(path: Path, n_charts=None, n_flows=None, n_images=None) -> Pa
         return ["```chart", json.dumps(sp, ensure_ascii=False), "```", ""]
 
     def flow(title):
-        fl = {"title": title, "subtitle": "自制 / 外协标签;橙框为价值集中工序",
+        fl = {"title": title, "subtitle": "自制 / 外协标签;强调框为价值集中工序",
               "steps": [{"label": "来料检验", "sub": "外购器件抽检", "tag": "外购", "phase": "来料"},
                         {"label": "SMT 贴片", "tag": "自制", "phase": "板级", "hot": True},
                         {"label": "功率模块", "tag": "自制", "phase": "整机"}, {"label": "整机装配", "phase": "整机"},
