@@ -1,0 +1,273 @@
+{
+ "generator": "tech-species-primer-pm 3.3.0 render_report_v32(基金经理版)",
+ "title": "Palantir（PLTR.US）业务认知 · 基金经理版",
+ "date": "2026-09-29",
+ "figures_total": 89,
+ "charts": 61,
+ "visuals_non_chart": 28,
+ "images": {
+  "total": 6,
+  "ref": 0,
+  "official": 0,
+  "product": 0,
+  "diagram": 6,
+  "other": 0
+ },
+ "diagrams": {
+  "total": 22,
+  "flow": 9,
+  "chain": 7,
+  "timeline": 5
+ },
+ "tables": 24,
+ "cjk_chars": 31866,
+ "chapters": [
+  {
+   "title": "零、业务速览：Palantir",
+   "business": false,
+   "charts": 0,
+   "images": 1,
+   "diagrams": 1,
+   "tables": 3,
+   "figures": 2,
+   "flows": 0,
+   "cjk": 1586,
+   "missing": []
+  },
+  {
+   "title": "一、公司总览",
+   "business": false,
+   "charts": 6,
+   "images": 1,
+   "diagrams": 2,
+   "tables": 2,
+   "figures": 9,
+   "flows": 0,
+   "cjk": 2546,
+   "missing": []
+  },
+  {
+   "title": "二、技术与产品：原理、差异与演变",
+   "business": false,
+   "charts": 0,
+   "images": 0,
+   "diagrams": 4,
+   "tables": 2,
+   "figures": 4,
+   "flows": 1,
+   "cjk": 2390,
+   "missing": []
+  },
+  {
+   "title": "三、美国政府",
+   "business": true,
+   "charts": 7,
+   "images": 1,
+   "diagrams": 5,
+   "tables": 2,
+   "figures": 13,
+   "flows": 3,
+   "cjk": 2798,
+   "missing": []
+  },
+  {
+   "title": "四、美国商业",
+   "business": true,
+   "charts": 9,
+   "images": 2,
+   "diagrams": 3,
+   "tables": 2,
+   "figures": 14,
+   "flows": 2,
+   "cjk": 2783,
+   "missing": []
+  },
+  {
+   "title": "五、国际业务（国际政府与国际商业）",
+   "business": true,
+   "charts": 8,
+   "images": 1,
+   "diagrams": 4,
+   "tables": 2,
+   "figures": 13,
+   "flows": 2,
+   "cjk": 2600,
+   "missing": []
+  },
+  {
+   "title": "六、大客户与合同",
+   "business": false,
+   "charts": 8,
+   "images": 0,
+   "diagrams": 1,
+   "tables": 3,
+   "figures": 9,
+   "flows": 1,
+   "cjk": 2279,
+   "missing": []
+  },
+  {
+   "title": "七、股东与治理",
+   "business": false,
+   "charts": 3,
+   "images": 0,
+   "diagrams": 2,
+   "tables": 3,
+   "figures": 5,
+   "flows": 0,
+   "cjk": 1595,
+   "missing": []
+  },
+  {
+   "title": "八、非主要业务简述",
+   "business": false,
+   "charts": 2,
+   "images": 0,
+   "diagrams": 0,
+   "tables": 0,
+   "figures": 2,
+   "flows": 0,
+   "cjk": 672,
+   "missing": []
+  },
+  {
+   "title": "九、UE与经营效率",
+   "business": false,
+   "charts": 11,
+   "images": 0,
+   "diagrams": 0,
+   "tables": 1,
+   "figures": 11,
+   "flows": 0,
+   "cjk": 1783,
+   "missing": []
+  },
+  {
+   "title": "十、跟什么走",
+   "business": false,
+   "charts": 7,
+   "images": 0,
+   "diagrams": 0,
+   "tables": 0,
+   "figures": 7,
+   "flows": 0,
+   "cjk": 1621,
+   "missing": []
+  },
+  {
+   "title": "十一、正在变什么",
+   "business": false,
+   "charts": 0,
+   "images": 0,
+   "diagrams": 0,
+   "tables": 1,
+   "figures": 0,
+   "flows": 0,
+   "cjk": 1382,
+   "missing": []
+  },
+  {
+   "title": "十二、来源与口径",
+   "business": false,
+   "charts": 0,
+   "images": 0,
+   "diagrams": 0,
+   "tables": 3,
+   "figures": 0,
+   "flows": 0,
+   "cjk": 1545,
+   "missing": []
+  },
+  {
+   "title": "附录、术语小词典",
+   "business": false,
+   "charts": 0,
+   "images": 0,
+   "diagrams": 0,
+   "tables": 0,
+   "figures": 0,
+   "flows": 0,
+   "cjk": 7322,
+   "missing": []
+  }
+ ],
+ "cjk_glossary": 7322,
+ "xrefs": 81,
+ "xref_missing": [],
+ "halfwidth_next_to_cjk": 7,
+ "fullwidth_punct": 2601,
+ "html_bytes": 1469775,
+ "external_refs": 0,
+ "pm": {
+  "ch0": {
+   "title": "零、业务速览：Palantir",
+   "first": true,
+   "cjk": 1189,
+   "plain": 3,
+   "has_analogy": true,
+   "has_example": true,
+   "compare": true,
+   "acronyms": [
+    "AIP"
+   ],
+   "images": 1,
+   "compare_first": true,
+   "lead": 68,
+   "secs": [
+    [
+     "与普通 SaaS 的差异",
+     70
+    ],
+    [
+     "工作原理",
+     119
+    ],
+    [
+     "典型案例",
+     83
+    ],
+    [
+     "价值流向",
+     99
+    ],
+    [
+     "技术演变",
+     24
+    ],
+    [
+     "跟踪指标",
+     64
+    ]
+   ],
+   "kpis": 4,
+   "cases": 4,
+   "kpi_vague": []
+  },
+  "label_leaks": [],
+  "colloquial": [],
+  "tech": {
+   "title": "二、技术与产品：原理、差异与演变",
+   "roadmaps": 1,
+   "compare": true
+  },
+  "roadmaps": 1,
+  "business_no_plain": [],
+  "plain_blocks": 20,
+  "glossary_terms": 150,
+  "glossary_rows": 150,
+  "acronyms": 34,
+  "unexplained": [],
+  "gloss_marked": 223,
+  "todo": 0
+ },
+ "errors": [],
+ "warnings": [],
+ "copy_check": {
+  "sentences": 722,
+  "hits": [],
+  "review": []
+ },
+ "gate_fails": [],
+ "pm_fails": [],
+ "gate_mode": "--gate --pm"
+}
